@@ -1,94 +1,71 @@
-<div align="center">
+[![Blog](https://img.shields.io/badge/Blog-jjjuuuun.github.io-green.svg)](https://jjjuuuun.github.io/)
 
-  # Chirpy Jekyll Theme
+# Today I Learned
 
-  A minimal, responsive and feature-rich Jekyll theme for technical writing.
+- [날짜별로 보기](https://github.com/jjjuuuun/TIL)
 
-  [![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy?color=brightgreen)][gem]&nbsp;
-  [![CI](https://github.com/cotes2020/jekyll-theme-chirpy/actions/workflows/ci.yml/badge.svg?branch=master&event=push)][ci]&nbsp;
-  [![Codacy Badge](https://app.codacy.com/project/badge/Grade/4e556876a3c54d5e8f2d2857c4f43894)][codacy]&nbsp;
-  [![GitHub license](https://img.shields.io/github/license/cotes2020/jekyll-theme-chirpy.svg)][license]&nbsp;
-  [![996.icu](https://img.shields.io/badge/link-996.icu-%23FF4D5B.svg)](https://996.icu)
+# Python Basic
 
-  [**Live Demo →**][demo]
+- String
+  - [String - 대소문자 변환](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Python-String-1.md)
+- collections
+  - [collections - Counter](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Python-Collections-Counter.md)
+  - [collections - deque](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Python-Collections-deque.md)
+  - [collections - defaultdict](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Python-Collections-defaultdict.md)
+  - [collections - namedtuple](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Python-Collections-namedtuple.md)
+- Tree
+  - [Tree - 탐색하는 방법](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Python-Tree-1.md)
+- List
+  - [List - Operation](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Python-List-Operation.md)
+  - [List - Copy](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Python-List-Copy.md)
+  - [List - Comprehension](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Python-List-Comprehension.md)
+- Function
+  - [Function - 호출 방법](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Python-Function-Call.md)
+  - [Function - 파이썬 함수의 특징](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Python-Function-FirstClassObjects.md)
+- UnderScore
+  - [UnderScore](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Python-UnderScore.md)
+- Formatting
+  - [Formatting](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Python-Formatting.md)
 
-  [![Devices Mockup](https://chirpy-img.netlify.app/commons/devices-mockup.png)][demo]
+# Algorithm - Python
 
-</div>
+## 백준(BOJ)
 
-## Features
+- [1439번 - 뒤집기](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-BOJ-1439.md)
+- [14502번 - 연구소](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-BOJ-14502.md)
+- [18352번 - 특정 거리의 도시 찾기](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-BOJ-18352.md)
+- [3190번 - 뱀](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-BOJ-3190.md)
+- [15686번 - 치킨 배달](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-BOJ-15686.md)
+- [1932번 - 정수 삼각형](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-BOJ-1932.md)
+- [18405번 - 경쟁적 전염](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-BOJ-18405.md)
+- [11404번 - 플로이드](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-BOJ-11404.md)
 
-<details>
-  <summary>
-    <i>Click to view features</i>
-  </summary>
-  <p>
+## 프로그래머스(Programmers)
 
-  - Dark / Light Theme Mode
-  - Localized UI language
-  - Pinned Posts on Home Page
-  - Hierarchical Categories
-  - Trending Tags
-  - Table of Contents
-  - Last Modified Date
-  - Syntax Highlighting
-  - Mathematical Expressions
-  - Mermaid Diagrams & Flowcharts
-  - Dark / Light Mode Images
-  - Embed Videos
-  - Disqus / Utterances / Giscus Comments
-  - Built-in Search
-  - Atom Feeds
-  - Google Analytics
-  - SEO & Performance Optimization
+- [42891번 - 무지의 먹방 라이브](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Programmers-42891.md)
+- [60057번 - 문자열 압축](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Programmers-60057.md)
+- [60059번 - 자물쇠와 열쇠](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Programmers-60059.md)
+- [60061번 - 기둥과 보 설치](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Programmers-60061.md)
+- [12924번 - 숫자의 표현](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Programmers-12924.md)
+- [12953번 - N개의 최소공배수](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Programmers-12953.md)
+- [42885번 - 구명보트](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Programmers-42885.md)
+- [17677번 - [1차] 뉴스 클러스터링](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Programmers-17677.md)
+- [87390번 - n^2 배열 자르기](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Programmers-87390.md)
 
-  </p>
-</details>
+# Paper Review
 
-## Documentation
+## CV
 
-To explore usage, development, and upgrade guide of the project, please refer to the [**Wiki**][wiki].
+- Generative Model
+  - [StyleGAN](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-StyleGAN.md)
+- Object Detection
+  - [RCNN](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-RCNN.md)
 
-## Contributing
+# PyTorch
 
-Contributions (Issues/PRs/Discussions) are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated. For details, see the "[Contributing Guidelines][contribute-guide]".
+## Tensor
 
-## Credits
-
-This theme is mainly built with [Jekyll][jekyllrb] ecosystem,
-[Bootstrap][bootstrap], [Font Awesome][icons] and some other [wonderful tools][lib].
-The avatar and favicon design come from [Clipart Max][image].
-
-Many thanks to the [contributors][contributors] who participated in the development
-and to the folks who reported bugs or shared ideas.
-
-Last but not least, thanks to [JetBrains][jetbrains] for providing the _Open Source License_.
-
-## Sponsoring
-
-If you'd like to sponsor this project, the following options are available.
-
-[![Ko-fi](https://img.shields.io/badge/Support_Me_on_Ko--fi-ff5e5b?logo=ko-fi&logoColor=white)][ko-fi]&nbsp;
-[![Wechat Pay](https://img.shields.io/badge/Tip_Me_on_WeChat-brightgreen?logo=wechat&logoColor=white)][donation]&nbsp;
-[![Alipay](https://img.shields.io/badge/Tip_Me_on_Alipay-blue?logo=alipay&logoColor=white)][donation]
-
-## License
-
-This work is published under [MIT License][license].
-
-[gem]: https://rubygems.org/gems/jekyll-theme-chirpy
-[ci]: https://github.com/cotes2020/jekyll-theme-chirpy/actions/workflows/ci.yml?query=event%3Apush+branch%3Amaster
-[codacy]: https://app.codacy.com/gh/cotes2020/jekyll-theme-chirpy/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade
-[license]: https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/LICENSE
-[jekyllrb]: https://jekyllrb.com/
-[bootstrap]: https://getbootstrap.com/
-[icons]: https://fontawesome.com/
-[image]: https://www.clipartmax.com/middle/m2i8b1m2K9Z5m2K9_ant-clipart-childrens-ant-cute/
-[demo]: https://cotes2020.github.io/chirpy-demo/
-[wiki]: https://github.com/cotes2020/jekyll-theme-chirpy/wiki
-[contribute-guide]: https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/docs/CONTRIBUTING.md
-[contributors]: https://github.com/cotes2020/jekyll-theme-chirpy/graphs/contributors
-[lib]: https://github.com/cotes2020/chirpy-static-assets
-[jetbrains]: https://www.jetbrains.com/?from=jekyll-theme-chirpy
-[ko-fi]: https://ko-fi.com/coteschung/
-[donation]: https://sponsor.cotes.page/
+- [Tensor를 만드는 방법](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-PyTorch-Tensor-tensor-create.md)
+- [Tensor를 복사하는 방법](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-PyTorch-Tensor-tensor-copy.md)
+- [Tensor의 연속성](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-PyTorch-Tensor-tensor-contiguous.md)
+- [Tensor의 모양을 바꾸는 방법](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-PyTorch-Tensor-tensor-reshape.md)
