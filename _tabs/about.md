@@ -14,4 +14,4 @@ order: 4
 
 - 주요 사용하는 Computer Language : Python
 
-- [CV 확인하기](../docs/CV.pdf)(last update : 2023.08.28)
+- [CV 확인하기](../../docs/CV.pdf)(last update : 2023.08.28)
