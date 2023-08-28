@@ -13,5 +13,3 @@ order: 4
 - Computer Language : Python, C, C++, JAVA
 
 - 주요 사용하는 Computer Language : Python
-
-- [CV 확인하기](https://drive.google.com/file/d/1oVQ18YwOA8vqelHlsyGJ7gIrA_0L4oKj/view?usp=sharing)(last update : 2023.08.28)
