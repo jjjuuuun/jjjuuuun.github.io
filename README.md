@@ -61,6 +61,17 @@
 - Object Detection
   - [RCNN](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-RCNN.md)
 
+## NLP
+
+- Machine Translation
+  - [Seq2Seq](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-28-Seq2Seq.md)
+
+# Evaluation
+
+## NLP
+
+- [BLEU](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-28-BLEU.md)
+
 # PyTorch
 
 ## Tensor
