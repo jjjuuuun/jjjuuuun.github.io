@@ -39,6 +39,10 @@
 - [1932번 - 정수 삼각형](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-BOJ-1932.md)
 - [18405번 - 경쟁적 전염](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-BOJ-18405.md)
 - [11404번 - 플로이드](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-BOJ-11404.md)
+- [2225번 - 합분해](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-30-BOJ-2225.md)
+- [6588번 - 골드바흐의 추측](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-30-BOJ-6588.md)
+- [10844번 - 쉬운 계단 수](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-30-BOJ-10844.md)
+- [11052번 - 카드 구매하기](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-30-BOJ-11052.md)
 
 ## 프로그래머스(Programmers)
 
