@@ -76,6 +76,10 @@
 
 - [BLEU](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-28-BLEU.md)
 
+# Tokenizer
+
+- [BPE](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-06-BPE.md)
+
 # PyTorch
 
 ## Tensor
