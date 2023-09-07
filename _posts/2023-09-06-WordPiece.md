@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[Tokenizer] WordPiece"
+title: "[Tokenizer] WordPiece Model(WPM)"
 author: kjy
 date: 2023-09-06 22:23:00 +09:00
 categories: [Tokenizer, NLP]
@@ -16,7 +16,7 @@ math: true
 
 ## WordPiece
 
-WordPiece는 Google이 BERT를 pre-training 하기 위해 개발한 tokenizer입니다. [BPE(Byte-Pair Encoding)](https://jjjuuuun.github.io/posts/BPE/)과 매우 유사하지만 몇몇 다른 점이 있습니다. 첫째, 단어의 첫번째 글자(character)를 제외한 글자에 접두사(`##`)를 모두 추가하여 subword를 식별합니다. 둘째, WordPiece에서는 단순히 빈도가 높은 것을 병합하는 것이 아니라 병합한 쌍의 우도(likelihood)를 높이는 방향으로 병합할 쌍을 찾습니다. 셋째, tokenizer를 적용할 때 BPE와 다르게 적용됩니다.
+WordPiece는 Google이 [Japanese and Korean voice search](https://static.googleusercontent.com/media/research.google.com/ko//pubs/archive/37842.pdf)에서 처음 제안한 subtokenizer 방법입니다. [BPE(Byte-Pair Encoding)](https://jjjuuuun.github.io/posts/BPE/)과 매우 유사하지만 몇몇 다른 점이 있습니다. 첫째, 단어의 첫번째 글자(character)를 제외한 글자에 접두사(`##`)를 모두 추가하여 subword를 식별합니다. 둘째, WordPiece에서는 단순히 빈도가 높은 것을 병합하는 것이 아니라 병합한 쌍의 우도(likelihood)를 높이는 방향으로 병합할 쌍을 찾습니다. 셋째, tokenizer를 적용할 때 BPE와 다르게 적용됩니다.
 
 위에서 살펴본 차이점들에 유의해서 WordPiece를 설명드리겠습니다.
 
