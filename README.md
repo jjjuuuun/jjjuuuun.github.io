@@ -69,6 +69,7 @@
 
 - Machine Translation
   - [Seq2Seq](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-28-Seq2Seq.md)
+  - [Transformer](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-07-Transformer.md)
 
 # Evaluation
 
@@ -79,7 +80,7 @@
 # Tokenizer
 
 - [BPE](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-06-BPE.md)
-- [WordPiece](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-06-WordPiece.md)
+- [WPM](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-06-WordPiece.md)
 
 # PyTorch
 
