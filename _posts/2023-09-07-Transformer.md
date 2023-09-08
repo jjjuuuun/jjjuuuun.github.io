@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[Machine Translation] Attention Is All You Need(Transformer)"
+title: "[Machine Translation] Transformer : Attention Is All You Need"
 author: kjy
 date: 2023-09-07 13:23:00 +09:00
 categories: [Paper Review, NLP]
