@@ -18,7 +18,7 @@ math: true
 
 해당 논문은 이전 연구들과 달리 오직 attention이라는 메커니즘만으로 machine translation task를 수행한 연구입니다. 오직 attention 메커니즘만을 사용한 모델을 transformer라고 해당 논문에서는 부르는데 이러한 transformer 모델이 두 가지 machine translation에서 좋은 성능과 더 빠른 처리 속도를 달성했습니다.
 
-먼저 해당 모델의 구조를 이해하고 이전에 있던 방법들과 비교해서 어떤 차이가 있는지 알아보도록 하겠습니다.
+해당 포스트에서는 자세한 학습 방법보다는 모델의 구조와 데이터가 어떻게 들어가는지 살폅보겠습니다. 자세한 학습 hyperparameter가 궁금하신 분들께서는 논문을 직접 참고해주시면 좋을 것 같습니다.
 
 ## Transformer Model 구조
 
@@ -63,7 +63,7 @@ Transformer에서는 $d_{model} = 512$으로 embedding을 진행하고 있습니
 ![](../../assets/img/transformer/transformer_3.png){: class="align-center"}
 
 🔎 Embedding을 진행하는 과정은 encoder와 decoder 모두 같습니다.
-🔎 Embedding layer에 $\sqrt{d_model}$을 곱합니다.
+🔎 Embedding layer에 $\sqrt{d_{model}}$을 곱합니다.
 
 ### Positional Encoding
 
@@ -175,16 +175,34 @@ Decoder layer는 Masked Multi-Head attention과 Multi-Head attention(encoder-dec
 
 여기서 encoder-decoder attention이 등장하는데 구조는 Multi-Head attention과 같지만 Query는 decoder layer의 이전 Masked Multi-Head attention의 결과로부터 오고 Key와 Value는 Encoder(마지막 encoder layer)의 attention 값으로부터 온다는 점이 다릅니다. 해당 부분이 encoder와 decoder를 연결하는 부분이라고 생각하시면 될 것 같습니다.
 
+🔎 위에서 언급하지는 않았지만 Query, key, Value가 모두 같은 결과로부터 계산되면 self-attention이라고 부릅니다. 즉, encoder-decoder attention을 제외한 transformer에서의 모든 attention은 self-attention이라고 봐도 무방합니다.
+
 ![](../../assets/img/transformer/transformer_13.png){: class="align-center" width="300px" height="500px"}
 
 Encoder-Decoder attention을 자세히 살펴보면 아래와 같습니다.
 
 ![](../../assets/img/transformer/transformer_14.png){: class="align-center"}
 
-## 이전 machine translation 모델과 비교
+## Transformer Model의 결과
 
-기존에 사용되던 machine translation 모델에는 encoder-decoder 구조와 attention mechanism을 사용한 recurrent model이 있었습니다. 그러나 순차적인 특성을 갖는 이 모델은 학습 데이터의 병렬화를 방해하는 단점이 있습니다.
+- WMT 2014 English-German dataset
+- BLEU Score 28.4로 SOTA 달성
 
-해당 논문에서는 이러한 단점을 오직 attention mechanism을 사용하는 것을 해결하고자 했습니다.
+- WMT 2014 English-to-French dataset
+  - BLEU Score 41.0으로 SOTA 달성
 
-작성 중....
+## Key Point
+
+- Transformer는 recurrent layer(Seq2Seq, LSTM), Convolutional layer을 기반으로 한 architecture보다 훨씬 빠르게 훈련이 됩니다.
+- Recurrent layer, attention을 함께 쓰는 모델에서 attention만을 사용한 최초의 sequence transduction model이 transformer 입니다.
+- WMT 2014 English-to-German and WMT 2014 English-to-French에서 모두 SOTA 달성
+
+## Conclusion
+
+🤔 해당 논문을 공부하면서 얼핏 알고 있었던 transformer의 구조, 학습과정을 자세히 알 수 있었던 것 같습니다. 사실 해당 논문이 나오고 한참 뒤에 논문을 읽는 것이라 해당 논문이 현재 딥러닝 모델에 얼마나 큰 영향을 끼쳤는지는 알고 있기 때문에 대단해 보이는 것 같지만 읽으면서 생각의 전환이라는 관점에서 정말 대단한 논문임을 다시 느꼈던 것 같습니다.
+
+🤔 이후 transformer가 어떻게 발전되어 갔는지 공부해 가면서 transformer에 대한 이해도를 높일 필요가 있는 것 같습니다. 아직 공부를 제대로 해보진 못했지만 BERT, GPT, ViT, Swin Transformer, U-Net에 transformer 사용과 같은 경우들을 봤기 때문에 앞으로 트렌드를 따라가기 위해서라면 transformer 자체에 대한 심도있는 이해가 필요해 보입니다.
+
+## ※ Reference
+
+- [https://github.com/hyunwoongko/transformer](https://github.com/hyunwoongko/transformer)
