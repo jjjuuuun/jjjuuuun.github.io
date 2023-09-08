@@ -186,9 +186,11 @@ Encoder-Decoder attention을 자세히 살펴보면 아래와 같습니다.
 ## Transformer Model의 결과
 
 - WMT 2014 English-German dataset
-- BLEU Score 28.4로 SOTA 달성
+
+  - BLEU Score 28.4로 SOTA 달성
 
 - WMT 2014 English-to-French dataset
+
   - BLEU Score 41.0으로 SOTA 달성
 
 ## Key Point
