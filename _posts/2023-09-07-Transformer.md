@@ -62,7 +62,7 @@ Transformer에서는 $d_{model} = 512$으로 embedding을 진행하고 있습니
 
 ![](../../assets/img/transformer/transformer_3.png){: class="align-center"}
 
-🔎 Embedding을 진행하는 과정은 encoder와 decoder 모두 같습니다.
+🔎 Embedding을 진행하는 과정은 encoder와 decoder 모두 같습니다.\
 🔎 Embedding layer에 $\sqrt{d_{model}}$을 곱합니다.
 
 ### Positional Encoding
