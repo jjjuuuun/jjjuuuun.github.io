@@ -43,6 +43,9 @@
 - [6588번 - 골드바흐의 추측](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-30-BOJ-6588.md)
 - [10844번 - 쉬운 계단 수](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-30-BOJ-10844.md)
 - [11052번 - 카드 구매하기](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-30-BOJ-11052.md)
+- [1107번 - 리모콘](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-10-BOJ-1107.md)
+- [1967번 - 트리의 지름](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-10-BOJ-1967.md)
+- [2250번 - 트리의 높이와 너비](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-10-BOJ-2250.md)
 
 ## 프로그래머스(Programmers)
 
