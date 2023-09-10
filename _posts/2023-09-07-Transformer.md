@@ -173,7 +173,7 @@ Encoder layer는 Multi-Head attention과 FFN으로 구성되어 있으며 추가
 
 Decoder layer는 Masked Multi-Head attention과 Multi-Head attention(encoder-decoder attention), FFN으로 구성되어 있으며 추가적으로 residual connection, layer normalization, dropout을 적용했습니다.
 
-여기서 encoder-decoder attention이 등장하는데 구조는 Multi-Head attention과 같지만 Query는 decoder layer의 이전 Masked Multi-Head attention의 결과로부터 오고 Key와 Value는 Encoder(마지막 encoder layer)의 attention 값으로부터 온다는 점이 다릅니다. 해당 부분이 encoder와 decoder를 연결하는 부분이라고 생각하시면 될 것 같습니다.
+여기서 encoder-decoder attention(cross attention)이 등장하는데 구조는 Multi-Head attention과 같지만 Query는 decoder layer의 이전 Masked Multi-Head attention의 결과로부터 오고 Key와 Value는 Encoder(마지막 encoder layer)의 attention 값으로부터 온다는 점이 다릅니다. 해당 부분이 encoder와 decoder를 연결하는 부분이라고 생각하시면 될 것 같습니다.
 
 🔎 위에서 언급하지는 않았지만 Query, key, Value가 모두 같은 결과로부터 계산되면 self-attention이라고 부릅니다. 즉, encoder-decoder attention을 제외한 transformer에서의 모든 attention은 self-attention이라고 봐도 무방합니다.
 
