@@ -68,6 +68,8 @@
   - [StyleGAN](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-StyleGAN.md)
 - Object Detection
   - [RCNN](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-RCNN.md)
+- Vision Transformer
+  - [ViT](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-30-ViT.md)
 
 ## NLP
 
