@@ -47,6 +47,8 @@
 - [1967번 - 트리의 지름](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-10-BOJ-1967.md)
 - [2250번 - 트리의 높이와 너비](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-10-BOJ-2250.md)
 - [1707번 - 이분 그래프](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-29-BOJ-1707.md)
+- [17298번 오큰수](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-10-12-BOJ-17298.md)
+- [16947번 서울 지하철 2호선](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-10-12-BOJ-16947.md)
 
 ## 프로그래머스(Programmers)
 
