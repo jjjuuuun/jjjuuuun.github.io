@@ -4,7 +4,7 @@
 
 - [날짜별로 보기](https://github.com/jjjuuuun/TIL)
 
-# Python Basic
+# 1. Python Basic
 
 - String
   - [String - 대소문자 변환](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Python-String-1.md)
@@ -27,9 +27,9 @@
 - Formatting
   - [Formatting](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Python-Formatting.md)
 
-# Algorithm - Python
+# 2. Algorithm - Python
 
-## 백준(BOJ)
+## 2.1. 백준(BOJ)
 
 - [1439번 - 뒤집기](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-BOJ-1439.md)
 - [14502번 - 연구소](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-BOJ-14502.md)
@@ -50,7 +50,7 @@
 - [17298번 오큰수](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-10-12-BOJ-17298.md)
 - [16947번 서울 지하철 2호선](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-10-12-BOJ-16947.md)
 
-## 프로그래머스(Programmers)
+## 2.2. 프로그래머스(Programmers)
 
 - [42891번 - 무지의 먹방 라이브](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Programmers-42891.md)
 - [60057번 - 문자열 압축](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Programmers-60057.md)
@@ -62,9 +62,9 @@
 - [17677번 - [1차] 뉴스 클러스터링](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Programmers-17677.md)
 - [87390번 - n^2 배열 자르기](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Programmers-87390.md)
 
-# Paper Review
+# 3. Paper Review
 
-## CV
+## 3.1. CV
 
 - Generative Model
   - [StyleGAN](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-StyleGAN.md)
@@ -74,26 +74,26 @@
 - Vision Transformer
   - [ViT](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-30-ViT.md)
 
-## NLP
+## 3.2. NLP
 
 - Machine Translation
   - [Seq2Seq](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-28-Seq2Seq.md)
   - [Transformer](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-07-Transformer.md)
 
-# Evaluation
+# 4. Evaluation
 
-## NLP
+## 4.1. NLP
 
 - [BLEU](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-28-BLEU.md)
 
-# Tokenizer
+# 5. Tokenizer
 
 - [BPE](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-06-BPE.md)
 - [WPM](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-06-WordPiece.md)
 
-# PyTorch
+# 6. PyTorch
 
-## Tensor
+## 6.1. Tensor
 
 - [Tensor를 만드는 방법](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-PyTorch-Tensor-tensor-create.md)
 - [Tensor를 복사하는 방법](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-PyTorch-Tensor-tensor-copy.md)
