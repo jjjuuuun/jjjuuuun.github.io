@@ -47,8 +47,9 @@
 - [1967번 - 트리의 지름](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-10-BOJ-1967.md)
 - [2250번 - 트리의 높이와 너비](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-10-BOJ-2250.md)
 - [1707번 - 이분 그래프](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-29-BOJ-1707.md)
-- [17298번 오큰수](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-10-12-BOJ-17298.md)
-- [16947번 서울 지하철 2호선](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-10-12-BOJ-16947.md)
+- [17298번 - 오큰수](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-10-12-BOJ-17298.md)
+- [16947번 - 서울 지하철 2호선](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-10-12-BOJ-16947.md)
+- [2003번 - 수들의 합 2](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-19-BOJ-2003.md)
 
 ## 2.2. 프로그래머스(Programmers)
 
@@ -99,3 +100,9 @@
 - [Tensor를 복사하는 방법](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-PyTorch-Tensor-tensor-copy.md)
 - [Tensor의 연속성](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-PyTorch-Tensor-tensor-contiguous.md)
 - [Tensor의 모양을 바꾸는 방법](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-PyTorch-Tensor-tensor-reshape.md)
+
+# 7. Project
+
+## 7.1 웹툰을 원작으로 제작된 드라마 및 영화의 주연 배우 추천
+
+- [Day 0](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-19-Project-Project1.md)
