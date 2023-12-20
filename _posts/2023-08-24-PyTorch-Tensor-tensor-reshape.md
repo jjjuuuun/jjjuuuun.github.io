@@ -4,7 +4,7 @@ title: "[PyTorch] Tensor의 shape을 바꾸는 방법 - view, reshape"
 author: kjy
 date: 2023-08-24 12:20:00 +09:00
 categories: [Deep Learning, Pytorch]
-tags: [Deep Learning, Pytorch, Tensor]
+tags: [Deep Learning, Pytorch]
 comments: true
 toc: true
 ---
