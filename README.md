@@ -50,6 +50,7 @@
 - [17298번 - 오큰수](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-10-12-BOJ-17298.md)
 - [16947번 - 서울 지하철 2호선](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-10-12-BOJ-16947.md)
 - [2003번 - 수들의 합 2](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-19-BOJ-2003.md)
+- [1644번 - 소수의 연속합](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-20-BOJ-1644.md)
 
 ## 2.2. 프로그래머스(Programmers)
 
