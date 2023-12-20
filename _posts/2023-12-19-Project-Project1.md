@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "[Project] 웹툰을 원작으로 제작된 드라마 및 영화의 주연 배우 추천 - Day 0"
+title: "[웹툰을 원작으로 제작된 드라마 및 영화의 주연 배우 추천] Day 0 - Project를 시작하면서"
 author: kjy
 date: 2023-12-19 16:46:00 +9:00
 categories: [Project, 웹툰을 원작으로 제작된 드라마 및 영화의 주연 배우 추천]
-tags: [Project, 웹툰을 원작으로 제작된 드라마 및 영화의 주연 배우 추천]
+tags: [Deep Learning, Project]
 comments: true
 toc: true
 math: true
@@ -17,7 +17,7 @@ math: true
 추가적으로 해당 포스트를 통해 진행상황을 계속해서 올리도록 하겠습니다.
 
 <details>
-<summary>Day1 (2023.12.19)</summary>
+<summary>Day0 (2023.12.19)</summary>
 
 - Project 주제 선정
 

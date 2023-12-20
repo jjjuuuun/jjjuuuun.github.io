@@ -3,8 +3,8 @@ layout: post
 title: "[PyTorch] PyTorch에서 tensor를 만드는 방법"
 author: kjy
 date: 2023-08-24 12:20:00 +09:00
-categories: [Pytorch, Tensor]
-tags: [Pytorch]
+categories: [Deep Learning, Pytorch]
+tags: [Deep Learning, Pytorch, Tensor]
 comments: true
 toc: true
 ---

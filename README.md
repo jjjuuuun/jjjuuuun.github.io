@@ -29,7 +29,7 @@
 
 # 2. Algorithm - Python
 
-## 2.1. 백준(BOJ)
+## 2.1 백준(BOJ)
 
 - [1439번 - 뒤집기](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-BOJ-1439.md)
 - [14502번 - 연구소](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-BOJ-14502.md)
@@ -52,7 +52,7 @@
 - [2003번 - 수들의 합 2](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-19-BOJ-2003.md)
 - [1644번 - 소수의 연속합](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-20-BOJ-1644.md)
 
-## 2.2. 프로그래머스(Programmers)
+## 2.2 프로그래머스(Programmers)
 
 - [42891번 - 무지의 먹방 라이브](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Programmers-42891.md)
 - [60057번 - 문자열 압축](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Programmers-60057.md)
@@ -64,46 +64,52 @@
 - [17677번 - [1차] 뉴스 클러스터링](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Programmers-17677.md)
 - [87390번 - n^2 배열 자르기](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Programmers-87390.md)
 
-# 3. Paper Review
+# 3. Deep Learning
 
-## 3.1. CV
+## 3.1 PyTorch
 
-- Generative Model
-  - [StyleGAN](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-StyleGAN.md)
-- Object Detection
-  - [RCNN](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-RCNN.md)
-  - [DETR](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-10-29-DETR.md)
-- Vision Transformer
-  - [ViT](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-30-ViT.md)
-
-## 3.2. NLP
-
-- Machine Translation
-  - [Seq2Seq](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-28-Seq2Seq.md)
-  - [Transformer](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-07-Transformer.md)
-
-# 4. Evaluation
-
-## 4.1. NLP
-
-- [BLEU](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-28-BLEU.md)
-
-# 5. Tokenizer
-
-- [BPE](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-06-BPE.md)
-- [WPM](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-06-WordPiece.md)
-
-# 6. PyTorch
-
-## 6.1. Tensor
+### 3.1.1 Tensor
 
 - [Tensor를 만드는 방법](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-PyTorch-Tensor-tensor-create.md)
 - [Tensor를 복사하는 방법](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-PyTorch-Tensor-tensor-copy.md)
 - [Tensor의 연속성](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-PyTorch-Tensor-tensor-contiguous.md)
 - [Tensor의 모양을 바꾸는 방법](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-PyTorch-Tensor-tensor-reshape.md)
 
-# 7. Project
+## 3.2 Paper Review
 
-## 7.1 웹툰을 원작으로 제작된 드라마 및 영화의 주연 배우 추천
+### 3.2.1 Computer Vision
 
-- [Day 0](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-19-Project-Project1.md)
+- Generative Model
+  - [StyleGAN](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-StyleGAN.md)
+- Object Detection
+  - [RCNN](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-RCNN.md)
+  - [DETR](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-10-29-DETR.md)
+- Classification
+  - [ViT](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-30-ViT.md)
+
+### 3.2.2 NLP
+
+- Generative Model
+  - [Seq2Seq](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-28-Seq2Seq.md)
+  - [Transformer](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-07-Transformer.md)
+
+## 3.3 Evaluation
+
+### 3.3.1 NLP
+
+- [BLEU](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-28-BLEU.md)
+
+## 3.4 Tokenizer
+
+- [BPE](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-06-BPE.md)
+- [WPM](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-06-WordPiece.md)
+
+## 3.5 Model Compression
+
+- [Model Compression Overview](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-20-Model-Compression.md)
+
+# 4. Project
+
+## 4.1 웹툰을 원작으로 제작된 드라마 및 영화의 주연 배우 추천
+
+- [Day 0 - Project를 시작하면서](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-19-Project-Project1.md)

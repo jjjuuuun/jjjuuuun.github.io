@@ -3,8 +3,8 @@ layout: post
 title: "[PyTorch] Tensor의 연속성 - contiguous"
 author: kjy
 date: 2023-08-24 12:20:00 +09:00
-categories: [Pytorch, Tensor]
-tags: [Pytorch]
+categories: [Deep Learning, Pytorch]
+tags: [Deep Learning, Pytorch, Tensor]
 comments: true
 toc: true
 ---

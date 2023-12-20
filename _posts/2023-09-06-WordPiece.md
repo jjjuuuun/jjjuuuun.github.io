@@ -3,8 +3,8 @@ layout: post
 title: "[Tokenizer] WordPiece Model(WPM)"
 author: kjy
 date: 2023-09-06 22:23:00 +09:00
-categories: [Tokenizer, NLP]
-tags: [Tokenizer, NLP]
+categories: [Deep Learning, Tokenizer]
+tags: [Deep Learning, Tokenizer, NLP]
 comments: true
 toc: true
 math: true
