@@ -113,4 +113,5 @@
 
 ## 4.1 웹툰을 원작으로 제작된 드라마 및 영화의 주연 배우 추천
 
-- [Day 0 - Project를 시작하면서](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-19-Project-Project1.md)
+- [Day 0 - Project를 시작하면서](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-19-Project-Project1-Day0.md)
+- [Day 1 - 졸업논문 살펴보기 & 관련 논문 리서치 & 앞으로의 방향성](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-19-Project-Project1-Day1.md)
