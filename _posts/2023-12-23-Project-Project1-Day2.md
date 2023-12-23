@@ -14,6 +14,6 @@ math: true
 
 1. [About fast.ai](https://jjjuuuun.github.io/posts/fastai-Overview/)
 
-2. [Single-label classification using fast.ai](fastai-Tutorial-Classification)
+2. [Single-label classification using fast.ai](https://jjjuuuun.github.io/posts/fastai-Tutorial-Classification)
 
 다음에는 논문을 읽어보고 해당 논문을 fast.ai를 통해 구현해보는 것을 해보겠습니다.
