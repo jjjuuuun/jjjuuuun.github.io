@@ -22,7 +22,7 @@ math: true
 </details>
 
 <details>
-<summary><a href="https://jjjuuuun.github.io/posts/Project-Project1-Day0/">Day1 (2023.12.21)</a></summary>
+<summary><a href="https://jjjuuuun.github.io/posts/Project-Project1-Day1/">Day1 (2023.12.21)</a></summary>
 
 1. <a href="https://drive.google.com/file/d/1jHqIhJNpUh4vigUMUpX0TQXUwvr1itRV/view?usp=sharing">졸업논문</a> 다시 한번 살펴보기<br>
 2. <a href="https://deview.kr/2023">NAVER Deview 2023</a><br>
@@ -50,7 +50,7 @@ math: true
 </details>
 
 <details>
-    <summary><a href="https://jjjuuuun.github.io/posts/Project-Project1-Day0/">Day2 (2023.12.23)</a></summary>
+    <summary><a href="https://jjjuuuun.github.io/posts/Project-Project1-Day2/">Day2 (2023.12.23)</a></summary>
     1. About fast.ai
     2. Single-label Classification using fast.ai
 </details>
