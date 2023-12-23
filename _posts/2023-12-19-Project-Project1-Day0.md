@@ -51,6 +51,6 @@ math: true
 
 <details>
     <summary><a href="https://jjjuuuun.github.io/posts/Project-Project1-Day2/">Day2 (2023.12.23)</a></summary>
-    1. About fast.ai
-    2. Single-label Classification using fast.ai
+    1. About fast.ai<br>
+    2. Single-label Classification using fast.ai<br>
 </details>
