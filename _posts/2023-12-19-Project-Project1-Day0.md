@@ -54,3 +54,8 @@ math: true
     1. About fast.ai <br>
     2. Single-label Classification using fast.ai <br>
 </details>
+
+<details>
+    <summary><a href="https://jjjuuuun.github.io/posts/Project-Project1-Day3/">Day3 (2023.12.26)</a></summary>
+    1. Paper Reading - [Pix2Pix](https://jjjuuuun.github.io/posts/Pix2Pix/)
+</details>

@@ -77,9 +77,18 @@
 - [Tensor의 연속성](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-PyTorch-Tensor-tensor-contiguous.md)
 - [Tensor의 모양을 바꾸는 방법](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-PyTorch-Tensor-tensor-reshape.md)
 
-## 3.2 Paper Review
+## 3.2 Paper Reading
 
 ### 3.2.1 Computer Vision
+
+- Generative Model
+  - [Pix2Pix](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-26-Pix2Pix.md)
+
+### 3.2.2 NLP
+
+## 3.3 Paper Review
+
+### 3.3.1 Computer Vision
 
 - Generative Model
   - [StyleGAN](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-StyleGAN.md)
@@ -89,28 +98,28 @@
 - Classification
   - [ViT](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-30-ViT.md)
 
-### 3.2.2 NLP
+### 3.3.2 NLP
 
 - Generative Model
   - [Seq2Seq](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-28-Seq2Seq.md)
   - [Transformer](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-07-Transformer.md)
 
-## 3.3 Evaluation
+## 3.4 Evaluation
 
-### 3.3.1 NLP
+### 3.4.1 NLP
 
 - [BLEU](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-28-BLEU.md)
 
-## 3.4 Tokenizer
+## 3.5 Tokenizer
 
 - [BPE](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-06-BPE.md)
 - [WPM](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-06-WordPiece.md)
 
-## 3.5 Model Compression
+## 3.6 Model Compression
 
 - [Model Compression Overview](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-20-Model-Compression.md)
 
-## 3.6 fast.ai
+## 3.7 fast.ai
 
 - [fast.ai Overview](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-23-fastai-Overview.md)
 - [Tutorial - Single-label Classification](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-23-fastai-Tutorial-Classification.md)
@@ -122,3 +131,4 @@
 - [Day 0 - Project를 시작하면서](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-19-Project-Project1-Day0.md)
 - [Day 1 - 졸업논문 살펴보기 & 관련 논문 리서치 & 앞으로의 방향성](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-21-Project-Project1-Day1.md)
 - [Day 2 - fast.ai 알아보기 & tutorial](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-23-Project-Project1-Day2.md)
+- [Day 3 - Pix2Pix 논문 읽기"](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-26-Project-Project1-Day3.md)
