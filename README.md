@@ -132,5 +132,5 @@
 - [Day 0 - Project를 시작하면서](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-19-Project-Project1-Day0.md)
 - [Day 1 - 졸업논문 살펴보기 & 관련 논문 리서치 & 앞으로의 방향성](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-21-Project-Project1-Day1.md)
 - [Day 2 - fast.ai 알아보기 & tutorial](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-23-Project-Project1-Day2.md)
-- [Day 3 - Pix2Pix 논문 읽기"](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-26-Project-Project1-Day3.md)
-- [Day 4 - Pix2Pix 논문 읽기"](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-28-Project-Project1-Day4.md)
+- [Day 3 - Pix2Pix 논문 읽기](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-26-Project-Project1-Day3.md)
+- [Day 4 - Pix2Pix 논문 읽기](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-28-Project-Project1-Day4.md)
