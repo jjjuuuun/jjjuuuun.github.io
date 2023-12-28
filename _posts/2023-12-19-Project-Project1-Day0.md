@@ -57,9 +57,12 @@ math: true
 
 <details>
     <summary><a href="https://jjjuuuun.github.io/posts/Project-Project1-Day3/">Day3 (2023.12.26)</a></summary>
-    1. Paper Reading - <a href="https://jjjuuuun.github.io/posts/Paper-Reading-Pix2Pix/">Pix2Pix</a>
+    1. Paper Reading - <a href="https://jjjuuuun.github.io/posts/Paper-Reading-Pix2Pix/">Pix2Pix</a> <br>
+
+</details>
 
 <details>
     <summary><a href="https://jjjuuuun.github.io/posts/Project-Project1-Day4/">Day4 (2023.12.28)</a></summary>
-    1. Paper Reading - <a href="https://jjjuuuun.github.io/posts/Paper-Reading-Pix2Pix/">Pix2Pix</a>
+    1. Paper Reading - <a href="https://jjjuuuun.github.io/posts/Paper-Reading-Pix2Pix/">Pix2Pix</a> <br>
+
 </details>
