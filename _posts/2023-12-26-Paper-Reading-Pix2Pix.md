@@ -304,9 +304,9 @@ $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathc
 
 🔎 작은 dataset에서도 종종 괜찮은 결과를 얻을 수 있었습니다.
 
-🔎 Training dataset이 400개 : [Figure 14](#figure-14)
+🔎 Training dataset이 400개
 
-🔎 Training dataset이 91개 : [Figure 15](#figure-15)
+🔎 Training dataset이 91개
 
 ![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
 
