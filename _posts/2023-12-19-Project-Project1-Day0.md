@@ -19,6 +19,7 @@ math: true
 <details>
     <summary><a href="https://jjjuuuun.github.io/posts/Project-Project1-Day0/">Day0 (2023.12.19)</a></summary>
     1. Project 주제 선정
+
 </details>
 
 <details>
@@ -53,6 +54,7 @@ math: true
     <summary><a href="https://jjjuuuun.github.io/posts/Project-Project1-Day2/">Day2 (2023.12.23)</a></summary>
     1. About fast.ai <br>
     2. Single-label Classification using fast.ai <br>
+    
 </details>
 
 <details>
