@@ -14,4 +14,4 @@ math: true
 
 ➡️ [Pix2Pix Reading](https://jjjuuuun.github.io/posts/Paper-Reading-Pix2Pix/)
 
-Day 5에서는 pix2pix 논문을 간단하게 리뷰하면서 정리하고 다음 논문을 읽어볼 예정입니다.
+Day 5에서는 [cycleGAN](https://arxiv.org/abs/1703.10593)을 읽어볼 예정입니다.
