@@ -16,4 +16,4 @@ math: true
 
 오늘 읽은 논문은 [Pix2Pix : Image-to-Image Translation with Conditional Adversarial Networks](https://arxiv.org/abs/1611.07004)입니다. 내일까지 Pix2Pix 논문 리딩을 마무리 할 예정입니다.
 
-➡️ [Pix2Pix Reading](https://jjjuuuun.github.io/posts/Pix2Pix/)
+➡️ [Pix2Pix Reading](https://jjjuuuun.github.io/posts/Paper-Reading-Pix2Pix/)
