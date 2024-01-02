@@ -84,6 +84,7 @@
 
 - Generative Model
   - [Pix2Pix](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-26-Paper-Reading-Pix2Pix.md)
+  - [CycleGAN](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2024-01-02-Paper-Reading-CycleGAN.md)
 
 ### 3.2.2 NLP
 
