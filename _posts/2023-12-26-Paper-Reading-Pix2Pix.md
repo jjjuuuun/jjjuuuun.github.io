@@ -24,7 +24,7 @@ math: true
 
 🔎 특히 해당 networks는 synthesizing photos from label maps, reconstructing objects from edge maps, colorizing images에 효과적인 접근법입니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ## 1. Introduction
 
@@ -38,7 +38,7 @@ math: true
 
 🔎 해당 연구의 간단한 결과는 [Figure 1](#figure-1)에서 확인할 수 있습니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_3.jpg){: width="400" .left}
 
@@ -48,7 +48,7 @@ math: true
 
 🔎 왜냐하면 Euclidean distance는 평균을 최소화 하기 때문에 전체적으로 그럴듯한 결과를 만들기 때문입니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_4.jpg){: width="400" .left}
 
@@ -58,7 +58,7 @@ math: true
 
 🔎 또한 GAN의 loss function은 전통적으로 매우 다른 종류의 loss function을 필요로 하는 다양한 작업에 적용할 수 있습니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_5.jpg){: width="400" .left}
 
@@ -66,7 +66,7 @@ math: true
 
 🔎 왜냐하면 조건화된 이미지를 입력으로 주고 그에 대응하는 결과 이미지를 생성하는 것이 image-to-image translation에 적합하기 때문입니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_6.jpg){: width="400" .left}
 
@@ -76,7 +76,7 @@ math: true
 
 🔎 두 번째, 좋은 결과를 얻기 위해 간단한 framework를 제시하고 몇 가지 중요한 architecture 선택의 효과를 분석합니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ## 2. Related work
 
@@ -88,7 +88,7 @@ math: true
 
 🔎 그러나 cGANs는 structured loss를 학습하기 때문에 output과 target 사이의 차이에 불이익을 주며 output space를 구조화 할 수 있습니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_8.jpg){: width="400" .left}
 
@@ -98,7 +98,7 @@ math: true
 
 🔎 그렇기 때문에 다른 framework보다 간단하다고 할 수 있습니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_9.jpg){: width="400" .left}
 
@@ -114,7 +114,7 @@ math: true
 
 💭 Patch 크기에 따른 결과?
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ## 3. Method
 
@@ -126,7 +126,7 @@ math: true
 
 🔎 cGANs : $G : \\{x, z\\} \rightarrow y$
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ### 3.1 Objective
 
@@ -152,7 +152,7 @@ $$\mathcal{L}_{L1}(G) = \mathbb{E}_{x,y,z}[||y - G(x,z)||_1]$$
 
 $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathcal{L}_{cGAN}(G, D) + \lambda\mathcal{L}_{L1}(G)$$
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_12.jpg){: width="400" .left}
 
@@ -168,7 +168,7 @@ $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathc
 
 🔎 많은 확률적 변화를 만들어 내도록 cGANs를 설계하는 것이 추후 연구가 될 수 있습니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ### 3.2 Network architecture
 
@@ -178,7 +178,7 @@ $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathc
 
 🔎 Convolution / BatchNorm / ReLU 로 이루어진 모듈들로 구성되었습니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 #### 3.2.1 Generator with skips
 
@@ -192,7 +192,7 @@ $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathc
 
 🔎 이러한 점을 고려해 generator를 구성했다고 합니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_15.jpg){: width="400" .left}
 
@@ -204,13 +204,13 @@ $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathc
 
 🤔 위에서 본 것처럼 input과 output의 구조는 비슷하므로 input과 output 사이에 많이 공유되는 low-level information을 더욱 잘 활용할 수 있다면 더 좋은 결과를 얻을 수 있을 것이다라는 생각에서 low-level information을 직접 network에 전달한 것이 아닐까 생각합니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_16.jpg){: width="400" .left}
 
 🔎 이 모든 것을 종합했을 때 generator는 U-Net 구조를 가집니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 #### 3.2.2 Markovian discriminator (PatchGAN)
 
@@ -222,7 +222,7 @@ $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathc
 
 🔎 그렇기 때문에 low frequency를 나타내기 위해 추가적인 framework이 필요하지 않습니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_18.jpg){: width="400" .left}
 
@@ -232,7 +232,7 @@ $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathc
 
 🔎 Patch들의 real or fake를 구분하고 모든 patch들의 평균을 discriminator의 output으로 사용합니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_19.jpg){: width="400" .left}
 
@@ -242,7 +242,7 @@ $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathc
 
 🔎 Patch size $N$이 작을수록 더 적은 파라미터, 더 빠른 속도, 큰 이미지에 적용할 수 있다는 장점이 있습니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_20.jpg){: width="400" .left}
 
@@ -252,7 +252,7 @@ $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathc
 
 🔎 따라서 PatchGAN은 texture/style loss의 한 형태로 볼 수 있습니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ### 3.3 Optimization and inference
 
@@ -270,7 +270,7 @@ $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathc
 
 🔎 Adam($lr = 0.0002,\ \beta_1=0.5,\ \beta_2=0.999$)
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_22.jpg){: width="400" .left}
 
@@ -284,7 +284,7 @@ $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathc
 
 🔎 해당 논문에서는 inference time에 batch size를 $1 \sim 10$으로 설정했습니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ## 4. Experiments
 
@@ -292,13 +292,13 @@ $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathc
 
 🔎 실험에 사용된 pair-dataset을 확인할 수 있습니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_24.jpg){: width="400" .left}
 
 🔎 좋은 퀄리티의 결과물과 실패한 결과물을 확인할 수 있습니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_25.jpg){: width="400" .left}
 
@@ -308,7 +308,7 @@ $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathc
 
 🔎 Training dataset이 91개
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ### 4.1 Evaluation metrics
 
@@ -322,7 +322,7 @@ $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathc
 
 🔎 두 번째, 만들어진 결과물이 충분히 현실적인지 측정
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_27.jpg){: width="400" .left}
 
@@ -334,7 +334,7 @@ $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathc
 
 🔎 또한 각 세션에서 첫 10장의 이미지에 대해서는 피드백을 주는 연습 이미지이고 나머지 40장의 이미지에 대해서 평가를 진행했습니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_28.jpg){: width="400" .left}
 
@@ -344,7 +344,7 @@ $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathc
 
 🔎 이러한 관점에서 semantic semgentation에서 가장 유명한 `FCN-8s`를 사용했습니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ### 4.2 Analysis of the objective function
 
@@ -370,7 +370,7 @@ $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathc
 
 🔎 최종적으로 cGANs + L1 loss를 통해 collapse 현상을 효과적으로 해결했습니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_30.jpg){: width="400" .left}
 
@@ -380,7 +380,7 @@ $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathc
 
 🔎 cGANs : 회색의 pixel은 비현실적인 것을 인식하고 실제 색상 분포와 일치하도록 하기 때문에 이미지를 더욱 colorful하게 만드는 효과를 보여줍니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ### 4.3 Analysis of the generator architecture
 
@@ -392,7 +392,7 @@ $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathc
 
 🔎 따라서 U-Net architecture가 cGANs에만 국한되는 이점은 아닌 것을 알 수 있습니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ### 4.4 From PixelGANs to Patch GANs to ImageGANs
 
@@ -410,7 +410,7 @@ $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathc
 
 🔎 ImageGAN이 좋은 결과를 얻지 못한 이유로 증가한 parameter로 인한 어려운 학습을 이야기 했습니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_33.jpg){: width="400" .left}
 
@@ -418,7 +418,7 @@ $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathc
 
 🔎 $256 \times 256$인 이미지로 generator를 학습한 이후 $512 \times 512$인 이미지로 테스트를 진행한 결과를 [Figure 8](#figure-8)에서 확인할 수 있습니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ### 4.5 Perceptual validation
 
@@ -426,13 +426,13 @@ $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathc
 
 🔎 Map $\rightarrow$ Photo에서 많은 향상을 보였지만 여전히 부족한 수치입니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_35.jpg){: width="400" .left}
 
 🔎 Colorization에 대해 AMT 실험을 진행했지만 coloriation에 특화된 연구보다는 낮은 결과를 얻었습니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ### 4.6 Semantic segmentation
 
@@ -444,7 +444,7 @@ $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathc
 
 🔎 이산적인 label를 생성한 첫 사례
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ## Figure
 
@@ -454,7 +454,7 @@ $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathc
 
 🔎 같은 architecture, objective와 서로 다른 training data를 사용해 학습한 결과를 보여줍니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ### Figure 2
 
@@ -462,7 +462,7 @@ $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathc
 
 🔎 GANs과 달리 cGANs에서는 generator와 discriminator 모두에 input image $x$가 들어가는 것을 그림으로 보여줍니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ### Figure 3
 
@@ -472,7 +472,7 @@ $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathc
 
 🔎 U-Net 구조가 skip connections이 포함된 encoder-decoder 구조임을 말하고 있습니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ### Figure 4
 
@@ -480,7 +480,7 @@ $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathc
 
 🔎 L1 loss가 blurry한 결과를 만들어내는 것을 그림으로 보여줍니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ### Figure 5
 
@@ -488,7 +488,7 @@ $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathc
 
 🔎 Encoder-decoder VS U-Net architecture의 결과물을 비교합니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ### Figure 6
 
@@ -496,7 +496,7 @@ $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathc
 
 🔎 Patch size($N$)에 따른 결과를 보여줍니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ### Figure 7
 
@@ -510,25 +510,25 @@ $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathc
 
 🔎 b는 파란색에서 노란색으로의 색상 차이를 나타내며 음수는 파란색, 양수는 노란색, 0은 회색입니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ### Figure 8
 
 ![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_f8.jpg){: width="400" .left}
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ### Figure 9
 
 ![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_f9.jpg){: width="400" .left}
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ### Figure 10
 
 ![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_f10.jpg){: width="400" .left}
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ## Table
 
@@ -538,7 +538,7 @@ $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathc
 
 🔎 L1 loss와 GANs, cGANs의 ablation studies의 결과를 보여줍니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ### Table 2
 
@@ -546,7 +546,7 @@ $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathc
 
 🔎 Encoder-decoder VS U-Net architecture의 FCN-score를 비교합니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ### Table 3
 
@@ -554,22 +554,22 @@ $$G^{*} = \text{arg}\ \underset{G}{\text{min}}\ \underset{D}{\text{max}}\ \mathc
 
 🔎 Patch size($N$)에 따른 FCN-scores를 비교합니다.
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ### Table 4
 
 ![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_t4.jpg){: width="400" .left}
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ### Table 5
 
 ![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_t5.jpg){: width="400" .left}
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
 
 ### Table 6
 
 ![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_t6.jpg){: width="400" .left}
 
-![](../../assets/img/Paper_Reading/Pix2Pix/pix2pix_blank.png){: .normal}
+![](../../assets/img/Paper_Reading/blank.png){: .normal}
