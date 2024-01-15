@@ -253,4 +253,175 @@ $$\mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[-\log\ p_\t
 
 ### 2.4 Variance schedule $\beta\_t$
 
-...진행 중입니다.
+![](../../assets/img/Paper_Reading/DDPM/ddpm_8.jpg){: .normal}
+
+🔎 $\beta\_t$는 reparameterization을 통해 학습될 수 있고 hyperparameter로 두고 학습할 수 있습니다.
+
+🔎 $\beta\_t$가 매우 작을 때 diffusion process와 reverse process는 동일한 형태를 가지고 있기 때문에 reverse process의 표현성은 diffusion process의 gaussian conditionals에 의해서 부분적으로 보장됩니다. ($\because$ [이전 연구](https://arxiv.org/abs/1503.03585))
+
+🔎 Diffusion process에서 주목할만 한 점은 diffusion process를 임의의 timestep $t$에서 closed form으로 나타낼 수 있다는 점입니다.
+
+🔎 어떻게 closed form으로 나타낼 수 있는지 아래 증명과 함께 알아보겠습니다.
+
+#### 2.4.1 Reparameterziation Trick
+
+딥러닝에서 필수적인 계산이라 함은 바로 chain rule에 의한 backpropagation입니다.
+
+Backpropagation을 사용하기 위해서는 미분이 필수적인데 어떠한 확률분포를 따르는 확률변수 $Z$가 backpropagation의 대상일 때 미분이 불가능해 나온 것이 바로 reparameterization trick입니다.
+
+정리를 해보면 확률변수 $Z$를 standard normal distribution에서 sampling 하는 과정이 미분 가능하도록 만들어 backpropagation을 가능하게 만드는 것이 reparameterization trick이며 아래와 같이 나타낼 수 있습니다.
+
+$$Z \sim \mathcal{N}(\mu, \sigma^2) \Longrightarrow Z = \mu + \sigma\cdot\epsilon (\epsilon \sim \mathcal{N}(0, \mathrm{I}))$$
+
+#### 2.4.2 Diffusion Proecess with reprameterization trick
+
+먼저 diffusion proecess의 sampling 공식을 다시 한 번 살펴보겠습니다.
+
+$$
+\begin{align}
+
+& \text{Diffusion process} : &q(\mathbf{x}_t|\mathbf{x}_{t-1}) := \mathcal{N}(\mathbf{x}_t; \sqrt{1-\beta_t}\mathbf{x}_{t-1}, \beta_t\mathrm{I}) \\ \\
+
+& \text{Sampling} : &\mathbf{x}_t \sim \mathcal{N}(\sqrt{1-\beta_t}\mathbf{x}_{t-1}, \beta_t\mathrm{I})
+
+\end{align}
+$$
+
+이제 reparameterization trick을 활용해 timestep $t$에서 diffusion process를 closed form으로 나타내보도록 하겠습니다.
+
+$$
+\begin{align}
+
+\mathbf{x}_t
+
+&= \sqrt{1 - \beta_t}\mathbf{x}_{t-1} + \sqrt{\beta_t}\epsilon_{t-1} (\epsilon_{t-1} \sim \mathcal{N}(0, \mathrm{I})) \qquad & \because \text{Reparameterization Trick} \\
+
+&= \sqrt{\alpha_t}{\color{Green}\mathbf{x}_{t-1}} + \sqrt{1-\alpha_t} \epsilon_{t-1} \qquad & \because \alpha_t := 1-\beta_t \\
+
+&= \sqrt{\alpha_t}({\color{Green}\sqrt{\alpha_{t-1}}{\mathbf{x}_{t-2} + \sqrt{1-\alpha_{t-1}} \epsilon_{t-2}}}) + \sqrt{1-\alpha_t} \epsilon_{t-1} \qquad & \\
+
+&= \sqrt{\alpha_{t}\cdot \alpha_{t-1}}\mathbf{x}_{t-2} + {\color{Red}\sqrt{\alpha_t(1-\alpha_{t-1})}\epsilon_{t-2} + \sqrt{1-\alpha_t} \epsilon_{t-1}} \qquad & \\
+
+&= \sqrt{\alpha_{t}\cdot \alpha_{t-1}}\mathbf{x}_{t-2} + {\color{Red}\sqrt{\alpha_t(1-\alpha_{t-1}) + 1 - \alpha_t}\bar{\epsilon}_{t-2}} \qquad & \because \epsilon_1 \sim \mathcal{N}(0, \sigma_1^2\mathrm{I})\quad \& \quad \epsilon_2 \sim \mathcal{N}(0, \sigma_2^2\mathrm{I}) \Longrightarrow \bar{\epsilon} := \epsilon_1 + \epsilon_2 \sim \mathcal{N}(0, (\sigma_1^2 + \sigma_2^2)\mathrm{I}) \\
+
+&= \sqrt{\alpha_{t}\cdot \alpha_{t-1}}\mathbf{x}_{t-2} + {\color{Red}\sqrt{1 - \alpha_t\cdot\alpha_{t-1}}\bar{\epsilon}_{t-2}} \qquad & \\
+
+&= \cdots \qquad & \\
+
+&= \sqrt{\bar{\alpha}_t}\mathbf{x}_0 + \sqrt{1 - \bar{\alpha}_t}\epsilon \qquad & \because \bar{\alpha}_t := \alpha_t\cdot\alpha_{t-1}\cdots\alpha_1 \\
+
+\end{align}
+$$
+
+### 2.5 Rewriting $L$
+
+![](../../assets/img/Paper_Reading/DDPM/ddpm_9.jpg){: .normal}
+
+위에서 정의한 [optimization function $L$](#233-optimization-function-구하기)을 변경함으로써 효율적인 학습이 가능합니다.
+
+어떻게 효율적으로 변경하는지 차례차례 살펴보겠습니다.
+
+$$
+\begin{align}
+L
+
+&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[-\log\ p(\mathbf{x}_T) -\sum_{t=1}^T\log \frac{p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t)}{q(\mathbf{x}_t|\mathbf{x}_{t-1})}\right] \qquad & \tag{1}\\
+
+&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[-\log\ p(\mathbf{x}_T) -\sum_{t=2}^T\log \frac{p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t)}{\color{Orange}q(\mathbf{x}_t|\mathbf{x}_{t-1})} - \log \frac{p_\theta(\mathbf{x}_{0}|\mathbf{x}_1)}{q(\mathbf{x}_1|\mathbf{x}_{0})}\right] \qquad & \because t = 1 \text{분리} \tag{2}\\
+
+&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[-\log\ p(\mathbf{x}_T) -\sum_{t=2}^T\log \frac{p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t)}{\color{Orange}q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_{0})}\cdot {\color{Orange}\frac{q(\mathbf{x}_{t-1}|\mathbf{x}_{0})}{q(\mathbf{x}_t|\mathbf{x}_{0})}} - \log \frac{p_\theta(\mathbf{x}_{0}|\mathbf{x}_1)}{q(\mathbf{x}_1|\mathbf{x}_{0})}\right] \qquad & \because \text{Section 2.5.1} \tag{3}\\
+
+&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[-\log\ p(\mathbf{x}_T) -\sum_{t=2}^T\log \frac{p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t)}{q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_{0})}-{\color{Purple}\sum_{t=2}^T\log \frac{q(\mathbf{x}_{t-1}|\mathbf{x}_{0})}{q(\mathbf{x}_t|\mathbf{x}_{0})}} - \log \frac{p_\theta(\mathbf{x}_{0}|\mathbf{x}_1)}{q(\mathbf{x}_1|\mathbf{x}_{0})}\right] \qquad & \because \log\ a\cdot b = \log\ a + \log\ b \tag{4}\\
+
+&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[-\log\ p(\mathbf{x}_T) -\sum_{t=2}^T\log \frac{p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t)}{q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_{0})}-\right({\color{Purple}\log \frac{q(\mathbf{x}_{1}|\mathbf{x}_{0})}{q(\mathbf{x}_{2}|\mathbf{x}_{0})} + \log \frac{q(\mathbf{x}_{2}|\mathbf{x}_{0})}{q(\mathbf{x}_{3}|\mathbf{x}_{0})} \cdots + \log \frac{q(\mathbf{x}_{T-1}|\mathbf{x}_{0})}{q(\mathbf{x}_{T}|\mathbf{x}_{0})}}\left) - \log \frac{p_\theta(\mathbf{x}_{0}|\mathbf{x}_1)}{q(\mathbf{x}_1|\mathbf{x}_{0})}\right] \qquad & \tag{5}\\
+
+&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[-\log\ p(\mathbf{x}_T) -\sum_{t=2}^T\log \frac{p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t)}{q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_{0})}-{\color{Purple}\log \frac{q(\mathbf{x}_{1}|\mathbf{x}_{0})}{q(\mathbf{x}_{T}|\mathbf{x}_{0})}} - \log \frac{p_\theta(\mathbf{x}_{0}|\mathbf{x}_1)}{q(\mathbf{x}_1|\mathbf{x}_{0})}\right] \qquad & \because \log \frac{a}{b}+\log \frac{b}{c} = \log \frac{a}{c} \tag{6}\\
+
+&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[-\log\ p(\mathbf{x}_T) -\sum_{t=2}^T\log \frac{p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t)}{q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_{0})}-\log \frac{\color{Red}q(\mathbf{x}_{1}|\mathbf{x}_{0})}{q(\mathbf{x}_{T}|\mathbf{x}_{0})} - \log \frac{p_\theta(\mathbf{x}_{0}|\mathbf{x}_1)}{\color{Red}q(\mathbf{x}_1|\mathbf{x}_{0})}\right] \qquad & \tag{7}\\
+
+&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[-\log\ p(\mathbf{x}_T) -\sum_{t=2}^T\log \frac{p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t)}{q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_{0})} - \log \frac{p_\theta(\mathbf{x}_{0}|\mathbf{x}_1)}{\color{Blue}q(\mathbf{x}_{T}|\mathbf{x}_{0})}\right] \qquad & \because \log \frac{a}{b}+\log \frac{b}{c} = \log \frac{a}{c} \tag{8}\\
+
+&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[-\log \frac{p(\mathbf{x}_T)}{\color{Blue}q(\mathbf{x}_{T}|\mathbf{x}_{0})} -\sum_{t=2}^T\log \frac{p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t)}{q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_{0})} - \log\ p_\theta(\mathbf{x}_{0}|\mathbf{x}_1)\right] \qquad & \tag{9}\\
+
+&= {\color{Red}\mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[-\log \frac{p(\mathbf{x}_T)}{q(\mathbf{x}_{T}|\mathbf{x}_{0})}\right]} + \sum_{t=2}^T{\color{Green}\mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[-\log \frac{p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t)}{q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_{0})}\right]} + {\color{Blue}\mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[- \log\ p_\theta(\mathbf{x}_{0}|\mathbf{x}_1)\right]} \qquad & \tag{10}\\
+
+&= {\color{Red}D_{KL}(q(\mathbf{x}_T|\mathbf{x}_0)||p(\mathbf{x}_T))} + \sum_{t=2}^T {\color{Green}D_{KL}(q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_{0}) || p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t))} + {\color{Blue}\mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[- \log\ p_\theta(\mathbf{x}_{0}|\mathbf{x}_1)\right]} \qquad & \because D_{KL}(Q|P) = \mathbb{E}_{\mathbf{x}\ \sim\ Q(\mathbf{x})}\left[-\log \frac{P(\mathbf{x})}{Q(\mathbf{x})}\right]\tag{11}\\
+
+&= {\color{Red}L_T} + \sum_{t=2}^T {\color{Green}L_{t-1}} + {\color{Blue}L_0} \qquad & \tag{12}\\
+
+\end{align}
+$$
+
+#### 2.5.1 Formula (2), (3) : Rewriting $q(\mathbf{x}\_t|\mathbf{x}\_{t-1})$
+
+$q(\mathbf{x}\_{t}\|\mathbf{x}\_{t-1})$에 condition으로 다루기 쉬운 $\mathbf{x}\_{0}$을 추가함으로써 KL divergence를 통해 직접적으로 $p\_{\theta}(\mathbf{x}\_{t-1}\|\mathbf{x}\_{t})$를 비교할 수 있게 됩니다.
+
+Optimization function $L$을 간단히 하기 위해 $q(\mathbf{x}\_{t}\|\mathbf{x}\_{t-1})$을 간단히 하면 아래와 같습니다.
+
+$$
+\begin{align}
+
+{\color{Orange}q(\mathbf{x}_t|\mathbf{x}_{t-1})}
+
+&= q(\mathbf{x}_t|\mathbf{x}_{t-1}, \mathbf{x}_{0}) \qquad & \\
+
+&= \frac{q(\mathbf{x}_t, \mathbf{x}_{t-1}, \mathbf{x}_{0})}{q(\mathbf{x}_{t-1}, \mathbf{x}_{0})} \qquad & \\
+
+&= \frac{q(\mathbf{x}_t, \mathbf{x}_{t-1}, \mathbf{x}_{0})}{\color{Red}q(\mathbf{x}_{t-1}, \mathbf{x}_{0})}\cdot \frac{q(\mathbf{x}_t, \mathbf{x}_{0})}{\color{Purple}q(\mathbf{x}_t, \mathbf{x}_{0})} \qquad & \\
+
+&= \frac{q(\mathbf{x}_t, \mathbf{x}_{t-1}, \mathbf{x}_{0})}{\color{Purple}q(\mathbf{x}_t, \mathbf{x}_{0})}\cdot \frac{\color{Blue}q(\mathbf{x}_t, \mathbf{x}_{0})}{\color{Red}q(\mathbf{x}_{t-1}, \mathbf{x}_{0})}  \qquad & \\
+
+&= \frac{q(\mathbf{x}_t, \mathbf{x}_{t-1}, \mathbf{x}_{0})}{q(\mathbf{x}_t, \mathbf{x}_{0})}\cdot \frac{\color{Blue}q(\mathbf{x}_t|\mathbf{x}_{0})\cdot q(\mathbf{x}_{0})}{\color{Red}q(\mathbf{x}_{t-1}|\mathbf{x}_{0})\cdot q(\mathbf{x}_{0})} \qquad & \\
+
+&= {\color{Green}\frac{q(\mathbf{x}_t, \mathbf{x}_{t-1}, \mathbf{x}_{0})}{q(\mathbf{x}_t, \mathbf{x}_{0})}}\cdot \frac{\color{Blue}q(\mathbf{x}_t|\mathbf{x}_{0})}{\color{Red}q(\mathbf{x}_{t-1}|\mathbf{x}_{0})} \qquad & \\
+
+&= {\color{Green}q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_{0})}\cdot \frac{q(\mathbf{x}_t|\mathbf{x}_{0})}{q(\mathbf{x}_{t-1}|\mathbf{x}_{0})} \qquad & \\
+
+\end{align}
+$$
+
+### 2.6 What probability distribution $q(\mathbf{x}\_{t}\|\mathbf{x}\_{t-1}, \mathbf{x}\_{0})$ follows
+
+![](../../assets/img/Paper_Reading/DDPM/ddpm_10.jpg){: .normal}
+
+$$
+\begin{align}
+
+q(\mathbf{x}_{t-1}|\mathbf{x}_{t}, \mathbf{x}_{0})
+
+&= {\color{Red}q(\mathbf{x}_t|\mathbf{x}_{t-1})}\cdot\frac{\color{Blue}q(\mathbf{x}_{t-1}|\mathbf{x}_{0})}{\color{Green}q(\mathbf{x}_{t}|\mathbf{x}_{0})} \qquad & \because \text{Section 2.5.1}\\
+
+&= {\color{Red}\frac{1}{\sqrt{2\pi\beta_{t}}}\exp\left(-\frac{(\mathbf{x}_{t}-\sqrt{1-\beta_{t}}\mathbf{x}_{t-1})^2}{2\beta_{t}}\right)} \cdot {\color{Blue}\frac{1}{\sqrt{2\pi(1-\bar{\alpha}_{t-1})}}\exp\left(-\frac{(\mathbf{x}_{t-1}-\sqrt{\bar{\alpha}_{t-1}}\mathbf{x}_{0})^2}{2(1-\bar{\alpha}_{t-1})}\right)} \cdot {\color{Green}\sqrt{2\pi(1-\bar{\alpha}_{t})}\exp\left(\frac{(\mathbf{x}_{t}-\sqrt{\bar{\alpha}_{t}}\mathbf{x}_{0})^2}{2(1-\bar{\alpha}_{t})}\right)}\qquad & \because x \sim \mathcal{N}(\mu, \sigma^2) \Longrightarrow f(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right) \\
+
+&\propto \exp\left(-\frac{(\mathbf{x}_{t}-\sqrt{1-\beta_{t}}\mathbf{x}_{t-1})^2}{2\beta_{t}}\right) \cdot \exp\left(-\frac{(\mathbf{x}_{t-1}-\sqrt{\bar{\alpha}_{t-1}}\mathbf{x}_{0})^2}{2(1-\bar{\alpha}_{t-1})}\right) \cdot \exp\left(\frac{(\mathbf{x}_{t}-\sqrt{\bar{\alpha}_{t}}\mathbf{x}_{0})^2}{2(1-\bar{\alpha}_{t})}\right) \qquad & \because \text{상수 제거} \\
+
+&= \exp\left(-\frac{1}{2}\frac{(\mathbf{x}_{t}-\sqrt{1-\beta_{t}}{\color{Orange}\mathbf{x}_{t-1}})^2}{\beta_{t}} + \frac{({\color{Orange}\mathbf{x}_{t-1}}-\sqrt{\bar{\alpha}_{t-1}}\mathbf{x}_{0})^2}{(1-\bar{\alpha}_{t-1})} - \frac{(\mathbf{x}_{t}-\sqrt{\bar{\alpha}_{t}}\mathbf{x}_{0})^2}{(1-\bar{\alpha}_{t})}\right) \qquad & \because \exp\ a \cdot \exp\ b = \exp (a+b) \\
+
+&= \exp\bigg(-\frac{1}{2}\Big({\color{Red}(\frac{\alpha_{t}}{\beta_{t}} + \frac{1}{1-\bar{\alpha}_{t-1}})}{\color{Orange}\mathbf{x}_{t-1}^2} - {\color{Blue} (\frac{2\sqrt{\alpha_{t}}}{\beta_{t}}\mathbf{x}_{t} + \frac{2\sqrt{\bar{\alpha}_{t-1}}}{1-\bar{\alpha}_{t-1}}\mathbf{x}_{0})}{\color{Orange}\mathbf{x}_{t-1}} + C(\mathbf{x}_{t}, \mathbf{x}_{0})\Big) \bigg)  \qquad & \because \text{Condition으로 }\mathbf{x}_{t}\text{와 }\mathbf{x}_{0}\text{가 주어졌을 때 }\mathbf{x}_{t-1}\text{의 확률분포를 찾고자 함} \\
+
+&= \exp\bigg(-\frac{1}{2}\Big({\color{Red}a}\mathbf{x}_{t-1}^2 - {\color{Blue}b}\mathbf{x}_{t-1} + C(\mathbf{x}_{t}, \mathbf{x}_{0})\Big)\bigg) \qquad & \\
+
+&= \exp\bigg(-\frac{\color{Red}a}{2}\Big(\mathbf{x}_{t-1} - \frac{\color{Blue}b}{\color{Red}a}\Big)^2 \bigg) + C^\prime(\mathbf{x}_{t}, \mathbf{x}_{0}) \qquad & \\
+
+&\propto \frac{1}{\sqrt{2\pi\frac{1}{\color{Red}a}}}\exp\left(-\frac{(\mathbf{x}_{t-1}-\frac{\color{Blue}b}{\color{Red}a})^2}{2\frac{1}{\color{Red}a}}\right) + C^{''}(\mathbf{x}_{t}, \mathbf{x}_{0}) \qquad & \\
+
+\end{align}
+$$
+
+위의 식 $q(\mathbf{x}\_{t-1}\|\mathbf{x}\_{t}, \mathbf{x}\_{0})$을 정리해보면 평균이 ${\color{Blue}b}/{\color{Red}a}$이고 분산이 $1/{\color{Red}a}$인 gaussian distribution임을 알 수 있습니다. 논문에 있는 식으로 정리를 해보면 아래와 같이 정리할 수 있습니다.
+
+$$
+\begin{align}
+
+&q(\mathbf{x}_{t-1}|\mathbf{x}_{t}, \mathbf{x}_{0}) = \mathcal{N}(\mathbf{x}_{t-1};\tilde{mu}_t(\mathbf{x}_t, \mathbf{x}_0), \tilde{\beta}_t\mathrm{I}) \\
+
+&\text{where}\quad \tilde{\beta} := \frac{1}{\color{Red}a} = \frac{1 - \bar{\alpha}_{t-1}}{1-\bar{\alpha}_t}\cdot\beta_t\quad \text{and}\quad
+
+\tilde{\mu}_t(\mathbf{x}_{t}, \mathbf{x}_{0}) := {\color{Blue}b}/{\color{Red}a} = \frac{\sqrt{\bar{\alpha}_{t-1}}\beta_t}{1-\bar{\alpha}_t}\mathbf{x}_0 + \frac{\sqrt{\alpha_t}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_t}\mathbf{x}_t
+
+\end{align}
+$$
+
+결과적으로 optimization function $L$의 모든 $D_{KL}$은 gaussian distribution 비교이므로high variance Monte Carlo estimates 대신 closed form을 사용하여 Rao-Blackwellized 방식으로 계산할 수 있습니다.
+
+…진행 중입니다.
