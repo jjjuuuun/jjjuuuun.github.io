@@ -446,7 +446,7 @@ $$
 
 ![](../../assets/img/Paper_Reading/DDPM/ddpm_12.jpg){: .normal}
 
-🔎 [Section 2.5](#25-rewriting)에서의 $L\_T$를 살펴보면 아래와 같습니다.
+🔎 [Section 2.5](#25-rewriting-l)에서의 $L\_T$를 살펴보면 아래와 같습니다.
 
 $$
 \begin{align}
@@ -472,7 +472,7 @@ $$
 
 ![](../../assets/img/Paper_Reading/DDPM/ddpm_13.jpg){: .normal}
 
-🔎 [Section 2.5](#25-rewriting)에서의 $L\_{1:T-1}$를 살펴보면 아래와 같습니다.
+🔎 [Section 2.5](#25-rewriting-l)에서의 $L\_{1:T-1}$를 살펴보면 아래와 같습니다.
 
 $$
 \begin{align}
