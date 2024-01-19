@@ -14,61 +14,76 @@ math: true
 
 ## Abstract
 
-![](../../assets/img/Paper_Reading/DDPM/ddpm_1.jpg){: width="400" .left}
+![](../../assets/img/Paper_Reading/DDPM/ddpm_1.jpg){: .normal}
 
 🔎 해당 논문은 diffusion probability models을 사용해 높은 퀄리티의 이미지를 합성했음을 보여줍니다.
 
-💡 [Nonequilibrium thermodynamics](https://ko.wikipedia.org/wiki/%EB%B9%84%ED%8F%89%ED%98%95%EC%97%B4%EC%97%AD%ED%95%99)
+> 💡 Diffusion probability models : Nonequilibrium thermodynamics(비평형 열역학)로부터 영감받은 latent variable models의 한 종류
+>
+> 💡 [Latent variable models](https://en.wikipedia.org/wiki/Latent_variable_model) : Latent variable을 도입해 복잡한 시스템의 동작을 모델링하는 데 사용되는 통게적 모델
+>
+> 💡 [Nonequilibrium thermodynamics](https://ko.wikipedia.org/wiki/%EB%B9%84%ED%8F%89%ED%98%95%EC%97%B4%EC%97%AD%ED%95%99) : 시간에 따라 변하는 열적 및 동적 조건을 고려하는 열역학의 한 분야로, 시스템이 평형 상태가 아닐 때의 특성을 다룹니다.
 
-❓ Diffusion probabilistic models와 denoising score matching의 새로운 연결
+🔎 Weighted variational bound에 대한 학습을 통해 가장 좋은 결과를 얻었습니다.
 
-❓ Generalization of autoregressive decoding
+> - Weighted variational bound : Diffusion probability models와 denoising score matching with Langevin dynamics의 새로운 연결
+>   > 💡 Denoising score matching with Langevin dynamics : Denoising score matching을 통해 score function을 학습하고 Langevin dynamcis를 통해 sampling을 진행하는 score-based genenerative model (✅ 추후 공부 필요)
 
-![](../../assets/img/Paper_Reading/blank.png){: .normal}
+🔎 DDPM을 autoreressive decoding의 일반화로 해석될 수 있는 progressive lossy decompression 방식을 인정합니다.
 
 ## 1. Introduction
 
-![](../../assets/img/Paper_Reading/DDPM/ddpm_2.jpg){: width="400" .left}
+![](../../assets/img/Paper_Reading/DDPM/ddpm_2.jpg){: .normal}
 
 🔎 Generative models : `GANs`, `Autoregressive models`, `flows`, `VAEs`, `Energy-based modeling`, `Score matching`
 
-![](../../assets/img/Paper_Reading/blank.png){: .normal}
+![](../../assets/img/Paper_Reading/DDPM/ddpm_3.jpg){: .normal}
 
-![](../../assets/img/Paper_Reading/DDPM/ddpm_3.jpg){: width="400" .left}
+🔎 해당 논문에서는 diffusion probabilistic models(diffusion model)의 발전을 논하고자 합니다.
 
-🔎 해당 논문에서는 diffusion probabilistic models(diffusion model)의 progress를 제안합니다.
+🔎 Diffusion model은 유한한 시간이후에 data와 일치하는 samples을 생성하기 위해 `variational inference`를 사용하여 훈련된 `parameterized Markov chain`입니다.
 
-🔎 Diffusion model은 유한한 시간이후에 data와 일치하는 samples을 생성하기 위해 [`variational inference`](#231-variational-inference)를 사용하여 훈련된 `parameterized Markov chain`입니다.
+> 💡 [Variational inference](#231-variational-inference) : 다루기 쉬운 매개변수 $\theta$를 조정하여 확률분포 $q(\theta)$를 posteroir distribution $p(\theta\|x)$에 approximation 하는 것을 말합니다.
+>
+> 💡 Parameterized Markov chain : Markov property를 가진 이산확률과정
+>
+> > 💡 Markov property : 특정 상태의 확률은 오직 과거의 상태에 의존
 
-💡 Parameterized Markov chain : Markov property를 가진 이산확률과정
+🔎 Reverse a diffusion process(Denoising process, Transitions of markov chain)을 학습
 
-💡 Markov property : 특정 상태의 확률은 오직 과거의 상태에 의존
+> - Diffusion process(Forward process) : 원래의 signal(image)이 파괴될 때까지 점진적으로 data에 noise를 추가하는 markov chain
 
-🔎 `Reverse a diffusion process`를 통해 학습 : <u>원래의 signal(image)이 파괴될 때까지 sampling의 반대방향으로 점진적으로 data에 noise를 추가하는 markov chain</u>을 통해 학습
+> - Diffusion process에서의 noise를 아주 작은 양의 Gaussian noise로 구성하면 denoising process 또한 conditional Gaussian으로 설정할 수 있으므로 간단한 neural network parameterization이 가능해집니다.([이전 연구](https://arxiv.org/abs/1503.03585)에서 발견됨)
 
-❓ Sampling의 방향?
+![](../../assets/img/Paper_Reading/DDPM/ddpm_4.jpg){: .normal}
 
-![](../../assets/img/Paper_Reading/blank.png){: .normal}
+🔎 기존 diffusion model 연구의 장점과 단점
 
-![](../../assets/img/Paper_Reading/DDPM/ddpm_4.jpg){: width="400" .left}
+> - 장점 : Diffusion model을 정의하고 학습하기 수월
+>
+> - 단점 : High quality sample을 생성할 수 있는지 의문
 
-🔎 기존 연구 : Diffusion model이 정의하고 학습하기에는 수월하지만 좋은 결과를 얻지는 못했습니다.
+🔎 DDPM에서 보여주는 diffusion model
 
-🔎 해당 논문에서 보여주는 결과
-
-1️⃣ Diffusion model의 특정 매개변수화가 훈련 중 multiple noise level에 대한 denoising score matching과 sampling 중 annealed Langevin dynamics와 등가임을 발견
-
-2️⃣ 특정 매개변수화를 통해 얻은 좋은 품질의 결과
-
-3️⃣ Log likelihoods : Energy based models & score matching < Diffusion model < Other likelihood-based models
-
-4️⃣ Diffusion model의 많은 lossless codelengths가 이미지 세부 정보를 설명하는데 사용
-
-5️⃣ Sampling procedure of diffusion models : Type of progressive decoding
-
-❓ 아직 해결되지 않은 부분이 있으나 뒤에 설명이 있을 것 같아 일단은 넘어가겠습니다.
-
-![](../../assets/img/Paper_Reading/blank.png){: .normal}
+> - ⭐ 특정 매개변수화($\epsilon$-prediction parameterization)를 통해 DDPM이 denoising score matching over multiple noise levels during <u>training</u> 그리고 annealed Langevin dynamics during <u>sampling</u>과 동등함을 보여줍니다.
+>
+> - 이러한 특정 매개변수화를 통해 high quality sample을 생성하였고 diffusion model이 아닌 다른 유형의 generative model보다 우수한 결과를 보여줬습니다.
+>
+> - 그러나 다른 log-likelihood-based model에 비해 경쟁력 있는 로그 가능성을 가지고 있지 않습니다.
+>
+>   > Log likelihoods : Energy based models & score matching < Diffusion model < Other likelihood-based models
+>
+> - DDPM의 lossless codelengths의 대부분이 감지할 수 없는 이미지 세부 정보를 설명하는데 사용된다는 것을 발견했습니다.
+>
+>   > 💡 Codelengths
+>   >
+>   > > - 모델이 데이터를 얼마나 효과적으로 표현하고 생성하는지를 나타내는 지표 (bits/dim)
+>   > > - 작은 codelengths는 데이터를 효과적으로 표현하는 모델임을 뜻하므로 작을수록 좋음
+>   >
+>   > 💡 Lossless codelength : Lossless compresor를 통해 측정한 codelength  
+>   > 💡 Lossless compresor의 대표적으로 NLL(Negativ Log Likelihood)이 있음
+>
+> - DDPM의 sampling 과정이 progressive lossy decompression 방식임을 보여줍니다.
 
 ## 2. Background
 
@@ -123,6 +138,8 @@ Timestep $T$에서의 $\mathbf{x}_T$는 $\theta$와 상관없이 $\mathcal{N}(0,
 
 🔎 Forward Process(Diffusion process) : Data에서 noise를 추가해 standard normal distribution으로 가는 과정입니다.
 
+🔎 다른 유형의 latent variable models과 diffusion model의 다른 점은 noise가 Gaussian noise로 고정되어 있다는 점입니다.
+
 $$
 \begin{align}
 q(\mathbf{x}_{1:T}|\mathbf{x}_0)
@@ -161,7 +178,7 @@ Forward process는 markov property를 만족하기 때문에 markov process에 �
 
 ![](../../assets/img/Paper_Reading/DDPM/ddpm_7.jpg){: .normal}
 
-🔎 NLL(Negative Log Likelihood)의 variational bound를 사용해 최적화를 수행합니다.
+🔎 NLL(Negative Log Likelihood)에 대한 variational bound로 최적화를 수행합니다.
 
 💡 Log Likelihood를 Negative Log Likelihood로 변경한 이유 : 우도를 최대화하는 문제를 최소화하는 문제로 바꾸기 위해
 
@@ -189,32 +206,35 @@ Forward process는 markov property를 만족하기 때문에 markov process에 �
    - 이러한 특징 때문에 duality를 통해 variational tranform이 가능합니다.
      > - 만약 convex하지 않거나 concave하지 않은 함수가 있다면 $\log$를 사용해 concave한 함수를 만들어 사용할 수 있습니다.
      > - Deep Learning을 공부하다보면 $\log$를 사용하는 이유에는 곱을 합으로 변경해주는 이유도 있지만 concave한 특징을 사용해 variational transform하는 이유도 있다는 것을 기억하면 좋을 것 같습니다.
+   - Variational transform을 정리해보면 다음과 같습니다.
+     > - Variational parameter $\lambda$를 도입하여 비선형 함수인 $\log$를 선형으로 변경 하는 것을 variational transform이라 할 수 있습니다.
 
 2. Variational Inference
 
-   - Variational inference는 variational transform을 사용해 Posteroir distribution $p(\theta\|x)$를 다루기 쉬운 매개변수 $\theta$를 조정하여 확률분포 $q(\theta)$로 approximation 하는 것을 말합니다.
+   - Variational inference는 다루기 쉬운 매개변수 $\theta$를 조정하여 확률분포 $q(\theta)$를 posteroir distribution $p(\theta\|x)$에 approximation 하는 것을 말합니다.
+   - Variational inference의 방법으로는 KL-Divergence이 있습니다.
 
 #### 2.3.2 Variational Inference at DDPM
 
-DDPM에서 variational inference을 사용하는 공식을 통해 살펴보겠습니다.
+DDPM에서 variational inference가 적용되는 부분을 살펴보겠습니다.
 
 $$
 \begin{align}
 \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[-\log\ p_\theta(\mathbf{x}_0)\right]
 
-&= \int(-\log\ p_\theta(\mathbf{x}_0))\cdot q(\mathbf{x}_T|\mathbf{x}_0)\ d\mathbf{x}_T \qquad & \because \text{Monte Carlo Integration} \\
+&= \int(-\log\ p_\theta(\mathbf{x}_0))\cdot q(\mathbf{x}_T|\mathbf{x}_0)\ d\mathbf{x}_T \qquad &  \\
 
 &= \int(-\log\ \frac{p_\theta(\mathbf{x}_{0:T})}{p_\theta(\mathbf{x}_{1:T}|\mathbf{x}_0)}) \cdot q(\mathbf{x}_T|\mathbf{x}_0)\ d\mathbf{x}_T \qquad & \because \text{Chain Rule} \\
 
-&= \int(-\log\ \frac{p_\theta(\mathbf{x}_{0:T})}{p_\theta(\mathbf{x}_{1:T}|\mathbf{x}_0)} \cdot \frac{q(\mathbf{x}_{1:T}|\mathbf{x}_0)}{q(\mathbf{x}_{1:T}|\mathbf{x}_0)})\cdot q(\mathbf{x}_T|\mathbf{x}_0)\ d\mathbf{x}_T \qquad & \\
+&= \int(-\log\ \frac{p_\theta(\mathbf{x}_{0:T})}{p_\theta(\mathbf{x}_{1:T}|\mathbf{x}_0)} \cdot {\color{Red}\frac{q(\mathbf{x}_{1:T}|\mathbf{x}_0)}{q(\mathbf{x}_{1:T}|\mathbf{x}_0)}})\cdot q(\mathbf{x}_T|\mathbf{x}_0)\ d\mathbf{x}_T \qquad & \\
 
-&= \int(-\log\ \frac{p_\theta(\mathbf{x}_{0:T})}{q(\mathbf{x}_{1:T}|\mathbf{x}_0)} \cdot \frac{q(\mathbf{x}_{1:T}|\mathbf{x}_0)}{p_\theta(\mathbf{x}_{1:T}|\mathbf{x}_0)})\cdot q(\mathbf{x}_T|\mathbf{x}_0)\ d\mathbf{x}_T \qquad & \\
+&= \int(-\log\ \frac{p_\theta(\mathbf{x}_{0:T})}{ {\color{Red}q(\mathbf{x}_{1:T}|\mathbf{x}_0)}} \cdot \frac{ {\color{Red}q(\mathbf{x}_{1:T}|\mathbf{x}_0)}}{p_\theta(\mathbf{x}_{1:T}|\mathbf{x}_0)})\cdot q(\mathbf{x}_T|\mathbf{x}_0)\ d\mathbf{x}_T \qquad & \\
 
 &= \int(-\log\ \frac{p_\theta(\mathbf{x}_{0:T})}{q(\mathbf{x}_{1:T}|\mathbf{x}_0)})\cdot q(\mathbf{x}_T|\mathbf{x}_0)\ d\mathbf{x}_T + \int(-\log\ \frac{q(\mathbf{x}_{1:T}|\mathbf{x}_0)}{p_\theta(\mathbf{x}_{1:T}|\mathbf{x}_0)})\cdot q(\mathbf{x}_T|\mathbf{x}_0)\ d\mathbf{x}_T \qquad & \because \log\ a\cdot b = \log\ a + \log\ b \\
 
-&= \int(-\log\ \frac{p_\theta(\mathbf{x}_{0:T})}{q(\mathbf{x}_{1:T}|\mathbf{x}_0)})\cdot q(\mathbf{x}_T|\mathbf{x}_0)\ d\mathbf{x}_T - \int(\log\ \frac{q(\mathbf{x}_{1:T}|\mathbf{x}_0)}{p_\theta(\mathbf{x}_{1:T}|\mathbf{x}_0)})\cdot q(\mathbf{x}_T|\mathbf{x}_0)\ d\mathbf{x}_T \qquad & \\
+&= \int(-\log\ \frac{p_\theta(\mathbf{x}_{0:T})}{q(\mathbf{x}_{1:T}|\mathbf{x}_0)})\cdot q(\mathbf{x}_T|\mathbf{x}_0)\ d\mathbf{x}_T - {\color{Blue}\int(\log\ \frac{q(\mathbf{x}_{1:T}|\mathbf{x}_0)}{p_\theta(\mathbf{x}_{1:T}|\mathbf{x}_0)})\cdot q(\mathbf{x}_T|\mathbf{x}_0)\ d\mathbf{x}_T} \qquad & \\
 
-&= \int(-\log\ \frac{p_\theta(\mathbf{x}_{0:T})}{q(\mathbf{x}_{1:T}|\mathbf{x}_0)})\cdot q(\mathbf{x}_T|\mathbf{x}_0)\ d\mathbf{x}_T - D_{KL}(q(\mathbf{x}_{1:T}|\mathbf{x}_0)\ ||\ p_\theta(\mathbf{x}_{1:T}|\mathbf{x}_0)) \qquad & \because q\text{를 통해 } p_\theta\text{를 찾으려고 함}\ (\text{Variational Inference}) \\
+&= \int(-\log\ \frac{p_\theta(\mathbf{x}_{0:T})}{q(\mathbf{x}_{1:T}|\mathbf{x}_0)})\cdot q(\mathbf{x}_T|\mathbf{x}_0)\ d\mathbf{x}_T - {\color{Blue}D_{KL}(q(\mathbf{x}_{1:T}|\mathbf{x}_0)\ ||\ p_\theta(\mathbf{x}_{1:T}|\mathbf{x}_0))} \qquad &  \\
 
 &\le \int(-\log\ \frac{p_\theta(\mathbf{x}_{0:T})}{q(\mathbf{x}_{1:T}|\mathbf{x}_0)})\cdot q(\mathbf{x}_T|\mathbf{x}_0)\ d\mathbf{x}_T\ \qquad & \because D_{KL} \ge 0 \\
 
@@ -232,9 +252,9 @@ $$
 \begin{align}
 \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[-\log\ p_\theta(\mathbf{x}_0)\right]
 
-&\le \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[-\log\ \frac{p(\mathbf{x}_{0:T})}{q(\mathbf{x}_{1:T}|\mathbf{x}_0)}\right] \qquad & \\
+&\le \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[-\log\ \frac{ {\color{Red}p(\mathbf{x}_{0:T})}}{ {\color{Blue}q(\mathbf{x}_{1:T}|\mathbf{x}_0)}}\right] \qquad & \\
 
-&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[-\log\ \frac{p(\mathbf{x}_T)\cdot \prod_{t=1}^T p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t)}{\prod_{t=1}^T q(\mathbf{x}_t|\mathbf{x}_{t-1})}\right] \qquad & \because \text{Section 2.1}\ \&\ \text{Section2.2} \\
+&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[-\log\ \frac{ {\color{Red}p(\mathbf{x}_T)\cdot \prod_{t=1}^T p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t)}}{ {\color{Blue}\prod_{t=1}^T q(\mathbf{x}_t|\mathbf{x}_{t-1})}}\right] \qquad & \because \text{Section 2.1}\ \&\ \text{Section2.2} \\
 
 &= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[-\log\ p(\mathbf{x}_T) -\log\prod_{t=1}^T \frac{p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t)}{q(\mathbf{x}_t|\mathbf{x}_{t-1})}\right] \qquad & \because \log\ a\cdot b = \log\ a + \log\ b \\
 
@@ -267,7 +287,9 @@ $$\mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[-\log\ p_\t
 
 딥러닝에서 필수적인 계산이라 함은 바로 chain rule에 의한 backpropagation입니다.
 
-Backpropagation을 사용하기 위해서는 미분이 필수적인데 어떠한 확률분포를 따르는 확률변수 $Z$가 backpropagation의 대상일 때 미분이 불가능해 나온 것이 바로 reparameterization trick입니다.
+Backpropagation을 사용하기 위해서는 미분이 필수적인데 확률변수 $Z$는 기본적으로 미분이 불가능해 backpropagation을 할 수 없습니다.
+
+그렇기 때문에 reparameterization trick을 사용해 미분이 가능하도록 해 backpropagation을 진행합니다.
 
 정리를 해보면 확률변수 $Z$를 standard normal distribution에서 sampling 하는 과정이 미분 가능하도록 만들어 backpropagation을 가능하게 만드는 것이 reparameterization trick이며 아래와 같이 나타낼 수 있습니다.
 
@@ -275,14 +297,12 @@ $$Z \sim \mathcal{N}(\mu, \sigma^2) \Longrightarrow Z = \mu + \sigma\cdot\epsilo
 
 #### 2.4.2 Diffusion Proecess with reprameterization trick
 
-먼저 diffusion proecess의 sampling 공식을 다시 한 번 살펴보겠습니다.
+먼저 diffusion proecess의 time step $t$에서의 확률분포를 다시 한 번 살펴보겠습니다.
 
 $$
 \begin{align}
 
 & \text{Diffusion process} : &q(\mathbf{x}_t|\mathbf{x}_{t-1}) := \mathcal{N}(\mathbf{x}_t; \sqrt{1-\beta_t}\mathbf{x}_{t-1}, \beta_t\mathrm{I}) \\ \\
-
-& \text{Sampling} : &\mathbf{x}_t \sim \mathcal{N}(\sqrt{1-\beta_t}\mathbf{x}_{t-1}, \beta_t\mathrm{I})
 
 \end{align}
 $$
@@ -317,9 +337,7 @@ $$
 
 ![](../../assets/img/Paper_Reading/DDPM/ddpm_9.jpg){: .normal}
 
-위에서 정의한 [optimization function $L$](#233-optimization-function-구하기)을 변경함으로써 효율적인 학습이 가능합니다.
-
-어떻게 효율적으로 변경하는지 차례차례 살펴보겠습니다.
+🔎 위에서 정의한 [optimization function $L$](#233-optimization-function-구하기)을 변경함으로써 효율적인 학습이 가능합니다.
 
 $$
 \begin{align}
@@ -345,7 +363,7 @@ L
 
 &= {\color{Red}\mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[-\log \frac{p(\mathbf{x}_T)}{q(\mathbf{x}_{T}|\mathbf{x}_{0})}\right]} + \sum_{t=2}^T{\color{Green}\mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[-\log \frac{p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t)}{q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_{0})}\right]} + {\color{Blue}\mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[- \log\ p_\theta(\mathbf{x}_{0}|\mathbf{x}_1)\right]} \qquad & \tag{10}\\
 
-&= {\color{Red}D_{KL}(q(\mathbf{x}_T|\mathbf{x}_0)||p(\mathbf{x}_T))} + \sum_{t=2}^T {\color{Green}D_{KL}(q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_{0}) || p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t))} + {\color{Blue}\mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[- \log\ p_\theta(\mathbf{x}_{0}|\mathbf{x}_1)\right]} \qquad & \because D_{KL}(Q|P) = \mathbb{E}_{\mathbf{x}\ \sim\ Q(\mathbf{x})}\left[-\log \frac{P(\mathbf{x})}{Q(\mathbf{x})}\right]\tag{11}\\
+&= {\color{Red}D_{KL}(q(\mathbf{x}_T|\mathbf{x}_0)||p(\mathbf{x}_T))} + \sum_{t=2}^T {\color{Green}D_{KL}(q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_{0}) || p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t))} + {\color{Blue}\mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[- \log\ p_\theta(\mathbf{x}_{0}|\mathbf{x}_1)\right]} \qquad & \because D_{KL}(Q|P) = \mathbb{E}_{\mathbf{x}\ \sim\ Q(\mathbf{x})}\left[-\log \frac{P(\mathbf{x})}{Q(\mathbf{x})}\right]\qquad (\text{Rao-Blackwellized fasion})\tag{11}\\
 
 &= {\color{Red}L_T} + \sum_{t=2}^T {\color{Green}L_{t-1}} + {\color{Blue}L_0} \qquad & \tag{12}\\
 
@@ -356,16 +374,14 @@ $$
 
 #### 2.5.1 Formula (2), (3) : Rewriting $q(\mathbf{x}\_t|\mathbf{x}\_{t-1})$
 
-$q(\mathbf{x}\_{t}\|\mathbf{x}\_{t-1})$에 condition으로 다루기 쉬운 $\mathbf{x}\_{0}$을 추가함으로써 KL divergence를 통해 직접적으로 $p\_{\theta}(\mathbf{x}\_{t-1}\|\mathbf{x}\_{t})$를 비교할 수 있게 됩니다.
-
-Optimization function $L$을 간단히 하기 위해 $q(\mathbf{x}\_{t}\|\mathbf{x}\_{t-1})$을 간단히 하면 아래와 같습니다.
+🔎 $q(\mathbf{x}\_{t}\|\mathbf{x}\_{t-1})$에 condition으로 $\mathbf{x}\_{0}$을 추가함으로써 다루기 쉽도록 해 KL divergence(${\color{Green} L\_{t-1}}$)를 통해 직접적으로 $p\_{\theta}(\mathbf{x}\_{t-1}\|\mathbf{x}\_{t})$와 비교할 수 있게 만들었습니다.
 
 $$
 \begin{align}
 
 {\color{Orange}q(\mathbf{x}_t|\mathbf{x}_{t-1})}
 
-&= q(\mathbf{x}_t|\mathbf{x}_{t-1}, \mathbf{x}_{0}) \qquad & \\
+&= q(\mathbf{x}_t|\mathbf{x}_{t-1}, {\color{Orange}\mathbf{x}_{0}}) \qquad & \\
 
 &= \frac{q(\mathbf{x}_t, \mathbf{x}_{t-1}, \mathbf{x}_{0})}{q(\mathbf{x}_{t-1}, \mathbf{x}_{0})} \qquad & \\
 
@@ -424,7 +440,9 @@ $$
 \end{align}
 $$
 
-결과적으로 optimization function $L$의 모든 $D_{KL}$은 gaussian distribution 비교이므로 high variance Monte Carlo estimates 대신 closed form을 사용하여 Rao-Blackwellized 방식으로 계산할 수 있습니다.
+🔎 결과적으로 optimization function $L$의 모든 $D_{KL}$은 gaussian distribution 비교이므로 high variance Monte Carlo estimates 대신 closed form을 사용하여 Rao-Blackwellized 방식으로 계산할 수 있습니다.
+
+$$D_{KL}(Q|P) = \mathbb{E}_{\mathbf{x}\ \sim\ Q(\mathbf{x})}\left[-\log \frac{P(\mathbf{x})}{Q(\mathbf{x})}\right]$$
 
 ## 3. Diffusion models and denoising autoencoders
 
@@ -516,6 +534,6 @@ $$
    >
    > 변경된 $L\_{t-1}$에서 $\beta\_t$가 상수이고 $\mathbf{x}\_t$가 주어진 값이기 때문에 $\epsilon$을 예측하는 function approximator인 $\epsilon\_\theta$를 통해 최소화 할 수 있습니다. 즉 아래와 같이 $L\_{t-1}$을 다시 표현할 수 있습니다.
    >
-   > > $$\begin{align}L_{t-1} &\propto \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{1}{2\sigma_t^2}\Bigg\lVert\frac{1}{ \sqrt{\alpha_t}}\Bigg(\mathbf{x}_t - \frac{\beta_t}{ \sqrt{1 - \bar{\alpha}_t}}\cdot\epsilon\Bigg) - \mu_\theta(\mathbf{x}_t, t)\Bigg\rVert^2\right] \qquad & \\ &= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{1}{2\sigma_t^2}\Bigg\lVert\frac{1}{ \sqrt{\alpha_t}}\Bigg(\mathbf{x}_t - \frac{\beta_t}{ \sqrt{1 - \bar{\alpha}_t}}\cdot\epsilon\Bigg) - \frac{1}{ \sqrt{\alpha_t}}\Bigg(\mathbf{x}_t - \frac{\beta_t}{ \sqrt{1 - \bar{\alpha}_t}}\cdot\epsilon_\theta\Bigg)\Bigg\rVert^2\right] \qquad & \\ &= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{\beta_t^2}{2\sigma_t^2\cdot\alpha_t\cdot(1-\bar{\alpha}_t)}\lVert\epsilon - \epsilon_\theta\rVert^2\right] \qquad & \\ \end{align}$$
+   > > $$\begin{align}L_{t-1} &\propto \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{1}{2\sigma_t^2}\Bigg\lVert\frac{1}{ \sqrt{\alpha_t}}\Bigg(\mathbf{x}_t - \frac{\beta_t}{ \sqrt{1 - \bar{\alpha}_t}}\cdot\epsilon\Bigg) - \mu_\theta(\mathbf{x}_t, t)\Bigg\rVert^2\right] \qquad & \\ &= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{1}{2\sigma_t^2}\Bigg\lVert\frac{1}{ \sqrt{\alpha_t}}\Bigg(\mathbf{x}_t - \frac{\beta_t}{ \sqrt{1 - \bar{\alpha}_t}}\cdot\epsilon\Bigg) - \frac{1}{ \sqrt{\alpha_t}}\Bigg(\mathbf{x}_t - \frac{\beta_t}{ \sqrt{1 - \bar{\alpha}_t}}\cdot\epsilon_\theta\Bigg)\Bigg\rVert^2\right] \qquad & \\ &= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{\beta_t^2}{2\sigma_t^2\cdot\alpha_t\cdot(1-\bar{\alpha}_t)}\lVert\epsilon - \epsilon_\theta\rVert^2\right] \qquad & \\ &\propto \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\lVert\epsilon - \epsilon_\theta\rVert^2\right] \qquad & \because \text{Remove constant term}\\\end{align}$$
 
 진행중입니다....
