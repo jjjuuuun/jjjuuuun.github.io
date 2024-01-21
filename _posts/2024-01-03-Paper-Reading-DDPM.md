@@ -446,19 +446,19 @@ $$D_{KL}(Q|P) = \mathbb{E}_{\mathbf{x}\ \sim\ Q(\mathbf{x})}\left[-\log \frac{P(
 
 ## 3. Diffusion models and denoising autoencoders
 
-![](../../assets/img/Paper_Reading/DDPM/ddpm_11.jpg){: width="400" .left}
+![](../../assets/img/Paper_Reading/DDPM/ddpm_11.jpg){: .normal}
 
-🔎 Diffusion models은 제약이 있는 latent variable models의 한 종류로 보일 수 있지만 구현에서 <u>많은 자유도</u>를 허용합니다.($\beta\_t$, model architecture, Gaussian distributionparameterization)
+🔎 Diffusion models : 제약이 있는 latent variable models의 한 종류로 보일 수 있지만 구현에서 <u>많은 자유도</u>를 허용합니다.
 
-🔎 해당 논문의 저자들이 선택한 것들을 앞으로 설명합니다.
+> Forward process(Diffusion process)의 variances $\beta\_t$([Section 3.1]())
+>
+> Reverse process의 Gaussian distribution parameterization([Section 3.2, 3.3, 3.4]())
+>
+> Model Architecture([Section 4]())
 
-1️⃣ Section 3.2 : New connection between diffusion models and decnoising score matching
+🔎 해당 논문의 선택을 안내하기 위해 diffusion models과 denoising score matching 사이의 새로운 연결을 확립하고 이 새로운 연결은 단순하고 가중화된 variational bound objective로 이어집니다.
 
-2️⃣ Section 3.4 : Weighted variational bound objective for diffusion models
-
-3️⃣ Section 4 : Model design & results
-
-![](../../assets/img/Paper_Reading/blank.png){: .normal}
+🔎 DDPM은 단순성과 경험적 결과에 의해 정당화됩니다.
 
 ### 3.1 Forward process and $L\_T$
 
@@ -480,9 +480,9 @@ L_T
 \end{align}
 $$
 
-🔎 $\beta\_t$가 학습가능한 파라미터임을 무시하고 상수로 사용합니다. ([Section 4]())
+🔎 $\beta\_t$가 학습 가능한 파라미터임을 무시하고 상수로 사용합니다.
 
-🔎 따라서 posterior $q$는 학습 파리미터를 가지고 있지 않습니다.
+🔎 따라서 $q$는 학습 파리미터를 가지고 있지 않습니다.
 
 ⭐ 그렇기 때문에 $L\_T$는 학습하지 않고 무시합니다.
 
@@ -490,50 +490,152 @@ $$
 
 ![](../../assets/img/Paper_Reading/DDPM/ddpm_13.jpg){: .normal}
 
-🔎 [Section 2.5](#25-rewriting-l)에서의 $L\_{1:T-1}$를 살펴보면 아래와 같습니다.
+🔎 [Section 2.5](#25-rewriting-l)에서의 $L\_{t-1}$를 살펴보면 아래와 같습니다.
+
+$$
+\begin{align}
+
+L_{t-1}
+
+&= D_{KL}(q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_{0}) || p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t)) \qquad & \\
+
+&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[-\log \frac{p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t)}{q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_{0})}\right] \qquad & \\
+
+\end{align}
+$$
+
+#### 3.2.1 $\Sigma\_\theta(\mathbf{x}\_t, t)$
+
+🔎 먼저 $p\_\theta(\mathbf{x}\_{t-1}\|\mathbf{x}\_t) = \mathcal{N}(\mathbf{x}\_{t-1}; \mu\_\theta(\mathbf{x}\_t, t), \Sigma\_\theta(\mathbf{x}\_t, t))$ for $1 < t \le T$에 대해서 논해보고자 합니다.
+
+> DDPM에서는 reverse process의 분포를 Gaussian distribution으로 설정했고 해당 분포의 평균과 분산을 $\mu\_\theta(\mathbf{x}\_t, t), \Sigma\_\theta(\mathbf{x}\_t, t)$로 정의를 했습니다.
+
+🔎 해당 논문의 저자들은 먼저 $\Sigma\_\theta(\mathbf{x}\_t, t)$를 학습하지 않아도 되는 time dependent constants인 $\sigma\_t^2\mathrm{I}$로 설정했습니다.
+
+🔎 이때 실험적으로 `1`번 : $\sigma\_t^2 = \beta\_t$과 `2`번 : $\sigma\_t^2 = \tilde{\beta}\_t = \frac{1 - \bar{\alpha}\_{t-1}}{1-\bar{\alpha}\_t}\cdot\beta\_t \cdots 2$의 결과가 비슷함을 발견했습니다.
+
+🔎 `1`번의 경우 모든 t에서 독립적이므로 $\mathbf{x}\_0 \sim \mathcal{N}(\mathrm{0}, \mathrm{I})$의 경우 최적이 됩니다.
+
+🔎 `2`번의 경우 이전 t에 대해서 영향을 받으므로($\bar{\alpha}\_t$) 결정론적으로 한 점으로 설정된 경우 최적이 됩니다.
+
+🔎 `1`번과 `2`번은 reverse process에 대해 각각 upper bound와 lower bound에 해당합니다.([이전 연구](https://arxiv.org/abs/1503.03585))
+
+#### 3.2.2 $\mu\_\theta(\mathbf{x}\_t, t)$
+
+![](../../assets/img/Paper_Reading/DDPM/ddpm_14.jpg){: .normal}
+
+🔎 $\sigma\_t^2 = \tilde{\beta}\_t$을 활용해서 알고 있는 정보들을 정리하면 아래와 같습니다.
+
+$$p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t) = \mathcal{N}(\mathbf{x}_{t-1}; \mu_\theta(\mathbf{x}_t, t), \sigma_t^2\mathrm{I}) = \mathcal{N}(\mathbf{x}_{t-1}; \mu_\theta(\mathbf{x}_t, t), \tilde{\beta}_t\mathrm{I})$$
+
+$$q(\mathbf{x}_{t-1}|\mathbf{x}_{t}, \mathbf{x}_{0}) = \mathcal{N}(\mathbf{x}_{t-1};\tilde{\mu}_t(\mathbf{x}_t, \mathbf{x}_0), \tilde{\beta}_t\mathrm{I})$$
+
+🔎 KL-Divergence의 비교 대상인 두 분포가 분산이 같은 Gaussian distribution이므로 $L\_{t - 1}$을 아래와 같이 간단하게 다시 정의할 수 있습니다.
+
+$$
+\begin{align}
+
+L_{t-1} = \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{1}{2\sigma_t^2}\lVert\tilde{\mu}_t(\mathbf{x}_t, \mathbf{x}_0) - \mu_\theta(\mathbf{x}_t, t)\rVert^2\right] + C& \\
+
+\text{where C is a constant that does not depend on }\theta&
+
+\end{align}
+$$
+
+🔎 즉, $\mu\_\theta$의 가장 간단한 parameterization은 forward process posterior mean인 $\tilde{\mu}\_\theta$를 예측하는 모델임을 알 수 있습니다.
+
+🔎 위에서 다시 정의한 $L\_{t-1}$을 reparameterization trick을 사용해 변경하면 아래와 같습니다.
 
 $$
 \begin{align}
 
 L_{1:T-1}
 
-&= \sum_{t=2}^T L_{t-1} \qquad & \\
+&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{1}{2\sigma_t^2}\lVert\tilde{\mu}_t(\mathbf{x}_t, \mathbf{x}_0) - \mu_\theta(\mathbf{x}_t, t)\rVert^2\right] + C \qquad & \\
 
-&= \sum_{t=2}^TD_{KL}(q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_{0}) || p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t)) \qquad & \\
+&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{1}{2\sigma_t^2}\Bigg\lVert\frac{\sqrt{\bar{\alpha}_{t-1}}\beta_t}{1-\bar{\alpha}_t}\mathbf{x}_0 + \frac{\sqrt{\alpha_t}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_t}\mathbf{x}_t - \mu_\theta(\mathbf{x}_t, t)\Bigg\rVert^2\right] + C \qquad & \because \tilde{\mu}_t(\mathbf{x}_t, \mathbf{x}_0) = \frac{\sqrt{\bar{\alpha}_{t-1}}\beta_t}{1-\bar{\alpha}_t}\mathbf{x}_0 + \frac{\sqrt{\alpha_t}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_t}\mathbf{x}_t \\
 
-&= \sum_{t=2}^T\mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[-\log \frac{p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t)}{q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_{0})}\right] \qquad & \\
+&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{1}{2\sigma_t^2}\Bigg\lVert\frac{ {\color{Red}\sqrt{\bar{\alpha}_{t-1}}} \beta_t}{1-\bar{\alpha}_t}\cdot\frac{\mathbf{x}_t - \sqrt{1 - \bar{\alpha}_t}\epsilon}{\color{Red}\sqrt{\bar{\alpha}_t}} + \frac{\sqrt{\alpha_t}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_t}\mathbf{x}_t - \mu_\theta(\mathbf{x}_t, t)\Bigg\rVert^2\right] + C \qquad & \because \mathbf{x}_t = \sqrt{\bar{\alpha}_t}\mathbf{x}_0 + \sqrt{1 - \bar{\alpha}_t}\epsilon \Longrightarrow \mathbf{x}_0 = \frac{\mathbf{x}_t - \sqrt{1 - \bar{\alpha}_t}\epsilon}{\sqrt{\bar{\alpha}_t}}  \\
+
+&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{1}{2\sigma_t^2}\Bigg\lVert\frac{\beta_t}{1-\bar{\alpha}_t}\cdot\frac{ {\color{Blue}\mathbf{x}_t} - \sqrt{1 - \bar{\alpha}_t}\epsilon}{\color{Red}\sqrt{\alpha_t}} + \frac{\sqrt{\alpha_t}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_t}{\color{Blue}\mathbf{x}_t} - \mu_\theta(\mathbf{x}_t, t)\Bigg\rVert^2\right] + C \qquad & \\
+
+&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{1}{2\sigma_t^2}\Bigg\lVert\left(\frac{\beta_t}{(1-\bar{\alpha}_t) \cdot \sqrt{\alpha_t}} + \frac{\sqrt{\alpha_t}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_t}\right){\color{Blue}\mathbf{x}_t} - \frac{\beta_t\cdot {\color{Green}\sqrt{1 - \bar{\alpha}_t}}\epsilon}{ {\color{Green}(1-\bar{\alpha}_t)} \cdot \sqrt{\alpha_t}} - \mu_\theta(\mathbf{x}_t, t)\Bigg\rVert^2\right] + C \qquad & \\
+
+&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{1}{2\sigma_t^2}\Bigg\lVert\left(\frac{\beta_t}{(1-\bar{\alpha}_t) \cdot {\color{Orange}\sqrt{\alpha_t}}} + \frac{ {\color{Orange}\sqrt{\alpha_t}}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_t}\right)\mathbf{x}_t - \frac{\beta_t\cdot\epsilon}{ {\color{Green}\sqrt{1 - \bar{\alpha}_t}} \cdot {\color{Orange}\sqrt{\alpha_t}}} - \mu_\theta(\mathbf{x}_t, t)\Bigg\rVert^2\right] + C \qquad & \\
+
+&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{1}{2\sigma_t^2}\Bigg\lVert\frac{1}{ {\color{Orange}\sqrt{\alpha_t}}}\Bigg(\bigg(\frac{ {\color{Purple}\beta_t}}{1-\bar{\alpha}_t} + \frac{ {\color{Orange}\alpha_t}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_t}\bigg)\mathbf{x}_t - \frac{\beta_t\cdot\epsilon}{ \sqrt{1 - \bar{\alpha}_t}}\Bigg) - \mu_\theta(\mathbf{x}_t, t)\Bigg\rVert^2\right] + C \qquad & \\
+
+&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{1}{2\sigma_t^2}\Bigg\lVert\frac{1}{ \sqrt{\alpha_t}}\Bigg(\bigg(\frac{ {\color{Purple}1-\alpha_t}}{1-\bar{\alpha}_t} + \frac{ {\color{Brown}\alpha_t(1-\bar{\alpha}_{t-1})}}{1-\bar{\alpha}_t}\bigg)\mathbf{x}_t - \frac{\beta_t\cdot\epsilon}{ \sqrt{1 - \bar{\alpha}_t}}\Bigg) - \mu_\theta(\mathbf{x}_t, t)\Bigg\rVert^2\right] + C \qquad & \\
+
+&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{1}{2\sigma_t^2}\Bigg\lVert\frac{1}{ \sqrt{\alpha_t}}\Bigg(\bigg(\frac{ 1-\alpha_t}{1-\bar{\alpha}_t} + \frac{ {\color{Brown}\alpha_t-\bar{\alpha}_{t}}}{1-\bar{\alpha}_t}\bigg)\mathbf{x}_t - \frac{\beta_t\cdot\epsilon}{ \sqrt{1 - \bar{\alpha}_t}}\Bigg) - \mu_\theta(\mathbf{x}_t, t)\Bigg\rVert^2\right] + C \qquad & \\
+
+&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{1}{2\sigma_t^2}\Bigg\lVert\frac{1}{ \sqrt{\alpha_t}}\Bigg(\mathbf{x}_t - \frac{\beta_t}{ \sqrt{1 - \bar{\alpha}_t}}\cdot\epsilon\Bigg) - \mu_\theta(\mathbf{x}_t, t)\Bigg\rVert^2\right] + C \qquad & \\ &\propto \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{1}{2\sigma_t^2}\Bigg\lVert\frac{1}{ \sqrt{\alpha_t}}\Bigg(\mathbf{x}_t - \frac{\beta_t}{ \sqrt{1 - \bar{\alpha}_t}}\cdot\epsilon\Bigg) - \mu_\theta(\mathbf{x}_t, t)\Bigg\rVert^2\right] \qquad & \\
 
 \end{align}
 $$
 
-먼저 $p\_\theta(\mathbf{x}\_{t-1}\|\mathbf{x}\_t) = \mathcal{N}(\mathbf{x}\_{t-1}; \mu\_\theta(\mathbf{x}\_t, t), \Sigma\_\theta(\mathbf{x}\_t, t))$ for $1 < t \le T$에 대해서 논해보고자 합니다.
+🔎 변경된 $L\_{t-1}$에서 $\beta\_t$가 상수이고 $\mathbf{x}\_t$가 주어진 값이기 때문에 $\epsilon$을 예측하는 function approximator인 $\epsilon\_\theta$를 통해 최소화 할 수 있습니다.
 
-1. $\Sigma\_\theta(\mathbf{x}\_t, t)$
+🔎 즉 아래와 같이 $L\_{t-1}$을 다시 표현할 수 있습니다.
 
-   > 해당 논문의 저자들은 먼저 $\Sigma\_\theta(\mathbf{x}\_t, t)$를 학습하지 않아도 되는 time dependent constants인 $\sigma\_t^2\mathrm{I}$로 설정했습니다.  
-   > 이때 실험적으로 `1`번 : $\sigma\_t^2 = \beta\_t$과 `2`번 : $\sigma\_t^2 = \tilde{\beta}\_t = \frac{1 - \bar{\alpha}\_{t-1}}{1-\bar{\alpha}\_t}\cdot\beta\_t \cdots 2$의 결과가 비슷함을 발견했습니다.
-   > `1`번과 `2`번은 reverse process에 대한 upper bound와 lower bound에 해당합니다.([이전 연구](https://arxiv.org/abs/1503.03585))
+$$
+\begin{align}
 
-2. $\mu\_\theta(\mathbf{x}\_t, t)$
+L_{t-1}
 
-   > 알고 있는 정보들을 정리해보면 다음과 같습니다.
-   >
-   > > $p\_\theta(\mathbf{x}\_{t-1}\|\mathbf{x}\_t) = \mathcal{N}(\mathbf{x}\_{t-1}; \mu\_\theta(\mathbf{x}\_t, t), \sigma\_t^2\mathrm{I}) = \mathcal{N}(\mathbf{x}\_{t-1}; \mu\_\theta(\mathbf{x}\_t, t), \tilde{\beta}\_t\mathrm{I})$  
-   > > $q(\mathbf{x}\_{t-1}\|\mathbf{x}\_{t}, \mathbf{x}\_{0}) = \mathcal{N}(\mathbf{x}\_{t-1};\tilde{\mu}\_t(\mathbf{x}\_t, \mathbf{x}\_0), \tilde{\beta}\_t\mathrm{I})$
-   >
-   > 분산이 같은 두 가우시안 분포의 KL-Divergence를 구하면 아래와 같이 정리 가능합니다.
-   >
-   > > $L\_{t-1} = \mathbb{E}\_{\mathbf{x}\_T\ \sim\ q(\mathbf{x}\_T\|\mathbf{x}\_0)}\left[\frac{1}{2\sigma\_t^2}\lVert\tilde{\mu}\_t(\mathbf{x}\_t, \mathbf{x}\_0) - \mu\_\theta(\mathbf{x}\_t, t)\rVert^2\right] + C$  
-   > > $\qquad \text{where C is a constant that does not depend on }\theta$
-   >
-   > 즉, $\mu\_\theta$의 가장 간단한 parameterization은 forward process posteriro mean인 $\tilde{\mu}\_\theta$를 예측하는 모델임을 알 수 있습니다.
-   >
-   > $L\_{t-1}$을 reparameterization trick을 사용해 변경하면 아래와 같습니다.
-   >
-   > > $$\begin{align}L_{t-1}&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{1}{2\sigma_t^2}\lVert\tilde{\mu}_t(\mathbf{x}_t, \mathbf{x}_0) - \mu_\theta(\mathbf{x}_t, t)\rVert^2\right] + C \qquad & \\&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{1}{2\sigma_t^2}\Bigg\lVert\frac{\sqrt{\bar{\alpha}_{t-1}}\beta_t}{1-\bar{\alpha}_t}\mathbf{x}_0 + \frac{\sqrt{\alpha_t}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_t}\mathbf{x}_t - \mu_\theta(\mathbf{x}_t, t)\Bigg\rVert^2\right] + C \qquad & \because \tilde{\mu}_t(\mathbf{x}_t, \mathbf{x}_0) = \frac{\sqrt{\bar{\alpha}_{t-1}}\beta_t}{1-\bar{\alpha}_t}\mathbf{x}_0 + \frac{\sqrt{\alpha_t}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_t}\mathbf{x}_t \\&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{1}{2\sigma_t^2}\Bigg\lVert\frac{ {\color{Red}\sqrt{\bar{\alpha}_{t-1}}} \beta_t}{1-\bar{\alpha}_t}\cdot\frac{\mathbf{x}_t - \sqrt{1 - \bar{\alpha}_t}\epsilon}{\color{Red}\sqrt{\bar{\alpha}_t}} + \frac{\sqrt{\alpha_t}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_t}\mathbf{x}_t - \mu_\theta(\mathbf{x}_t, t)\Bigg\rVert^2\right] + C \qquad & \because \mathbf{x}_t = \sqrt{\bar{\alpha}_t}\mathbf{x}_0 + \sqrt{1 - \bar{\alpha}_t}\epsilon \Longrightarrow \mathbf{x}_0 = \frac{\mathbf{x}_t - \sqrt{1 - \bar{\alpha}_t}\epsilon}{\sqrt{\bar{\alpha}_t}}  \\&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{1}{2\sigma_t^2}\Bigg\lVert\frac{\beta_t}{1-\bar{\alpha}_t}\cdot\frac{ {\color{Blue}\mathbf{x}_t} - \sqrt{1 - \bar{\alpha}_t}\epsilon}{\color{Red}\sqrt{\alpha_t}} + \frac{\sqrt{\alpha_t}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_t}{\color{Blue}\mathbf{x}_t} - \mu_\theta(\mathbf{x}_t, t)\Bigg\rVert^2\right] + C \qquad & \\&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{1}{2\sigma_t^2}\Bigg\lVert\left(\frac{\beta_t}{(1-\bar{\alpha}_t) \cdot \sqrt{\alpha_t}} + \frac{\sqrt{\alpha_t}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_t}\right){\color{Blue}\mathbf{x}_t} - \frac{\beta_t\cdot {\color{Green}\sqrt{1 - \bar{\alpha}_t}}\epsilon}{ {\color{Green}(1-\bar{\alpha}_t)} \cdot \sqrt{\alpha_t}} - \mu_\theta(\mathbf{x}_t, t)\Bigg\rVert^2\right] + C \qquad & \\&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{1}{2\sigma_t^2}\Bigg\lVert\left(\frac{\beta_t}{(1-\bar{\alpha}_t) \cdot {\color{Orange}\sqrt{\alpha_t}}} + \frac{ {\color{Orange}\sqrt{\alpha_t}}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_t}\right)\mathbf{x}_t - \frac{\beta_t\cdot\epsilon}{ {\color{Green}\sqrt{1 - \bar{\alpha}_t}} \cdot {\color{Orange}\sqrt{\alpha_t}}} - \mu_\theta(\mathbf{x}_t, t)\Bigg\rVert^2\right] + C \qquad & \\&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{1}{2\sigma_t^2}\Bigg\lVert\frac{1}{ {\color{Orange}\sqrt{\alpha_t}}}\Bigg(\bigg(\frac{ {\color{Purple}\beta_t}}{1-\bar{\alpha}_t} + \frac{ {\color{Orange}\alpha_t}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_t}\bigg)\mathbf{x}_t - \frac{\beta_t\cdot\epsilon}{ \sqrt{1 - \bar{\alpha}_t}}\Bigg) - \mu_\theta(\mathbf{x}_t, t)\Bigg\rVert^2\right] + C \qquad & \\&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{1}{2\sigma_t^2}\Bigg\lVert\frac{1}{ \sqrt{\alpha_t}}\Bigg(\bigg(\frac{ {\color{Purple}1-\alpha_t}}{1-\bar{\alpha}_t} + \frac{ {\color{Brown}\alpha_t(1-\bar{\alpha}_{t-1})}}{1-\bar{\alpha}_t}\bigg)\mathbf{x}_t - \frac{\beta_t\cdot\epsilon}{ \sqrt{1 - \bar{\alpha}_t}}\Bigg) - \mu_\theta(\mathbf{x}_t, t)\Bigg\rVert^2\right] + C \qquad & \\&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{1}{2\sigma_t^2}\Bigg\lVert\frac{1}{ \sqrt{\alpha_t}}\Bigg(\bigg(\frac{ 1-\alpha_t}{1-\bar{\alpha}_t} + \frac{ {\color{Brown}\alpha_t-\bar{\alpha}_{t}}}{1-\bar{\alpha}_t}\bigg)\mathbf{x}_t - \frac{\beta_t\cdot\epsilon}{ \sqrt{1 - \bar{\alpha}_t}}\Bigg) - \mu_\theta(\mathbf{x}_t, t)\Bigg\rVert^2\right] + C \qquad & \\&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{1}{2\sigma_t^2}\Bigg\lVert\frac{1}{ \sqrt{\alpha_t}}\Bigg(\mathbf{x}_t - \frac{\beta_t}{ \sqrt{1 - \bar{\alpha}_t}}\cdot\epsilon\Bigg) - \mu_\theta(\mathbf{x}_t, t)\Bigg\rVert^2\right] + C \qquad & \\ &\propto \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{1}{2\sigma_t^2}\Bigg\lVert\frac{1}{ \sqrt{\alpha_t}}\Bigg(\mathbf{x}_t - \frac{\beta_t}{ \sqrt{1 - \bar{\alpha}_t}}\cdot\epsilon\Bigg) - \mu_\theta(\mathbf{x}_t, t)\Bigg\rVert^2\right] \qquad & \\\end{align}$$
-   >
-   > 변경된 $L\_{t-1}$에서 $\beta\_t$가 상수이고 $\mathbf{x}\_t$가 주어진 값이기 때문에 $\epsilon$을 예측하는 function approximator인 $\epsilon\_\theta$를 통해 최소화 할 수 있습니다. 즉 아래와 같이 $L\_{t-1}$을 다시 표현할 수 있습니다.
-   >
-   > > $$\begin{align}L_{t-1} &\propto \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{1}{2\sigma_t^2}\Bigg\lVert\frac{1}{ \sqrt{\alpha_t}}\Bigg(\mathbf{x}_t - \frac{\beta_t}{ \sqrt{1 - \bar{\alpha}_t}}\cdot\epsilon\Bigg) - \mu_\theta(\mathbf{x}_t, t)\Bigg\rVert^2\right] \qquad & \\ &= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{1}{2\sigma_t^2}\Bigg\lVert\frac{1}{ \sqrt{\alpha_t}}\Bigg(\mathbf{x}_t - \frac{\beta_t}{ \sqrt{1 - \bar{\alpha}_t}}\cdot\epsilon\Bigg) - \frac{1}{ \sqrt{\alpha_t}}\Bigg(\mathbf{x}_t - \frac{\beta_t}{ \sqrt{1 - \bar{\alpha}_t}}\cdot\epsilon_\theta\Bigg)\Bigg\rVert^2\right] \qquad & \\ &= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{\beta_t^2}{2\sigma_t^2\cdot\alpha_t\cdot(1-\bar{\alpha}_t)}\lVert\epsilon - \epsilon_\theta\rVert^2\right] \qquad & \\ &\propto \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\lVert\epsilon - \epsilon_\theta\rVert^2\right] \qquad & \because \text{Remove constant term}\\\end{align}$$
+&\propto \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{1}{2\sigma_t^2}\Bigg\lVert\frac{1}{ \sqrt{\alpha_t}}\Bigg(\mathbf{x}_t - \frac{\beta_t}{ \sqrt{1 - \bar{\alpha}_t}}\cdot\epsilon\Bigg) - \mu_\theta(\mathbf{x}_t, t)\Bigg\rVert^2\right] \qquad & \\
 
-진행중입니다....
+&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{1}{2\sigma_t^2}\Bigg\lVert\frac{1}{ \sqrt{\alpha_t}}\Bigg(\mathbf{x}_t - \frac{\beta_t}{ \sqrt{1 - \bar{\alpha}_t}}\cdot\epsilon\Bigg) - \frac{1}{ \sqrt{\alpha_t}}\Bigg(\mathbf{x}_t - \frac{\beta_t}{ \sqrt{1 - \bar{\alpha}_t}}\cdot\epsilon_\theta\Bigg)\Bigg\rVert^2\right] \qquad & \\
+
+&= \mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[\frac{\beta_t^2}{2\sigma_t^2\cdot\alpha_t\cdot(1-\bar{\alpha}_t)}\lVert\epsilon - \epsilon_\theta\rVert^2\right] \qquad & \\
+
+\end{align}
+$$
+
+🔎 이를 통해 Diffusion probability models와 denoising score matching with Langevin dynamics의 새로운 연결을 확인 할 수 있었습니다.
+
+> 🔎 Sampling 절차(Algorithm 2 - denoising score mtaching)는 data density의 학습된 기울기로서 $\epsilon\_\theta$을 갖는 Langevin dynamics(Variational bound for the Langevin-like reverse process)와 유사합니다.
+
+![](../../assets/img/Paper_Reading/DDPM/ddpm_15.jpg){: .normal}
+
+🔎 요약하자면 reverse process mean function approximator $\mu\_\theta$를 훈련하여 $\tilde{\mu}\_t$를 예측할 수 있으며 $\epsilon$을 예측하도록 훈련할 수 있습니다.
+
+🔎 $\epsilon$을 예측하도록 한 $\epsilon$-prediction parameterization이 Langevin dynamics와 유사한 것을 보여줬고 diffusion model의 variational bound를 denoising score matching과 유사한 objective로 단순화하는 것을 보여줬습니다.
+
+🔎 그럼에도 불구하고 $p\_\theta(\mathbf{x}\_{t-1}\|\mathbf{x}\_t)$의 또 다른 parameterization일 뿐이기 때문에 $\epsilon$-prediction과 $\tilde{\mu}\_t$-prediction을 비교해 $\epsilon$-prediction의 효과를 Section 4에서 ablation을 통해 검증합니다.
+
+### 3.3 Data scaling, reverse process decoder, and $L\_0$
+
+![](../../assets/img/Paper_Reading/DDPM/ddpm_16.jpg){: .normal}
+
+🔎 이미지의 구성 원소 $\{0, 1, \dots, 255\}$의 범위를 $[-1, 1]$로 변경함으로써 reverse process가 일관된 스케일의 입력에서 작동하도록 보장합니다.
+
+🔎 Discrete log likelihhod를 얻기 위해 reverse process의 마지막 과정을 Gaussian distirubtion($\mathcal{N}(\mathbf{x}\_{0}; \mu\_\theta(\mathbf{x}\_1, 1), \sigma\_1^2\mathrm{I})$)에서 파생된 독립적인 discrete decoder로 설정합니다.
+
+🔎 이러한 discrete log likelihood는 variational bound가 discrete data에 대해 lossless codelength을 보장합니다.
+
+🔎 Sampling이 끝나면 $\mu\_\theta(\mathbf{x}\_1, 1)$를 noise 없이 표시합니다.
+
+### 3.4 Simplified training objective
+
+![](../../assets/img/Paper_Reading/DDPM/ddpm_17.jpg){: .normal}
+
+🔎 결과적으로 학습을 진행해야 하는 부분은 $L_{t-1}$과 $L_0$임을 알 수 있는데 두 objective를 합쳐 표현할 수 있습니다.
+
+$$
+\begin{align}
+
+L_{\text{simple}}(\theta)
+
+&:= \mathbb{E}\left[\lVert\epsilon - \epsilon_\theta\rVert^2\right] \\
+
+&\text{where } t \text{ is uniform between } 1 \text{and } T
+
+\end{align}
+$$
+
+🔎 $t = 1$인 경우 $L\_0$에 해당하고 Gaussian probability density function을 approximation하는 discrete decoder를 integral한 것으로 생각할 수 있습니다.
+
+🔎 $t > 1$인 경우 $L_\{t-1}$에서 앞의 상수를 제거한 것으로 생각할 수 있습니다.
+
+🔎 $L_\{t-1}$에서 앞의 상수를 제거하기 때문에 denoising 작업에 더 집중할 수 있도록 network를 훈련 시키는 것을 Section 4에서 실험을 통해 보여줍니다.
