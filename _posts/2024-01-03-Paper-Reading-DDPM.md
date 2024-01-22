@@ -12,6 +12,18 @@ math: true
 
 해당 포스트에서는 [DDPM : Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2006.11239) 논문을 함께 읽어가도록 하겠습니다. 문장마다 해석을 하기 보다는 각 문단에서 중요한 부분을 요약하는 식으로 진행하겠습니다.
 
+Emoji의 의미는 아래와 같습니다.
+
+🔎 : 논문에 있는 내용
+
+💡 : 논문에 적혀있지 않은 사전지식
+
+💭 : 저의 생각
+
+⭐ : 중요한 내용
+
+✅ : 나중에 확인이 필요한 내용
+
 ## Abstract
 
 ![](../../assets/img/Paper_Reading/DDPM/ddpm_1.jpg){: .normal}
@@ -639,3 +651,103 @@ $$
 🔎 $t > 1$인 경우 $L_\{t-1}$에서 앞의 상수를 제거한 것으로 생각할 수 있습니다.
 
 🔎 $L_\{t-1}$에서 앞의 상수를 제거하기 때문에 denoising 작업에 더 집중할 수 있도록 network를 훈련 시키는 것을 Section 4에서 실험을 통해 보여줍니다.
+
+## 4. Experiments
+
+![](../../assets/img/Paper_Reading/DDPM/ddpm_18.jpg){: .normal}
+
+🔎 Time step $T = 1000$
+
+🔎 Forward process variances to constants increasing linearly ($\beta\_t = 10^{-4} \sim 0.02$)
+
+🔎 $\beta\_t$는 $[-1, 1]$로 scaling된 data에 비해 상대적으로 작게 선택되어 reverse process와 forward process가 거의 동일한 기능 형태를 가지면서 signal-to-noise ratio를 가능한 작게 $\mathbf{x}\_T$로 유지할 수 있습니다.
+
+> 💭 Signal-to-noise ratio를 가능한 작게 $\mathbf{x}\_T$로 유지한다는 것은 원래의 이미지를 찾을 수 없을 정도로 noise가 잘 추가된 것을 의미하는 것 같습니다.
+
+🔎 U-Net backbone (similar to an unmasked PixelCNN++) with group normalization 사용
+
+🔎 Transformer sinusoidal position embedding을 사용해서 parameter를 공유
+
+🔎 $16 \times 16$ feature map resolution에서 self-attetion 사용
+
+### 4.1 Sample quality
+
+![](../../assets/img/Paper_Reading/DDPM/ddpm_19.jpg){: .normal}
+
+### 4.2 Reverse process parameterization and training objective ablation
+
+![](../../assets/img/Paper_Reading/DDPM/ddpm_20.jpg){: .normal}
+
+🔎 $\tilde{\mu}$-prediction은 $L$을 단순화 하기 전에서만 잘 작동한다는 것을 발견
+
+🔎 $\Sigma\_\theta(\mathbf{x}\_t, t)$를 상수로 고정시키지 않고 학습시키는 경우 학습이 불안정하며 sample quality가 저하되는 것을 알 수 있었습니다.
+
+> 💡 상수로 고정 시킨 경우 notation : fixed isotropic $\Sigma$
+>
+> 💡 학습 대상인 경우 notation : learned diagonal $\Sigma$
+
+🔎 $\epsilon$-prediction은 $l\_{\text{simple}}$로 학습을 진행할 때 가장 좋은 결과를 얻었습니다.
+
+### 4.3 Progressive coding
+
+![](../../assets/img/Paper_Reading/DDPM/ddpm_21.jpg){: .normal}
+
+🔎 Train과 test 사이에 최대 $0.03$bits/dim 차이가 있지만 다른 likelihood-based model과 비슷한 차이이며 이는 diffusion model이 overfitting 되지 않았음을 알 수 있습니다.
+
+🔎 Diffusion (original)보다는 낮은 lossless codelengths를 가지지만 다른 likelihood-based model보다는 여전히 높은 lossless codelengths를 가집니다.
+
+🔎 그럼에도 불구하고 우리의 sample은 high quality이기 때문에 diffusion model은 훌륭한 lossy compressors를 만드는 inductive bias를 가지고 있다고 저자들은 결로 지었습니다.
+
+🔎 $L\_1 +\ \cdots\ + L\_T$를 rate로, $L\_0$를 distortion으로 처리하면 CIFAR10 model은 $1.78$bits/dim의 rate와 $1.97$bits/dim의 distortion을 가지며, 이는 $0$에서 $255$까지의 척도에서 $0.95$(MSE)에 해당합니다.
+
+🔎 또한 distortion이 lossless codelengths의 절반 이상을 차지하고 있습니다.($1.97 / 3.75$)
+
+#### 4.3.1 Progressive lossy compression
+
+![](../../assets/img/Paper_Reading/DDPM/ddpm_22.jpg){: .normal}
+
+🔎 Progressive lossy code를 통해 rate-distortion에 대해 더 조사했습니다.
+
+🔎 Receiver는 어느 $t$에서든지 부분 정보를 완전히 사용할 수 있으며 점진적으로 추정이 가능합니다.
+
+> 논문의 공식 4번에서 $\mathbf{x}\_0$로 식을 정리하면 아래와 같이 나타낼 수 있습니다.
+>
+> > $\mathbf{x}\_0 \approx \hat{\mathbf{x}}\_0 = (\mathbf{x}\_t - \sqrt{1 - \bar{\alpha}\_t}\epsilon) / \sqrt{\bar{\alpha}\_t}$
+
+🔎 Distortion(RMSE) : $\sqrt{\lVert\mathbf{x}\_0 - \hat{\mathbf{x}}\_0\rVert^2 / D}$
+
+> 🔎 Rate-distortion plot에서 rate가 작은 부분에서 distortion이 매우 급격하게 줄어들었는데 이것은 비트의 대부분이 실제로 감지할 수 없는 distortion에 할당되었음을 나타냅니다.
+
+🔎 Rate : Cumulative number of bits received so far at time $t$
+
+#### 4.3.2 Progressive generation
+
+![](../../assets/img/Paper_Reading/DDPM/ddpm_23.jpg){: .normal}
+
+🔎 Object의 형체가 먼저 나타나고 이후 detail 정보들이 나타납니다.
+
+🔎 이것들이 conceptual compression의 힌트일 것입니다.
+
+#### 4.3.3 Connection to autoregressive decoding
+
+![](../../assets/img/Paper_Reading/DDPM/ddpm_24.jpg){: .normal}
+
+🔎 논문의 공식 5번의 $L\_{t-1}$을 통해 Gaussian diffusion model을 좌표 순서를 reordering한 일종의 autoregressive model로 해석할 수 있습니다.
+
+🔎 Noise를 이미지에 추가할 때 Gaussian noise가 masking noise보다 자연스럽기 때문에 더 나은 효과를 보인 것 같습니다.
+
+🔎 또한 Gaussian diffusion length는 데이터 차원과 동일하지 않아도 되므로 빠른 sampling을 위해 더 짧게 또는 모델 표현성을 위해 더 길게 만들 수 있습니다.
+
+> 💭 Autoregressive model의 경우 데이터 차원과 동일할 수 밖에 없기 때문에 Gaussian diffusion의 장점을 말하는 것으로 보입니다.
+
+#### 4.3.4 Interpolation
+
+![](../../assets/img/Paper_Reading/DDPM/ddpm_25.jpg){: .normal}
+
+🔎 Image space : $\mathbf{x}\_0, \mathbf{x}\_0^\prime \sim q(\mathbf{x}\_0)$
+
+🔎 Diffused space : $\mathbf{x}\_t, \mathbf{x}\_t^\prime \sim q(\mathbf{x}\_t\|\mathbf{x}\_0)$
+
+🔎 Linearly interpolated latent : $\bar{\mathbf{x}}\_t = (1-\lambda)\mathbf{x}\_0 + \lambda\mathbf{x}\_0^\prime$
+
+🔎 Reverse process를 통해 image space로 보낸 결과 (최종 결과) : $\bar{\mathbf{x}}\_0 \sim p(\mathbf{x}\_0\|\bar{\mathbf{x}}\_t)$
