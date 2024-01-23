@@ -12,6 +12,8 @@ math: true
 
 해당 포스트에서는 [DDPM : Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2006.11239) 논문을 함께 읽어가도록 하겠습니다. 문장마다 해석을 하기 보다는 각 문단에서 중요한 부분을 요약하는 식으로 진행하겠습니다.
 
+논문의 핵심만 알고 싶으신 분은 [Paper Review](https://jjjuuuun.github.io/posts/Paper-Review-DDPM/)으로 이동해주세요!
+
 Emoji의 의미는 아래와 같습니다.
 
 🔎 : 논문에 있는 내용
