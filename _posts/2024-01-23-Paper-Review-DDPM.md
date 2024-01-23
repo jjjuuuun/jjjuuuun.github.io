@@ -43,7 +43,7 @@ DDPM의 Objective function을 구하는 과정을 간단히 한 번 살펴보겠
    \end{align}
    $$
 
-4. $beta\_t$를 constant로 고정하면서 학습해야하는 term이 줄어듬
+4. $\beta\_t$를 constant로 고정하면서 학습해야하는 term이 줄어듬
 
    $$
    \begin{align}
