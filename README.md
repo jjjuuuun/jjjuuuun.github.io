@@ -95,6 +95,7 @@
 
 - Generative Model
   - [StyleGAN](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Paper-Review-StyleGAN.md)
+  - [DDPM](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2024-01-03-Paper-Review-DDPM.md)
 - Object Detection
   - [RCNN](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Paper-Review-RCNN.md)
   - [DETR](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-10-29-Paper-Review-DETR.md)
