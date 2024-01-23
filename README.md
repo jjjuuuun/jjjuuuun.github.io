@@ -94,18 +94,18 @@
 ### 3.3.1 Computer Vision
 
 - Generative Model
-  - [StyleGAN](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-StyleGAN.md)
+  - [StyleGAN](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Paper-Review-StyleGAN.md)
 - Object Detection
-  - [RCNN](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-RCNN.md)
-  - [DETR](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-10-29-DETR.md)
+  - [RCNN](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Paper-Review-RCNN.md)
+  - [DETR](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-10-29-Paper-Review-DETR.md)
 - Classification
-  - [ViT](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-30-ViT.md)
+  - [ViT](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-30-Paper-Review-ViT.md)
 
 ### 3.3.2 NLP
 
 - Generative Model
-  - [Seq2Seq](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-28-Seq2Seq.md)
-  - [Transformer](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-07-Transformer.md)
+  - [Seq2Seq](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-28-Paper-Review-Seq2Seq.md)
+  - [Transformer](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-07-Paper-Review-Transformer.md)
 
 ## 3.4 Evaluation
 
