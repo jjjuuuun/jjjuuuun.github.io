@@ -154,7 +154,7 @@ DDPM의 Objective function을 구하는 과정을 간단히 한 번 살펴보겠
 ### 1.3 Training을 위한 objective function과 Sampling을 코드로 나타내면 아래와 같습니다.
 
 ```python
-class ddpm:
+class DDPM:
     def __init__(self, ddpm: nn.Module, T: int, device:torch.device):
         super().__init__()
 
