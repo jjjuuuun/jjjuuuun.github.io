@@ -2,7 +2,7 @@
 layout: post
 title: "[Generative Model] DDPM : Denoising Diffusion Probabilistic Models"
 author: kjy
-date: 2024-01-03 16:00:00 +09:00
+date: 2024-01-23 17:00:00 +09:00
 categories: [Deep Learning, Paper Review]
 tags: [Deep Learning, Paper Review, Computer Vision, Generative Model]
 comments: true
