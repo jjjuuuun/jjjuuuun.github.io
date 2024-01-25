@@ -647,9 +647,9 @@ class UNet(nn.Module):
         return x
 ```
 
-## 3. Inference
+## 3. DDPM의 Inference
 
-`DDPM` 클래스를 정의할 때 `p_sample`을 단계적으로 실행해 생성되는 이미지를 확인할 수 있습니다.
+`DDPM`클래스의 정의해둔 sampling 함수 `p_sample`을 단계적으로 실행해 생성되는 이미지를 확인할 수 있습니다.
 
 먼저 위에서 정의한 `U-Net`과 `DDPM`을 정의해주고 필요한 파라미터들을 함께 정의해줍니다.
 
@@ -686,7 +686,7 @@ for t in reversed(range(T)):
 result = xt
 ```
 
-## 4. Interpolation
+## 4. DDPM의 Interpolation
 
 생성 모델의 가장 큰 장점이라 하면 dataset에 없는 이미지를 만들어 내는 것이 아닐까 싶습니다. Dataset 분포에 없는 이미지를 만들기 위해서 interpolation 방법을 사용할 수 있습니다.
 
@@ -730,6 +730,14 @@ for t_ in reversed(range(interpolation_t)):
 # Result
 result = xt
 ```
+
+# 5. Conclusion
+
+- Gaussian distribution parameterization과 time scheduler $\beta\_t$를 상수로 둠으로써 학습이 더 간단해지고 sampling 하는 과정이 denoising score matching with Langevin dynamics와 유사해짐에 따라 높은 품질의 sample을 생성할 수 있게 되었습니다.
+
+- 해당 논문에 등장하는 개념이 많아 복잡하기는 하지만 하나씩 이해하다 보면 좋은 공부가 되는 것 같습니다.
+
+- 궁금한 점으로는 sampling을 더 단순화 할 수 있지는 않을까 싶습니다. 이러한 내용에 대해 많은 연구가 진행되었다고 하니 추후에 공부를 해볼 예정입니다.
 
 ## ※ Reference
 
