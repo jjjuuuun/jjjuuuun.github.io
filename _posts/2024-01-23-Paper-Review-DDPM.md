@@ -706,7 +706,7 @@ Dataset에 존재하는 두 이미지를 $x^1\_0$과 $x^2\_0$라 하고 두 이�
 
 이 때 $t$에 어떤 값을 주는지에 따라 interpolation 결과가 달라지며 $t$가 커질수록 더 다양한 interpolation이 되며 따라서 새로운 결과를 많이 확인할 수 있습니다.
 
-※ [Inference](#3-inference)에서 사용한 변수들을 그대로 사용했습니다.
+※ [Inference](#3-ddpm의-inference)에서 사용한 변수들을 그대로 사용했습니다.
 
 ```python
 # Dataset에 있는 이미지라 가정
