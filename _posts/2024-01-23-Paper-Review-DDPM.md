@@ -731,7 +731,7 @@ for t_ in reversed(range(interpolation_t)):
 result = xt
 ```
 
-# 5. Conclusion
+## 5. Conclusion
 
 - Gaussian distribution parameterization과 time scheduler $\beta\_t$를 상수로 둠으로써 학습이 더 간단해지고 sampling 하는 과정이 denoising score matching with Langevin dynamics와 유사해짐에 따라 높은 품질의 sample을 생성할 수 있게 되었습니다.
 
