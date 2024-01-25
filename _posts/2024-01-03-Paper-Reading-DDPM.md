@@ -464,9 +464,9 @@ $$D_{KL}(Q|P) = \mathbb{E}_{\mathbf{x}\ \sim\ Q(\mathbf{x})}\left[-\log \frac{P(
 
 🔎 Diffusion models : 제약이 있는 latent variable models의 한 종류로 보일 수 있지만 구현에서 <u>많은 자유도</u>를 허용합니다.
 
-> Forward process(Diffusion process)의 variances $\beta\_t$([Section 3.1](#31-forward-process-and))
+> Forward process(Diffusion process)의 variances $\beta\_t$([Section 3.1](#31-forward-process-and-l_t))
 >
-> Reverse process의 Gaussian distribution parameterization([Section 3.2, 3.3, 3.4](#32-reverse-process-and))
+> Reverse process의 Gaussian distribution parameterization([Section 3.2, 3.3, 3.4](#32-reverse-process-and-l_1t-1))
 >
 > Model Architecture([Section 4](#4-experiments))
 
