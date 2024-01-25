@@ -724,8 +724,8 @@ lambda_ = .5
 xt = (1 - lambda_) * ddpm.q_sample(x1_0, t) + lambda_ * ddpm.q_sample(x2_0, t)
 
 # Generate interpolation images
-for t in reversed(range(T)):
-    xt = ddpm.p_sample(xt, xt.new_full((n_samples, ), t, dtype=torch.long))
+for t_ in reversed(range(interpolation_t)):
+    xt = ddpm.p_sample(xt, xt.new_full((n_samples, ), t_, dtype=torch.long))
 
 # Result
 result = xt
