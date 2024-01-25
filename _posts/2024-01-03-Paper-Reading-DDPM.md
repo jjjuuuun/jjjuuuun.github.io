@@ -742,7 +742,7 @@ $$
 
 > 💭 Autoregressive model의 경우 데이터 차원과 동일할 수 밖에 없기 때문에 Gaussian diffusion의 장점을 말하는 것으로 보입니다.
 
-#### 4.3.4 Interpolation
+### 4.4 Interpolation
 
 ![](../../assets/img/Paper_Reading/DDPM/ddpm_25.jpg){: .normal}
 
