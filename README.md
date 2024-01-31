@@ -86,6 +86,7 @@
   - [Pix2Pix](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-26-Paper-Reading-Pix2Pix.md)
   - [CycleGAN](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2024-01-02-Paper-Reading-CycleGAN.md)
   - [DDPM](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2024-01-03-Paper-Reading-DDPM.md)
+  - [DDIM](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2024-01-31-Paper-Reading-DDIM.md)
 
 ### 3.2.2 NLP
 
