@@ -28,7 +28,7 @@ DDPM의 Objective function을 구하는 과정을 간단히 한 번 살펴보겠
 
 2. NLL을 variational inference를 통해 Negative ELBO term을 최소화하는 문제로 변경
 
-   $$\mathbb{E}_\left[-\log\ p_\theta(\mathbf{x}_0)\right] \le \mathbb{E}_q\left[-\log\ \frac{p(\mathbf{x}_{0:T})}{q(\mathbf{x}_{1:T}|\mathbf{x}_0)}\right] = \mathbb{E}_q\left[-\log\ p(\mathbf{x}_T) -\sum_{t=1}^T\log \frac{p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t)}{q(\mathbf{x}_t|\mathbf{x}_{t-1})}\right] =: L$$
+   $$\mathbb{E}\left[-\log\ p_\theta(\mathbf{x}_0)\right] \le \mathbb{E}_q\left[-\log\ \frac{p(\mathbf{x}_{0:T})}{q(\mathbf{x}_{1:T}|\mathbf{x}_0)}\right] = \mathbb{E}_q\left[-\log\ p(\mathbf{x}_T) -\sum_{t=1}^T\log \frac{p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t)}{q(\mathbf{x}_t|\mathbf{x}_{t-1})}\right] =: L$$
 
 3. $\mathbf{x}\_0$를 condition으로 추가
 
