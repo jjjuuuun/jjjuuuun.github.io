@@ -10,11 +10,9 @@ toc: true
 math: true
 ---
 
-해당 포스트에서는 [DDPM : Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2006.11239) 논문에서 핵심적인 부분들을 코드와 함께 알아보겠습니다.
+해당 포스트에서는 [DDPM : Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2006.11239) 논문에서 핵심적인 부분들을 코드와 함께 알아보겠습니다. [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1iKDLKzQulE98Ay5BZ2CgT8B60uDDyajL?usp=sharing)
 
 논문을 전체적으로 읽고 싶으신 분은 [Paper Reading](https://jjjuuuun.github.io/posts/Paper-Reading-DDPM/)으로 이동해주세요!
-
-[Colab](https://colab.research.google.com/drive/1iKDLKzQulE98Ay5BZ2CgT8B60uDDyajL?usp=sharing)에서 코드 한 번에 보기
 
 ## 1. DDPM의 Training & Sampling
 
