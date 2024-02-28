@@ -377,7 +377,7 @@ L
 
 &= {\color{Red}\mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[-\log \frac{p(\mathbf{x}_T)}{q(\mathbf{x}_{T}|\mathbf{x}_{0})}\right]} + \sum_{t=2}^T{\color{Green}\mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[-\log \frac{p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t)}{q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_{0})}\right]} + {\color{Blue}\mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[- \log\ p_\theta(\mathbf{x}_{0}|\mathbf{x}_1)\right]} \qquad & \tag{10}\\
 
-&= {\color{Red}D_{KL}(q(\mathbf{x}_T|\mathbf{x}_0)||p(\mathbf{x}_T))} + \sum_{t=2}^T {\color{Green}D_{KL}(q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_{0}) || p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t))} + {\color{Blue}\mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[- \log\ p_\theta(\mathbf{x}_{0}|\mathbf{x}_1)\right]} \qquad & \because D_{KL}(Q|P) = \mathbb{E}_{\mathbf{x}\ \sim\ Q(\mathbf{x})}\left[-\log \frac{P(\mathbf{x})}{Q(\mathbf{x})}\right]\qquad (\text{Rao-Blackwellized fasion})\tag{11}\\
+&= {\color{Red}D_{KL}(q(\mathbf{x}_T|\mathbf{x}_0)||p(\mathbf{x}_T))} + \sum_{t=2}^T {\color{Green}D_{KL}(q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_{0}) || p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t))} + {\color{Blue}\mathbb{E}_{\mathbf{x}_T\ \sim\ q(\mathbf{x}_T|\mathbf{x}_0)}\left[- \log\ p_\theta(\mathbf{x}_{0}|\mathbf{x}_1)\right]} \qquad & \because D_{KL}(Q|P) = \mathbb{E}_{\mathbf{x}\ \sim\ Q(\mathbf{x})}\left[-\log \frac{P(\mathbf{x})}{Q(\mathbf{x})}\right] = - \sum Q(\mathbf{x})\left(\log \frac{P(\mathbf{x})}{Q(\mathbf{x})}\right) \qquad \tag{11}\\
 
 &= {\color{Red}L_T} + \sum_{t=2}^T {\color{Green}L_{t-1}} + {\color{Blue}L_0} \qquad & \tag{12}\\
 
@@ -455,8 +455,6 @@ $$
 $$
 
 🔎 결과적으로 optimization function $L$의 모든 $D_{KL}$은 gaussian distribution 비교이므로 high variance Monte Carlo estimates 대신 closed form을 사용하여 Rao-Blackwellized 방식으로 계산할 수 있습니다.
-
-$$D_{KL}(Q|P) = \mathbb{E}_{\mathbf{x}\ \sim\ Q(\mathbf{x})}\left[-\log \frac{P(\mathbf{x})}{Q(\mathbf{x})}\right]$$
 
 ## 3. Diffusion models and denoising autoencoders
 
