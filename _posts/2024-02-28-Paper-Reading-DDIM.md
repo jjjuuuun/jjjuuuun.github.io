@@ -56,9 +56,9 @@ Emoji의 의미는 아래와 같습니다.
 
 🔎 DDIM은 DDPM의 objective function과 같은 objective function을 통해 학습을 진행합니다. ([Section 3](#3-variational-inference-for-non-markovian-forward-process))
 
-🔎 Diffusion process에서 DDPM과 달리 non-Markovian을 사용합니다. ([Section 4.1]())
+🔎 Diffusion process에서 DDPM과 달리 non-Markovian을 사용합니다. ([Section 4.1](#41-denoising-diffusion-implicit-models))
 
-🔎 Reverse process는 그대로 Markov chains을 사용하는데 짧은 Markov chains 사용합니다. ([Section 4.2]())
+🔎 Reverse process는 그대로 Markov chains을 사용하는데 짧은 Markov chains 사용합니다. ([Section 4.2](#42-accelerated-generation-processes))
 
 🔎 DDPM보다 나은 결과 ([Section 5]())
 
@@ -266,7 +266,7 @@ $$
    \begin{align}
    q_{\sigma}(\mathbf{x}_{t-1}|\mathbf{x}_{t}, \hat{\mathbf{x}}_{0})
    &= q_{\sigma}(\mathbf{x}_{t-1}|\mathbf{x}_{t}, f_\theta^{(t)}(\mathbf{x}_t)) \\
-   &= \mathcal{N}\big(\sqrt{\alpha_{t-1}}\mathbf{x}_0 + \sqrt{1-\alpha_{t-1} - \sigma^2_t}\cdot \frac{\mathbf{x}_t - \sqrt{\alpha_t}f_{\theta}^{(t)}(\mathbf{x}_{t})}{\sqrt{1-\alpha_t}}, \sigma^2_t\mathrm{I}\big)
+   &= \mathcal{N}\big(\sqrt{\alpha_{t-1}}f_{\theta}^{(t)}(\mathbf{x}_{t}) + \sqrt{1-\alpha_{t-1} - \sigma^2_t}\cdot \frac{\mathbf{x}_t - \sqrt{\alpha_t}f_{\theta}^{(t)}(\mathbf{x}_{t})}{\sqrt{1-\alpha_t}}, \sigma^2_t\mathrm{I}\big)
    \end{align}
    $$
 
@@ -349,4 +349,189 @@ $$
 
 ## 4. Sampling From Generalized Generative Processes
 
-진행 중...
+![](../../assets/img/Paper_Reading/DDIM/ddim_10.jpg){: .normal}
+
+🔎 Objective function $L\_1$을 사용해서 Markov process와 Non-Markovian forward process를 학습합니다.
+
+🔎 그렇기 때문에 pretrained DDPM을 $L\_1$에 대한 해결책으로 사용할 수 있고 $\sigma$를 변경하여 새로운 generative process를 찾을 수 있습니다.
+
+### 4.1 Denoising Diffusion Implicit Models
+
+![](../../assets/img/Paper_Reading/DDIM/ddim_11.jpg){: .normal}
+
+🔎 $\epsilon\_{t} \sim \mathcal{N}(\mathrm{0}, \mathrm{I})$가 $\mathbf{x}\_t$와 독립적이고 $\alpha\_{0} := 1$이라 할 때 $\mathbf{x}\_t$로부터 $\mathbf{x}\_{t-1}$을 생성하는 식은 아래와 같습니다.
+
+$$
+\begin{align}
+q_{\sigma}(\mathbf{x}_{t-1}|\mathbf{x}_{t}, \hat{\mathbf{x}}_{0})
+&= q_{\sigma}(\mathbf{x}_{t-1}|\mathbf{x}_{t}, f_\theta^{(t)}(\mathbf{x}_t)) & \qquad \\
+
+&= \mathcal{N}\big(\sqrt{\alpha_{t-1}}f_{\theta}^{(t)}(\mathbf{x}_{t}) + \sqrt{1-\alpha_{t-1} - \sigma^2_t}\cdot \frac{\mathbf{x}_t - \sqrt{\alpha_t}f_{\theta}^{(t)}(\mathbf{x}_{t})}{\sqrt{1-\alpha_t}}, \sigma^2_t\mathrm{I}\big) & \qquad \\
+
+&= \sqrt{\alpha_{t-1}}f_{\theta}^{(t)}(\mathbf{x}_{t}) + \sqrt{1-\alpha_{t-1} - \sigma^2_t}\cdot \frac{\mathbf{x}_t - \sqrt{\alpha_t}f_{\theta}^{(t)}(\mathbf{x}_{t})}{\sqrt{1-\alpha_t}} + \sigma_t \epsilon_t & \qquad \\
+
+&= \sqrt{\alpha_{t-1}}\Bigg(\frac{\mathbf{x}_t - \sqrt{1-\alpha_{t}}\cdot \epsilon_{\theta}^{t}(\mathbf{x}_{t})}{\sqrt{\alpha_{t}}} \Bigg) + \sqrt{1-\alpha_{t-1} - \sigma^2_t}\cdot \frac{\mathbf{x}_t - \sqrt{\alpha_t}\big(\frac{\mathbf{x}_t - \sqrt{1-\alpha_{t}}\cdot \epsilon_{\theta}^{t}(\mathbf{x}_{t})}{\sqrt{\alpha_{t}}} \big)}{\sqrt{1-\alpha_t}} + \sigma_t \epsilon_t & \qquad \because f_{\theta}^{(t)}(\mathbf{x}_{t}) = \frac{\mathbf{x}_t - \sqrt{1-\alpha_{t}}\cdot \epsilon_{\theta}^{t}(\mathbf{x}_{t})}{\sqrt{\alpha_{t}}}\\
+
+&= \sqrt{\alpha_{t-1}}\underset{\text{"predicted }\mathbf{x}_{0}\text{"}}{\underbrace{\bigg(\frac{\mathbf{x}_{t} - \sqrt{1-\alpha_{t}}\epsilon^{(t)}_{\theta}(\mathbf{x}_{t})}{\sqrt{\alpha_{t}}}\bigg)}}\ +\ \underset{\text{"direction pointing to }\mathbf{x}_{t}\text{"}}{\underbrace{\sqrt{1 - \alpha_{t-1} - \sigma^{2}_{t}}\ \cdot\ \epsilon^{(t)}_{\theta}(\mathbf{x}_{t})}}\ +\ \underset{\text{random noise}}{\underbrace{\sigma_{t}\epsilon_{t}}} & \qquad \\
+
+
+\end{align}
+$$
+
+🔎 위에서 생각했던 것처럼 $\sigma$를 다르게 선택하면 다른 generative process가 발생하므로 모델을 다시 학습시켜야 합니다.
+
+🔎 $\sigma\_t$를 $\sqrt{(1-\alpha\_{t-1})/(1-\alpha\_{t})}\sqrt{1-\alpha_{t}/\alpha\_{t-1}}$로 설정했을 때 forward process와 generative process는 DDPM이 됩니다.
+
+> 💡 $\sigma\_{t} = \sqrt{(1-\alpha\_{t-1})/(1-\alpha\_{t})}\sqrt{1-\alpha\_{t}/\alpha\_{t-1}}$은 DDPM에서 $\sigma\_{t}$ 값으로 사용하는 $\tilde{\beta}\_t$를 DDIM에서 사용하는 notation으로 변경한 식
+
+🔎 $\sigma\_t = 0$일 때 살펴보겠습니다.
+
+- $\mathbf{x}\_{t-1}$과 $\mathbf{x}\_{0}$가 주어졌을 때 forward process는 deterministic이 됩니다.
+
+- Random noise($\sigma\_t\epsilon\_t$)에서 $\epsilon\_t$의 계수가 0이 됩니다.
+
+- Resulting model은 implicit probabilistic model이 되며 sample은 고정된 절차로 latent variables에서 생성됩니다.
+
+💭 $\sigma\_t = 0$으로 학습된 모델은 하나의 sample을 생성할 때 DDPM과 달리 고정된 latent를 가진다는 의미인 것 같습니다.
+
+### 4.2 Accelerated Generation Processes
+
+![](../../assets/img/Paper_Reading/DDIM/ddim_12.jpg){: .normal}
+
+🔎 Denoising objective $L\_1$은 $q\_\sigma(\mathbf{x}\_t\|\mathbf{x}\_0)$가 고정되어 있는 한 특정 forward procedure에 의존하지 않습니다.
+
+> 💭 특정 forward procedure에 의존하지 않는 다는 것을 두 가지 측면으로 생각해 볼 수 있을 것 같습니다.
+>
+> 1.  $q\_{\sigma}(\mathbf{x}\_{t-1}\|\mathbf{x}\_{t}, \mathbf{x}\_{0})$을 의미적으로 생각해보기
+>     > $$q_{\sigma}(\mathbf{x}_{t-1}|\mathbf{x}_{t}, \hat{\mathbf{x}}_{0}) = \sqrt{\alpha_{t-1}}\underset{\text{"predicted }\mathbf{x}_{0}\text{"}}{\underbrace{f_{\theta}^{(t)}(\mathbf{x}_{t})}}\ +\ \underset{\text{"direction pointing to }\mathbf{x}_{t}\text{"}}{\underbrace{\sqrt{1 - \alpha_{t-1} - \sigma^{2}_{t}}\ \cdot\ \epsilon^{(t)}_{\theta}(\mathbf{x}_{t})}}\ +\ \underset{\text{random noise}}{\underbrace{\sigma_{t}\epsilon_{t}}}$$
+>     >
+>     > - 위의 식은 Prdicted $\mathbf{x}\_0$, Direction pointing to $\mathbf{x}\_t$, Random noise로 구분됩니다.
+>     >
+>     > - $\mathbf{x}\_0$를 예측하고 예측된 $\mathbf{x}\_0$을 $\mathbf{x}\_t$의 방향으로 이동시킨 후 random noise를 추가해서 $\mathbf{x}\_{t-1}$을 구한다고 생각할 수 있습니다.
+>     >
+>     > - 그렇다면 $\mathbf{x}\_0$를 예측하고 $\mathbf{x}\_t$를 구하기만 한다면 random noise를 조절함으로써 $\mathbf{x}\_{t-1}$ 뿐만 아니라 $\mathbf{x}\_{t-2}$도 구할 수 있을 것이기 때문에 denoising objective는 특정 forward procedure에 의존하지 않는다라고 할 수 있을 것 같습니다.
+> 2.  $q\_{\sigma}(\mathbf{x}\_{t-1}\|\mathbf{x}\_{t}, \mathbf{x}\_{0})$가 어떻게 정의 되었는지 수식적으로 살펴보기
+>     > - 이전에 $q\_{\sigma}(\mathbf{x}\_{t}\|\mathbf{x}\_{0})$가 모든 $t$에 대해서 만족함을 보일 때 $q\_{\sigma}(\mathbf{x}\_{t-1}\|\mathbf{x}\_{t}, \mathbf{x}\_{0})$가 아닌 $q\_{\sigma}(\mathbf{x}\_{t-2}\|\mathbf{x}\_{t}, \mathbf{x}\_{0}) = \mathcal{N}\big(\sqrt{\alpha\_{t-2}}\mathbf{x}\_0 + \sqrt{1-\alpha\_{t-2} - \sigma^2\_t}\cdot \frac{\mathbf{x}\_t - \sqrt{\alpha\_t}\mathbf{x}\_0}{\sqrt{1-\alpha\_t}}, \sigma^2\_t\mathrm{I}\big)$라고 했을 때 $q\_{\sigma}(\mathbf{x}\_{t-1}\|\mathbf{x}\_{0})$이 아닌 $q\_{\sigma}(\mathbf{x}\_{t-2}\|\mathbf{x}\_{0})$를 구할 수 있습니다.
+>     >
+>     > - 해당 식을 subsequence에 대해 Bayes'rule로 처음 inference process(forward process)를 정의한 후 generative process를 정의하게 되면 $T$보다 짦은 subsequence 길이 만큼만으로도 sample을 만들 수 있습니다.
+>     >
+>     > - 그렇기 때문에 $q\_\sigma(\mathbf{x}\_t\|\mathbf{x}\_0)$만 변경하지 않으면 (고정되어 있으면) denoising objective는 특정 forward procedure에 의존하지 않게 됩니다.
+
+### 4.3 Relevance to Neural ODEs
+
+![](../../assets/img/Paper_Reading/DDIM/ddim_13.jpg){: .normal}
+
+🔎 DDIM은 diffusion을 discrete하게 사용하기 때문에 미분 방정식이라 보긴 힘들지만 Euler's method를 사용할 수 있는 sampling 형태를 가지고 있습니다.
+
+- Sampling
+
+  $$\mathbf{x}_{t-1} = \sqrt{\alpha_{t-1}}{\bigg(\frac{\mathbf{x}_{t} - \sqrt{1-\alpha_{t}}\epsilon^{(t)}_{\theta}(\mathbf{x}_{t})}{\sqrt{\alpha_{t}}}\bigg)}\ +\ \sqrt{1 - \alpha_{t-1} - \sigma^{2}_{t}}\ \cdot\ \epsilon^{(t)}_{\theta}(\mathbf{x}_{t})\ +\ \sigma_{t}\epsilon_{t}$$
+
+- DDIM은 sampling 식에서 $\sigma\_t = 0$으로 두어야 합니다.
+
+  $$
+  \begin{align}
+  \frac{\mathbf{x}_{t-1}}{\sqrt{\alpha_{t-1}}}
+  &= \frac{\mathbf{x}_{t} - \sqrt{1-\alpha_{t}}\epsilon^{(t)}_{\theta}(\mathbf{x}_{t})}{\sqrt{\alpha_{t}}} + \frac{\sqrt{1 - \alpha_{t-1}}\ \cdot\ \epsilon^{(t)}_{\theta}(\mathbf{x}_{t})}{\sqrt{\alpha_{t-1}}} \\
+  &= \frac{\mathbf{x}_{t}}{\sqrt{\alpha_{t}}} + \Bigg(\frac{\sqrt{1 - \alpha_{t-1}}}{\sqrt{\alpha_{t-1}}} - \frac{\sqrt{1-\alpha_{t}}}{\sqrt{\alpha_{t}}}\Bigg)\cdot \epsilon^{(t)}_{\theta}(\mathbf{x}_{t})
+  \end{align}
+  $$
+
+- Discrete하기 때문에 시간 간격을 전부 $\Delta$로 바꿔줍니다.
+
+  $$\frac{\mathbf{x}_{t - \Delta t}}{\sqrt{\alpha_{t-\Delta t}}} = \frac{\mathbf{x}_{t}}{\sqrt{\alpha_{t}}} + \Bigg(\sqrt{\frac{1-\alpha_{t-\Delta t}}{\alpha_{t-\Delta t}}} - \sqrt{\frac{1-\alpha_{t}}{\alpha_{t}}} \Bigg)\cdot \epsilon^{(t)}_{\theta}(\mathbf{x}_{t})$$
+
+- Euler's method를 적용하기 위한 ODE로 만들기 위해 reparameterization을 합니다.
+
+  $$\frac{\sqrt{1-\alpha}}{\sqrt{\alpha}} = \sigma\ , \qquad \frac{\mathbf{x}}{\sqrt{\alpha}} = \bar{\mathbf{x}}$$
+
+- Discrete한 sampling 식에 reaparameterization을 적용합니다.
+
+  $$
+  \begin{align}
+  \frac{\mathbf{x}_{t - \Delta t}}{\sqrt{\alpha_{t-\Delta t}}}\qquad
+  =\qquad &\frac{\mathbf{x}_{t}}{\sqrt{\alpha_{t}}} + \Bigg(\sqrt{\frac{1-\alpha_{t-\Delta t}}{\alpha_{t-\Delta t}}} - \sqrt{\frac{1-\alpha_{t}}{\alpha_{t}}} \Bigg)\cdot \epsilon^{(t)}_{\theta}(\mathbf{x}_{t}) \\
+
+  \frac{\mathbf{x}_{t - \Delta t}}{\sqrt{\alpha_{t-\Delta t}}} - \frac{\mathbf{x}_{t}}{\sqrt{\alpha_{t}}}\qquad
+  =\qquad &\Bigg(\sqrt{\frac{1-\alpha_{t-\Delta t}}{\alpha_{t-\Delta t}}} - \sqrt{\frac{1-\alpha_{t}}{\alpha_{t}}} \Bigg)\cdot \epsilon^{(t)}_{\theta}(\mathbf{x}_{t}) \\
+
+  \mathrm{d}\bar{\mathbf{x}}(t)\qquad
+  =\qquad &\mathrm{d}\sigma(t)\cdot \epsilon^{(t)}_{\theta}(\mathbf{x}_{t}) \\
+
+  \mathrm{d}\bar{\mathbf{x}}(t)\qquad
+  =\qquad & \epsilon^{(t)}_{\theta}(\mathbf{x}_{t}) \mathrm{d}\sigma(t)\\
+
+  \mathrm{d}\bar{\mathbf{x}}(t)\qquad
+  =\qquad & \epsilon^{(t)}_{\theta}\Bigg(\frac{\bar{\mathbf{x}}}{\sqrt{\sigma^2 + 1}}\Bigg) \mathrm{d}\sigma(t)\\
+  \end{align}
+  $$
+
+🔎 수정한 sampling 식은 ODE이므로 Euler's method를 적용할 수 있습니다. 이 때 초기값은 매우 큰 $\sigma(T)$에 대하여 $\mathbf{x}(T) \sim \mathcal{N}(0, \sigma(T))$입니다.
+
+🔎 이는 discretization step이 충분하면 $\mathbf{x}\_{0}$를 $\mathbf{x}\_{T}$로 인코딩 하고 위의 수정된 sampling 식의 역을 통해 디코딩 할 수 있음을 의미 합니다.
+
+🔎 또한 $\mathbf{x}\_{0}$의 인코딩 값 $\mathbf{x}\_{T}$을 얻을 수 있다는 것은 모델의 latent representations를 필요로 하는 다른 downstream applications에 유용할 수 있습니다.
+
+> 💭 GANs처럼 latent interpolation이 가능하지 않을까 합니다.
+
+## 5. Experiments
+
+![](../../assets/img/Paper_Reading/DDIM/ddim_14.jpg){: .normal}
+
+🔎 해당 section에서는 아래의 내용들을 보여줍니다.
+
+1. DDPM보다 빠른 속도의 이미지 생성 ([Section 5.1](#51-sample-quality-and-efficiency))
+2. DDPM과 달리 initial latent variables $\mathbf{x}\_{T}$가 고정되면 DDIM은 high-level image feature를 유지 ([Section 5.2](#52-sample-consistency-in-ddims))
+3. DDIM은 latent space에서 직접 interpolation ([Section 5.3](#53-interpolation-in-detecministic-generative-processes))
+4. Latent code로부터 reconstruction ([Section 5.4](#54-reconstruction-from-latent-space))
+5. Deterministic DDIM과 stochastic DDPM 사이를 보간하는 $\tau$와 $\sigma$를 제어 ([Section 5.1](#51-sample-quality-and-efficiency))
+
+🔎 실험들의 비교를 단순화하기 위해 $\sigma$를 아래와 같이 고려합니다. 이때, $\eta$는 직접 제어가 가능한 hyperparameter이며 $eta$를 조절해서 DDPM과 DDIM을 비교할 수 있습니다.
+
+$$\sigma_{\tau_i}(\eta) = \eta\sqrt{(1-\alpha_{\tau_{i-1}})/(1-\alpha_{\tau_i})}\sqrt{1-\alpha_{\tau_i}/\alpha_{\tau_{i-1}}}$$
+
+🔎 $\sigma = 1$보다 큰 standard deviation을 갖는 random noise를 사용한 DDPM을 고려합니다.
+
+$$\hat{\sigma}:\ \hat{\sigma}_{\tau_i} = \sqrt{1-\alpha_{\tau_i}/\alpha_{\tau_{i-1}}}$$
+
+### 5.1 Sample Quality And Efficiency
+
+![](../../assets/img/Paper_Reading/DDIM/ddim_15.jpg){: .normal}
+
+🔎 Sample quality는 $\text{dim}(\tau)$를 증가시킴에 따라 더 좋아집니다.
+
+🔎 Sample Quality와 Computation cost는 반비례
+
+🔎 DDPM의 경우 급격히 sample quality가 안좋아지는 반면 DDIM은 일관되게 좋은 sample quality를 유집합니다.
+
+![](../../assets/img/Paper_Reading/DDIM/ddim_16.jpg){: .normal}
+
+🔎 동일한 $\text{dim}(\tau)$에서 $\sigma$가 달라짐에 따라 생성된 sample을 확인할 수 있습니다.
+
+![](../../assets/img/Paper_Reading/DDIM/ddim_17.jpg){: .normal}
+
+🔎 $\text{dim}(\tau)$에 따라 sample을 생성하는데 걸리는 시간이 선형적으로 증가함을 보여줍니다.
+
+### 5.2 Sample Consistency In DDIMs
+
+![](../../assets/img/Paper_Reading/DDIM/ddim_18.jpg){: .normal}
+
+🔎 동일한 $\mathbf{x}\_T$으로 시작하면서 서로 다른 generative trajectories($\tau$)에서 생성된 이미지를 볼 수 있습니다.
+
+🔎 많은 경우 20 steps로 생성된 sample은 이미 1000 steps로 생성된 sample과 매우 유사하며 세부 사항에 있어서 약간의 차이만 있습니다.
+
+🔎 따라서 $\mathbf{x}\_T$만이 $\mathbf{x}_0$의 유일한 latent encoding입니다.
+
+🔎 $\text{dim}(\tau)$이 클수록 즉, timestep이 클수록 더 좋은 sample quality를 보이지만 timestep의 길이는 high-level feature와는 상관이 없어 보입니다.
+
+### 5.3 Interpolation In Detecministic Generative Processes
+
+![](../../assets/img/Paper_Reading/DDIM/ddim_19.jpg){: .normal}
+
+🔎 $\mathbf{x}\_T$에 의해서 인코딩 되기 때문에 GANs과 같이 semantic interpolation이 가능해집니다.
+
+### 5.4 Reconstruction From Latent Space
+
+![](../../assets/img/Paper_Reading/DDIM/ddim_20.jpg){: .normal}
+
+🔎 Reconstruction error를 계산 했을 때 DDIM은 더 큰 $S$에 대해 더 낮은 값을 가집니다.
