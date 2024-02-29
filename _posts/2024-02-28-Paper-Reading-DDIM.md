@@ -32,9 +32,9 @@ Emoji의 의미는 아래와 같습니다.
 
 🔎 DDIM : DDPM과 같은 objective function을 만드는 non-Markovian diffusion process를 통해 학습
 
-> 🔎 10 ~ 50배 정도 DDPM보다 빠릅니다.  
-> 🔎 Semantically meaningful image를 latent space에서 바로 interpolation을 통해 만들어낼 수 있습니다.  
-> 🔎 매우 낮은 reconstruction error를 관찰했습니다.
+- 10 ~ 50배 정도 DDPM보다 빠릅니다.
+- Semantically meaningful image를 latent space에서 바로 interpolation을 통해 만들어낼 수 있습니다.
+- 매우 낮은 reconstruction error를 관찰했습니다.
 
 ## 1. Introduction
 
