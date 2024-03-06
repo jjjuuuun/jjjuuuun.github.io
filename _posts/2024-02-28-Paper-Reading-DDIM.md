@@ -60,7 +60,7 @@ Emoji의 의미는 아래와 같습니다.
 
 🔎 Reverse process는 그대로 Markov chains을 사용하는데 짧은 Markov chains 사용합니다. ([Section 4.2](#42-accelerated-generation-processes))
 
-🔎 DDPM보다 나은 결과 ([Section 5]())
+🔎 DDPM보다 나은 결과 ([Section 5](#5-experiments))
 
 > 1. 더 나은 품질의 sample을 더 빠른 속도로 생성
 > 2. DDIM으로 생성한 sample은 consistency를 가지고 있어 똑같은 initial latent variable과 다양한 길이의 Markov chain을 통해 생성된 sample은 비슷한 feature를 가지고 있습니다.
