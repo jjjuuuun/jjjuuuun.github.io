@@ -486,7 +486,7 @@ $$
 4. Latent code로부터 reconstruction ([Section 5.4](#54-reconstruction-from-latent-space))
 5. Deterministic DDIM과 stochastic DDPM 사이를 보간하는 $\tau$와 $\sigma$를 제어 ([Section 5.1](#51-sample-quality-and-efficiency))
 
-🔎 실험들의 비교를 단순화하기 위해 $\sigma$를 아래와 같이 고려합니다. 이때, $\eta$는 직접 제어가 가능한 hyperparameter이며 $eta$를 조절해서 DDPM과 DDIM을 비교할 수 있습니다.
+🔎 실험들의 비교를 단순화하기 위해 $\sigma$를 아래와 같이 고려합니다. 이때, $\eta$는 직접 제어가 가능한 hyperparameter이며 $\eta$를 조절해서 DDPM과 DDIM을 비교할 수 있습니다.
 
 $$\sigma_{\tau_i}(\eta) = \eta\sqrt{(1-\alpha_{\tau_{i-1}})/(1-\alpha_{\tau_i})}\sqrt{1-\alpha_{\tau_i}/\alpha_{\tau_{i-1}}}$$
 
