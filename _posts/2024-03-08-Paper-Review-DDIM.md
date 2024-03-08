@@ -136,3 +136,9 @@ Forward process가 더 이상 Markov process를 따르지 않기 때문에 $q\_\
 왜냐하면 $q\_\sigma(\mathbf{x}\_t\|\mathbf{x}\_0)$만 고정되어 있다면 식 $11$을 $t-1$이 아닌 다른 $t-2$ 또는 $t-3$ 등으로 변경할 수 있기 때문입니다.
 
 여기서 중요한 것은 forward process의 역이 generative process이기 때문에 학습을 timestep $[1,\dots,T]$이 아닌 subset $[\tau_1,\dots,\tau_S]$에 대해 해야 합니다. 그렇다고 해서 앞서서 말한 objective function이 변하지 않습니다.
+
+## 4. 나의 생각
+
+💭 Sampling 속도를 향상 시킨 것도 큰 역할을 했지만 diffusion model을 deterministic하게 만듬으로써 latent가 고정되는 것이 가장 큰 장점인 것 같습니다. 이로 인해 GANs처럼 latent를 활용해 의미있는 style transfer가 가능한 것이 가장 큰 장점인 것 같습니다.
+
+💭 또한 Gaussian이 아닌 다른 분포에 대해서도 가능하다는 것도 하나의 장점이라고 생각은 하지만 데이터의 수가 많을 때 Gaussian distribution이므로 큰 장점이라고는 할 수 없지 않을까 합니다. 그러나 논문에서는 이점을 강조하고 있어서 앞으로 Gaussian이 아닌 경우를 다루는 논문이 있는지 주의깊게 살펴봐야 할 것 같습니다.
