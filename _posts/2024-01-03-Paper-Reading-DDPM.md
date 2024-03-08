@@ -412,7 +412,7 @@ $$
 \end{align}
 $$
 
-### 2.6 What probability distribution $q(\mathbf{x}\_{t}\|\mathbf{x}\_{t-1}, \mathbf{x}\_{0})$ follows
+### 2.6 What probability distribution $q(\mathbf{x}\_{t-1}\|\mathbf{x}\_{t}, \mathbf{x}\_{0})$ follows
 
 ![](../../assets/img/Paper_Reading/DDPM/ddpm_10.jpg){: .normal}
 
