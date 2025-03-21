@@ -1,131 +1,178 @@
 [![Blog](https://img.shields.io/badge/Blog-jjjuuuun.github.io-green.svg)](https://jjjuuuun.github.io/)
 
-# Today I Learned
 
-- [날짜별로 보기](https://github.com/jjjuuuun/TIL)
+# 1. Python
 
-# 1. Python Basic
+<details>
+<summary>String</summary>
 
-- String
-  - [String - 대소문자 변환](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Python-String-1.md)
-- collections
-  - [collections - Counter](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Python-Collections-Counter.md)
-  - [collections - deque](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Python-Collections-deque.md)
-  - [collections - defaultdict](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Python-Collections-defaultdict.md)
-  - [collections - namedtuple](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Python-Collections-namedtuple.md)
-- Tree
-  - [Tree - 탐색하는 방법](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Python-Tree-1.md)
-- List
-  - [List - Operation](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Python-List-Operation.md)
-  - [List - Copy](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Python-List-Copy.md)
-  - [List - Comprehension](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Python-List-Comprehension.md)
-- Function
-  - [Function - 호출 방법](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Python-Function-Call.md)
-  - [Function - 파이썬 함수의 특징](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Python-Function-FirstClassObjects.md)
-- UnderScore
-  - [UnderScore](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Python-UnderScore.md)
-- Formatting
-  - [Formatting](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Python-Formatting.md)
+- [String - 대소문자 변환](https://jjjuuuun.github.io/posts/Python-String-1/)
+  
+</details>
+
+<details>
+<summary>collections</summary>
+
+- [collections - Counter](https://jjjuuuun.github.io/posts/Python-Collections-Counter/)
+- [collections - deque](https://jjjuuuun.github.io/posts/Python-Collections-deque/)
+- [collections - defaultdict](https://jjjuuuun.github.io/posts/Python-Collections-defaultdict/)
+- [collections - namedtuple](https://jjjuuuun.github.io/posts/Python-Collections-namedtuple/)
+
+</details>
+
+<details>
+<summary>Tree</summary>
+
+  - [Tree - 탐색하는 방법](https://jjjuuuun.github.io/posts/Python-Tree-1/)
+
+</details>
+<details>
+<summary>List</summary>
+
+- [List - Operation](https://jjjuuuun.github.io/posts/Python-List-Operation/)
+- [List - Copy](https://jjjuuuun.github.io/posts/Python-List-Copy/)
+- [List - Comprehension](https://jjjuuuun.github.io/posts/Python-List-Comprehension/)
+
+</details>
+<details>
+<summary>Function</summary>
+
+- [Function - 호출 방법](https://jjjuuuun.github.io/posts/Python-Function-Call/)
+- [Function - 파이썬 함수의 특징](https://jjjuuuun.github.io/posts/Python-Function-FirstClassObjects/)
+
+</details>
+<details>
+<summary>UnderScore</summary>
+
+- [UnderScore](https://jjjuuuun.github.io/posts/Python-UnderScore/)
+
+</details>
+<details>
+<summary>Formatting</summary>
+
+- [Formatting](https://jjjuuuun.github.io/posts/Python-Formatting/)
+
+</details>
 
 # 2. Algorithm - Python
 
-## 2.1 백준(BOJ)
+<details>
+<summary>백준(BOJ)</summary>
 
-- [1439번 - 뒤집기](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-BOJ-1439.md)
-- [14502번 - 연구소](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-BOJ-14502.md)
-- [18352번 - 특정 거리의 도시 찾기](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-BOJ-18352.md)
-- [3190번 - 뱀](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-BOJ-3190.md)
-- [15686번 - 치킨 배달](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-BOJ-15686.md)
-- [1932번 - 정수 삼각형](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-BOJ-1932.md)
-- [18405번 - 경쟁적 전염](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-BOJ-18405.md)
-- [11404번 - 플로이드](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-BOJ-11404.md)
-- [2225번 - 합분해](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-30-BOJ-2225.md)
-- [6588번 - 골드바흐의 추측](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-30-BOJ-6588.md)
-- [10844번 - 쉬운 계단 수](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-30-BOJ-10844.md)
-- [11052번 - 카드 구매하기](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-30-BOJ-11052.md)
-- [1107번 - 리모콘](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-10-BOJ-1107.md)
-- [1967번 - 트리의 지름](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-10-BOJ-1967.md)
-- [2250번 - 트리의 높이와 너비](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-10-BOJ-2250.md)
-- [1707번 - 이분 그래프](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-29-BOJ-1707.md)
-- [17298번 - 오큰수](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-10-12-BOJ-17298.md)
-- [16947번 - 서울 지하철 2호선](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-10-12-BOJ-16947.md)
-- [2003번 - 수들의 합 2](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-19-BOJ-2003.md)
-- [1644번 - 소수의 연속합](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-20-BOJ-1644.md)
-- [1806번 - 부분합](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-21-BOJ-1806.md)
-- [2230번 - 수 고르기](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-26-BOJ-2230.md)
-- [1484번 - 다이어트](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-27-BOJ-1484.md)
+- [1439번 - 뒤집기](https://jjjuuuun.github.io/posts/BOJ-1439/)
+- [14502번 - 연구소](https://jjjuuuun.github.io/posts/BOJ-14502/)
+- [18352번 - 특정 거리의 도시 찾기](https://jjjuuuun.github.io/posts/BOJ-18352/)
+- [3190번 - 뱀](https://jjjuuuun.github.io/posts/BOJ-3190/)
+- [15686번 - 치킨 배달](https://jjjuuuun.github.io/posts/BOJ-15686/)
+- [1932번 - 정수 삼각형](https://jjjuuuun.github.io/posts/BOJ-1932/)
+- [18405번 - 경쟁적 전염](https://jjjuuuun.github.io/posts/BOJ-18405/)
+- [11404번 - 플로이드](https://jjjuuuun.github.io/posts/BOJ-11404/)
+- [2225번 - 합분해](https://jjjuuuun.github.io/posts/BOJ-2225/)
+- [6588번 - 골드바흐의 추측](https://jjjuuuun.github.io/posts/BOJ-6588/)
+- [10844번 - 쉬운 계단 수](https://jjjuuuun.github.io/posts/BOJ-10844/)
+- [11052번 - 카드 구매하기](https://jjjuuuun.github.io/posts/BOJ-11052/)
+- [1107번 - 리모콘](https://jjjuuuun.github.io/posts/BOJ-1107/)
+- [1967번 - 트리의 지름](https://jjjuuuun.github.io/posts/BOJ-1967/)
+- [2250번 - 트리의 높이와 너비](https://jjjuuuun.github.io/posts/BOJ-2250/)
+- [1707번 - 이분 그래프](https://jjjuuuun.github.io/posts/BOJ-1707/)
+- [17298번 - 오큰수](https://jjjuuuun.github.io/posts/BOJ-17298/)
+- [16947번 - 서울 지하철 2호선](https://jjjuuuun.github.io/posts/BOJ-16947/)
+- [2003번 - 수들의 합 2](https://jjjuuuun.github.io/posts/BOJ-2003/)
+- [1644번 - 소수의 연속합](https://jjjuuuun.github.io/posts/BOJ-1644/)
+- [1806번 - 부분합](https://jjjuuuun.github.io/posts/BOJ-1806/)
+- [2230번 - 수 고르기](https://jjjuuuun.github.io/posts/BOJ-2230/)
+- [1484번 - 다이어트](https://jjjuuuun.github.io/posts/BOJ-1484/)
 
-## 2.2 프로그래머스(Programmers)
+</details>
 
-- [42891번 - 무지의 먹방 라이브](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Programmers-42891.md)
-- [60057번 - 문자열 압축](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Programmers-60057.md)
-- [60059번 - 자물쇠와 열쇠](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Programmers-60059.md)
-- [60061번 - 기둥과 보 설치](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Programmers-60061.md)
-- [12924번 - 숫자의 표현](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Programmers-12924.md)
-- [12953번 - N개의 최소공배수](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Programmers-12953.md)
-- [42885번 - 구명보트](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Programmers-42885.md)
-- [17677번 - [1차] 뉴스 클러스터링](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Programmers-17677.md)
-- [87390번 - n^2 배열 자르기](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Programmers-87390.md)
+<details>
+<summary>프로그래머스(Programmers)</summary>
+
+- [42891번 - 무지의 먹방 라이브](https://jjjuuuun.github.io/posts/Programmers-42891/)
+- [60057번 - 문자열 압축](https://jjjuuuun.github.io/posts/Programmers-60057/)
+- [60059번 - 자물쇠와 열쇠](https://jjjuuuun.github.io/posts/Programmers-60059/)
+- [60061번 - 기둥과 보 설치](https://jjjuuuun.github.io/posts/Programmers-60061/)
+- [12924번 - 숫자의 표현](https://jjjuuuun.github.io/posts/Programmers-12953/)
+- [12953번 - N개의 최소공배수](https://jjjuuuun.github.io/posts/Programmers-12953/)
+- [42885번 - 구명보트](https://jjjuuuun.github.io/posts/Programmers-42885/)
+- [17677번 - [1차] 뉴스 클러스터링](https://jjjuuuun.github.io/posts/Programmers-17677/)
+- [87390번 - n^2 배열 자르기](https://jjjuuuun.github.io/posts/Programmers-87390/)
+
+</details>
 
 # 3. Deep Learning
 
-## 3.1 PyTorch
+<details>
+<summary>PyTorch</summary>
 
-### 3.1.1 Tensor
+- [Tensor를 만드는 방법](https://jjjuuuun.github.io/posts/PyTorch-Tensor-tensor-create/)
+- [Tensor를 복사하는 방법](https://jjjuuuun.github.io/posts/PyTorch-Tensor-tensor-copy/)
+- [Tensor의 연속성](https://jjjuuuun.github.io/posts/PyTorch-Tensor-tensor-contiguous/)
+- [Tensor의 모양을 바꾸는 방법](https://jjjuuuun.github.io/posts/PyTorch-Tensor-tensor-reshape/)
 
-- [Tensor를 만드는 방법](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-PyTorch-Tensor-tensor-create.md)
-- [Tensor를 복사하는 방법](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-PyTorch-Tensor-tensor-copy.md)
-- [Tensor의 연속성](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-PyTorch-Tensor-tensor-contiguous.md)
-- [Tensor의 모양을 바꾸는 방법](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-PyTorch-Tensor-tensor-reshape.md)
+</details>
 
-## 3.2 Paper Reading
+<details>
+<summary>fast.ai</summary>
 
-### 3.2.1 Computer Vision
+- [fast.ai Overview](https://jjjuuuun.github.io/posts/fastai-Overview/)
+- [Tutorial - Single-label Classification](https://jjjuuuun.github.io/posts/fastai-Tutorial-Classification/)
 
-- Generative Model
-  - [Pix2Pix](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-26-Paper-Reading-Pix2Pix.md)
-  - [CycleGAN](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2024-01-02-Paper-Reading-CycleGAN.md)
-  - [DDPM](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2024-01-03-Paper-Reading-DDPM.md)
-  - [DDIM](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2024-02-28-Paper-Reading-DDIM.md)
+</details>
 
-### 3.2.2 NLP
+<details>
+<summary>Paper Reading</summary>
 
-## 3.3 Paper Review
+- [Pix2Pix](https://jjjuuuun.github.io/posts/Paper-Reading-Pix2Pix/)
+- [CycleGAN](https://jjjuuuun.github.io/posts/Paper-Reading-CycleGAN/)
+- [DDPM](https://jjjuuuun.github.io/posts/Paper-Reading-DDPM/)
+- [DDIM](https://jjjuuuun.github.io/posts/Paper-Reading-DDIM/)
 
-### 3.3.1 Computer Vision
+</details>
 
-- Generative Model
-  - [StyleGAN](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Paper-Review-StyleGAN.md)
-  - [DDPM](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2024-01-23-Paper-Review-DDPM.md)
-  - [DDIM](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2024-03-08-Paper-Review-DDIM.md)
-- Object Detection
-  - [RCNN](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-24-Paper-Review-RCNN.md)
-  - [DETR](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-10-29-Paper-Review-DETR.md)
-- Classification
-  - [ViT](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-30-Paper-Review-ViT.md)
+<details>
+<summary>Paper Review</summary>
 
-### 3.3.2 NLP
+- [StyleGAN](https://jjjuuuun.github.io/posts/Paper-Review-StyleGAN/)
+- [DDPM](https://jjjuuuun.github.io/posts/Paper-Review-DDPM/)
+- [DDIM](https://jjjuuuun.github.io/posts/Paper-Review-DDIM/)
+- [RCNN](https://jjjuuuun.github.io/posts/Paper-Review-RCNN/)
+- [DETR](https://jjjuuuun.github.io/posts/Paper-Review-DETR/)
+- [ViT](https://jjjuuuun.github.io/posts/Paper-Review-ViT/)
+- [Seq2Seq](https://jjjuuuun.github.io/posts/Paper-Review-Seq2Seq/)
+- [Transformer](https://jjjuuuun.github.io/posts/Paper-Review-Transformer/)
 
-- Generative Model
-  - [Seq2Seq](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-28-Paper-Review-Seq2Seq.md)
-  - [Transformer](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-07-Paper-Review-Transformer.md)
+</details>
 
-## 3.4 Evaluation
+<details>
+<summary>Evaluation</summary>
 
-### 3.4.1 NLP
+- [BLEU](https://jjjuuuun.github.io/posts/BLEU/)
 
-- [BLEU](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-08-28-BLEU.md)
+</details>
 
-## 3.5 Tokenizer
+<details>
+<summary>Tokenizer</summary>
 
-- [BPE](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-06-BPE.md)
-- [WPM](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-09-06-WordPiece.md)
+- [BPE](https://jjjuuuun.github.io/posts/BPE/)
+- [WPM](https://jjjuuuun.github.io/posts/WordPiece/)
 
-## 3.6 Model Compression
+</details>
 
-- [Model Compression Overview](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-20-Model-Compression.md)
+<details>
+<summary>Model Compression</summary>
 
-## 3.7 fast.ai
+- [Model Compression Overview](https://jjjuuuun.github.io/posts/Model-Compression/)
 
-- [fast.ai Overview](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-23-fastai-Overview.md)
-- [Tutorial - Single-label Classification](https://github.com/jjjuuuun/jjjuuuun.github.io/blob/master/_posts/2023-12-23-fastai-Tutorial-Classification.md)
+</details>
+
+# 4. Computer Science
+
+<details>
+<summary>Computer Architecture</summary>
+
+- [Data](https://jjjuuuun.github.io/posts/Computer-Architecture-Data/)
+- [Instruction](https://jjjuuuun.github.io/posts/Computer-Architecture-Instruction/)
+- [CPU](https://jjjuuuun.github.io/posts/Computer-Architecture-CPU/)
+
+</details>
