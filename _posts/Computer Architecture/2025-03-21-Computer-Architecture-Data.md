@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "🖥️ [컴퓨터 구조] 데이터 🖥️"
+title: "🖥️ [Computer Architecture] Data 🖥️"
 author: kjy
 date: 2025-03-21 17:50:00 +09:00
 categories: [Computer Science, Computer Architecture]

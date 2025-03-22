@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "🖥️ [컴퓨터 구조] CPU 🖥️"
+title: "🖥️ [Computer Architecture] CPU 🖥️"
 author: kjy
 date: 2025-03-21 17:50:02 +09:00
 categories: [Computer Science, Computer Architecture]
