@@ -2,7 +2,7 @@
 layout: post
 title: "💾 [Operating System] About Operating System 💾"
 author: kjy
-date: 2025-03-22 12:00:00 +09:00
+date: 2025-03-22 14:18:00 +09:00
 categories: [Computer Science, Operating System]
 tags: [Computer Science, Operating System]
 comments: true

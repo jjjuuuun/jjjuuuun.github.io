@@ -92,7 +92,7 @@ Multi-Thread Processor(Multi-Thread CPU)란 하나의 Core로 여러 명령어�
 
 하나의 Core로 여러 명령어를 처리하기 위해서는 하나의 명령어를 처리하는데 필요한 레지스터가 여러 개 있으면 되기 때문에 Multi-Thread Processor에서는 레지스터가 핵심 장치입니다.
 
-> 💡 하드웨어적 Thread(Logical Processor)  
+> 💡 [하드웨어적 Thread(Logical Processor)](https://jjjuuuun.github.io/posts/Operating-System-Process-Thread/#-thread)  
 > 📢 하나의 Core가 동시에 처리하는 명령어 단위
 
 > 💡 소프트웨어적 Thread  
