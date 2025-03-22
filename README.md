@@ -177,4 +177,13 @@
 - [Memory](https://jjjuuuun.github.io/posts/Computer-Architecture-Memory/)
 - [Secondary Storage](https://jjjuuuun.github.io/posts/Computer-Architecture-Secondary-Storage/)
 - [I/O Device](https://jjjuuuun.github.io/posts/Computer-Architecture-IO-Device/)
+
+</details>
+
+<details>
+<summary>Operating System</summary>
+
+- [Operating System](https://jjjuuuun.github.io/posts/Operating-System-OS/)
+- [Process & Thread](https://jjjuuuun.github.io/posts/Operating-System-Process-Thread/)
+
 </details>
