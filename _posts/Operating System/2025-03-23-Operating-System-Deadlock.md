@@ -16,7 +16,8 @@ Deadlock이란 일어나지 않을 사건을 기다리며 진행이 멈춰버리
 
 다음은 Deadlock이 발생하지 않은 경우와 Deadlock이 발생한 경우를 Resource-Allocation Graph로 표현한 것입니다.
 
-![Resource-Allocation Graph](../../assets/img/operating system/synchronization_1.png)
+![](../../assets/img/operating system/synchronization_1.png)
+_Resource-Allocation Graph_
 
 - Deadlock이 발생하지 않은 경우
   - `Resource A` 하나를 `Process 1`에 할당
@@ -58,9 +59,11 @@ Deadlock 없이 Process(Thread)에게 안전하게 자원을 할당할 수 있�
 
 이처럼 안전 순서열이 있는 상태를 <u>안전 상태(Safe State)</u>, 안전 순서열이 없는 상태를 <u>불안전 상태(Unsafe State)</u>라고 합니다.
 
-![Safe State](../../assets/img/operating system/synchronization_2.png)
+![](../../assets/img/operating system/synchronization_2.png)
+_Safe State_
 
-![Unsafe State](../../assets/img/operating system/synchronization_3.png)
+![](../../assets/img/operating system/synchronization_3.png)
+_Unsafe State_
 
 ### 💾 Deadlock 검출 후 회복
 

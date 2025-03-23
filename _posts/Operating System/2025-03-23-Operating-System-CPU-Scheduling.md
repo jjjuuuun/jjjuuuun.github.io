@@ -32,7 +32,8 @@ CPU가 먼저 처리하면 좋을 순서대로 번호를 부여한 것을 우선
 
 ## 💾 Scheduling Queue
 
-![Process State Diagram With Scheduling Queue](../../assets/img/operating system/cpu_scheduling_1.png)
+![](../../assets/img/operating system/cpu_scheduling_1.png)
+_Process State Diagram With Scheduling Queue_
 
 매번 모든 Process들을 살펴본 후 우선순위를 정하는 것은 모든 Process들을 살펴봐야 하기 때문에 매우 비효율적입니다. 이러한 비효율을 해결하기 위해 Scheduling Queue를 사용합니다.
 

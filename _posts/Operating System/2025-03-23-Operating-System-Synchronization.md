@@ -32,7 +32,8 @@ Process(Thread)의 동기화를 통해 실행 순서와 자원의 일관성을 �
 
 ## 💾 Synchronization Techniques
 
-![Monitor](../../assets/img/operating system/synchronization_1.png)
+![](../../assets/img/operating system/synchronization_1.png)
+_Monitor_
 
 - **Mutex Lock(MUTual Exclusion Lock)**: 하나의 공유자원에 동시에 접근하지 못하도록 만드는 도구
 - **Counting Semaphore**: 하나의 공유자원이 아닌 여러 개의 공유자원에 대해 접근을 제어하는 조금 더 일반화된 방식의 동기화 도구

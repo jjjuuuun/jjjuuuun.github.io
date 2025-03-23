@@ -185,5 +185,18 @@
 
 - [Operating System](https://jjjuuuun.github.io/posts/Operating-System-OS/)
 - [Process & Thread](https://jjjuuuun.github.io/posts/Operating-System-Process-Thread/)
+- [CPU Scheduling](https://jjjuuuun.github.io/posts/Operating-System-CPU-Scheduling/)
+- [Synchronization](https://jjjuuuun.github.io/posts/Operating-System-Synchronization/)
+- [Deadlock](https://jjjuuuun.github.io/posts/Operating-System-Deadlock/)
+- [Virtual Memory](https://jjjuuuun.github.io/posts/Operating-System-Virtual-Memory/)
+- [File System](https://jjjuuuun.github.io/posts/Operating-System-File-System/)
+
+</details>
+
+<details>
+<summary>Network</summary>
+
+- [Network](https://jjjuuuun.github.io/posts/Network-Network/)
+- [Network Reference Model](https://jjjuuuun.github.io/posts/Network-Network-Reference-Model/)
 
 </details>
