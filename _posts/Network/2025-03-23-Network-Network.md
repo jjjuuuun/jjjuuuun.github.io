@@ -30,7 +30,7 @@ math: true
 | MAN(Metropolitan Area Network) | 도시나 대도시 단위로 연결되는 규모의 네트워크 |
 | WAN(Wide Area Network) | • 멀리 떨어진 LAN을 연결할 수 있는 네트워크 <br/> • ISP(Internet Service Provide; 인터넷 서비스 업체)가 구축하고 관리 <br/> • Ex. Internet |
 
-## 수신자 범위에 따른 Network
+## 🖧 수신자 범위에 따른 Network
 
 | Unicast | 가장 일반적인 형태로 1대 1 송수신 방식 |
 | Broadcast | 자신을 제외한 네트워크 상의 모든 Host에게 전송하는 방식 |
