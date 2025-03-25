@@ -136,6 +136,8 @@ ARP의 동작 과정은 다음과 같습니다.
 
 ### 🖧 Routing Protocol
 
+![](../../assets/img/network/network_layer_9.png)
+
 Routing Protocol은 Router끼리 자신의 정보를 교환하며 Packet이 이동할 최적의 경로를 찾기 위한 프로토콜입니다.
 
 Routing Protocol은 크게 AS 내부에서 수행되면 [IGP](#-igpinterior-gateway-protocol), AS 외부에서 수행되면 [EGP](#-egpexteriror-gateway-protocol)로 나눕니다.
@@ -272,8 +274,6 @@ _Fragment Extension Header_
 | Identification | IPv4의 Identifier 역할 |
 
 ## 🖧 네트워크 장비 - Router
-
-![](../../assets/img/network/network_layer_9.png)
 
 Router의 핵심 기능은 Packet이 이동할 최적의 경로를 설정한 뒤 해당 경로로 Packet을 이동시키는 Routing이라 할 수 있습니다.
 

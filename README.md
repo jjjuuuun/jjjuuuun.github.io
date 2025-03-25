@@ -204,6 +204,7 @@
 - [TCP/IP Model - Transport Layer](https://jjjuuuun.github.io/posts/Network-Transport-Layer/)
 - [TCP/IP Model - Application Layer](https://jjjuuuun.github.io/posts/Network-Application-Layer/)
 - [Wi-Fi](https://jjjuuuun.github.io/posts/Network-WiFi/)
-
+- [Encryption](https://jjjuuuun.github.io/posts/Network-Encryption/)
+- [Load Balancing & Proxy](https://jjjuuuun.github.io/posts/Network-Load-Balancing-Proxy/)
 
 </details>
