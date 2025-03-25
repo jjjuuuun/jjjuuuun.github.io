@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "🖧 [Network] About Network 🖧"
+title: "🌐 [Network] About Network 🌐"
 author: kjy
 date: 2025-03-23 12:00:00 +09:00
 categories: [Computer Science, Network]
@@ -10,7 +10,7 @@ toc: true
 math: true
 ---
 
-## 🖧 Network 구성
+## 🌐 Network 구성
 
 네트워크는 여러 장치가 연결되어 정보를 주고 받을 수 있는 통신망을 의미합니다.
 
@@ -21,7 +21,7 @@ math: true
 | Node(Vertex) | • Host(Ex. Server, Client) <br/> • Network 장비(Ex. Ethernet Hub, Switch, Router) |
 | Edge(Link) | • 통신 매체(유선, 무선) <br/> • 메세지(Ex. File, Web Page, E-mail) |
 
-## 🖧 거리에 따른 Network
+## 🌐 거리에 따른 Network
 
 ![](../../assets/img/network/network_2.png)
 
@@ -30,14 +30,14 @@ math: true
 | MAN(Metropolitan Area Network) | 도시나 대도시 단위로 연결되는 규모의 네트워크 |
 | WAN(Wide Area Network) | • 멀리 떨어진 LAN을 연결할 수 있는 네트워크 <br/> • ISP(Internet Service Provide; 인터넷 서비스 업체)가 구축하고 관리 <br/> • Ex. Internet |
 
-## 🖧 수신자 범위에 따른 Network
+## 🌐 수신자 범위에 따른 Network
 
 | Unicast | 가장 일반적인 형태로 1대 1 송수신 방식 |
 | Broadcast | 자신을 제외한 네트워크 상의 모든 Host에게 전송하는 방식 |
 | Multicast | 네트워크 내의 동일 그룹에 속한 Host에게만 전송하는 방식 |
 | Anycast | 네트워크 내의 동일 그룹에 속한 Host 중 가장 가까운 Host에게만 전송하는 방식 |
 
-## 🖧 Network의 메세지 교환 방식
+## 🌐 Network의 메세지 교환 방식
 
 네트워크의 메세지 교환 방식에는 <u>회선 교환 방식(Circuit Switching)</u>과 <u>패킷 교환 방식(Packet Switching)</u>이 있습니다.
 

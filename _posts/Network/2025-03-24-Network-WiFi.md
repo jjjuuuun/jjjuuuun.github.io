@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "🖧 [Network] TCP/IP Model - Wi-Fi 🖧"
+title: "🌐 [Network] TCP/IP Model - Wi-Fi 🌐"
 author: kjy
 date: 2025-03-25 08:00:01 +09:00
 categories: [Computer Science, Network]
@@ -10,7 +10,7 @@ toc: true
 math: true
 ---
 
-## 🖧 Wi-Fi
+## 🌐 Wi-Fi
 
 전파는 약 3kHz ~ 3THz 사이의 진동수를 가지는 전자기파입니다. 많은 기기들이 전파를 통해 통신한다면, 서로 다른 전파 신호가 같은 공간에 혼재할 수도 있습니다. 이런 상황에서 통신하기 위해 통신에 사용되는 전파에는 주파수 대역이 미리 정해져 있습니다.
 
@@ -22,11 +22,11 @@ Wi-Fi는 IEEE 802.11 표준을 따르는 무선 LAN 기술을 의미하며 IEEE 
 
 Channel은 일반적으로 자동으로 설정되지만 수동으로 설정할 수도 있으며 같은 공간에서 같으 Wi-Fi를 사용하는 경우 간섭이 없는 Channel을 이용하는 것이 좋습니다.
 
-## 🖧 2.4 GHz Wi-Fi VS 5 GHz Wi-Fi
+## 🌐 2.4 GHz Wi-Fi VS 5 GHz Wi-Fi
 
 ![](../../assets/img/network/wifi_1.png)
 
-|  | 송수신 속도 | 장애물의 영향 |
-|:-:|:-:|:-:|
-| 2.4 GHz Wi-Fi | 느림 | 덜 받음 |
-| 5 GHz Wi-Fi | 빠름 | 크게 받음 |
+|               | 송수신 속도 | 장애물의 영향 |
+| :-----------: | :---------: | :-----------: |
+| 2.4 GHz Wi-Fi |    느림     |    덜 받음    |
+|  5 GHz Wi-Fi  |    빠름     |   크게 받음   |
