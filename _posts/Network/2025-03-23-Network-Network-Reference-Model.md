@@ -44,6 +44,14 @@ TCP/IP Model은 <u>실용적 구현</u>에 중점을 둔 네트워크 참조 모
 
 기존의 TCP/IP Model에는 OSI Model의 <u>1️⃣ Physical Layer</u> 역할을 수행하는 Layer가 없었는데 <u>1️⃣ Physical Layer</u>를 추가해서 TCP/IP 4계층이 아닌 TCP/IP 5계층으로 확장해 TCP/IP Model을 사용합니다.
 
+|  | PDU(Protocol Data Unit) | 네트워크 장비 | 주소 개념 유무 | 프로토콜 |
+| :- | :- | :- | :-: | :- |
+| 5️⃣ [Application Layer]() | Data(Message) |  | ⭕ | [DNS](https://jjjuuuun.github.io/posts/Network-Application-Layer/#-dnsdomain-name-system), [HTTP](https://jjjuuuun.github.io/posts/Network-Application-Layer/#-httphyper-text-transfer-protocol), [HTTPS](https://jjjuuuun.github.io/posts/Network-Application-Layer/#-httpshttp-secure), SSL(Secure Sockets Layer)|
+| 4️⃣ [Transport Layer]() | • TCP - Segment <br/> • UDP - Datagram |  | ⭕ | [TCP](https://jjjuuuun.github.io/posts/Network-Transport-Layer/#-tcptransmission-control-protocol), [UDP](https://jjjuuuun.github.io/posts/Network-Transport-Layer/#-udpuser-datagram-protocol), TLS(Transport Layer Security) |
+| 3️⃣ [Network Layer]() | Packet(IP Datagram) | Router | ⭕ | [IP](https://jjjuuuun.github.io/posts/Network-Network-Layer/#-ipinternet-protocol), [DHCP](https://jjjuuuun.github.io/posts/Network-Network-Layer/#-dhcpdynamic-host-configuration-protocol), [ARP](https://jjjuuuun.github.io/posts/Network-Network-Layer/#-arpaddress-resolution-protocol), [Routing Protocol](https://jjjuuuun.github.io/posts/Network-Network-Layer/#-routing-protocol) |
+| 2️⃣ [Data Link Layer]() | Frame | NIC, (L2)Switch, AP | ⭕ | [CSMA/CD Protocol](https://jjjuuuun.github.io/posts/Network-Data-Link-Layer/#-csmacd-protocol),  |
+| 1️⃣ [Physical Layer]() | Bit(Symbol) | Hub | ❌ |  |
+
 ## 🖧 Encapsulation & Decapsulation
 
 ![](../../assets/img/network/network_reference_model_2.png)

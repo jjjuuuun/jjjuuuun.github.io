@@ -190,7 +190,7 @@ HTTP의 Header는 다음과 같습니다.
 | 응답 시 활용되는 HTTP Header | `Server`: 요청을 처리하는 Server의 S/W와 관련된 정보를 명시 <br/> `Allow`: Client에게 허용된 HTTP Method 목록을 명시 <br/> `Retry-After`: 해당 자원의 사용 날짜 혹은 시각을 명시 <br/> `Location`: Client에게 자원의 위치를 명시 <br/> `WWW-Authenticate`: 자원에 접근하기 위한 인증 방식을 명시 |
 | 요청과 응답 모두에서 활용되는 HTTP Header | `Date`: 생성된 날짜와 시각에 대한 정보를 명시 <br/> `Connection`: Client의 요청과 응답 간의 연결 방식을 명시(`keep-alive`, `close`) <br/> `Content-Length`: HTTP Message-Body의 크기(Byte)를 명시 <br/> `Content-Type`: HTTP Message-Body에서 사용된 Media Type을 명시 <br/> `Content-Language`: 어떤 국가에서 사용되는 어떤 언어를 사용하고 있는지 명시(언어-국가) <br/> `Content-Encoding`: HTTP Message-Body을 압축하거나 변환한 방식을 명시 |
 
-### 🖧 HTTPS
+### 🖧 HTTPS(HTTP Secure)
 
 SSL(Secure Sockets Layer)과 TLS(Transport Layer Security)는 인증과 암호화를 수행하는 프로토콜이며, TLS는 SSL을 계승한 프로토콜입니다.
 
