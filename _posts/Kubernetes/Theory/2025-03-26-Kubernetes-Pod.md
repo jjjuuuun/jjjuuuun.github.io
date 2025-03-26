@@ -31,7 +31,7 @@ Pod와 Node의 관계는 다음과 같습니다.
 
 | 특징 |
 | :- |
-| • [Pod가 생성되면 한 Node에 배정](#️-node-scheduling) |
+| • [Pod가 생성되면 한 Node에 배정(Node Scheduling)](#️-node-scheduling) |
 | • Worker Node에서 Pod들을 관리 |
 
 ### ☸️ Pod 🔗  Network
