@@ -16,9 +16,10 @@ URI(Uniform Resource Identifier)란 자원을 식별할 수 있는 정보를 말
 
 URI는 식별에 사용되는 정보에 따라 [위치 기반 식별자인 URL(Uniform Resource Locator)](#-url)과 [이름 기반 식별자인 URN(Uniform Resource Name)](#-urn)으로 나누어집니다.
 
-> 💡 자원(Resource)  
-> 📢 네트워크 상의 메세지를 통해 주고 받는 대상을 의미합니다.  
-> 📢 오늘날 인터넷 환경을 이루는 대부분의 통신은 HTTP를 기반으로 이루어지므로 HTTP 요청 메세지의 대상을 의미하기도 합니다.
+> **자원(Resource)**  
+> - 네트워크 상의 메세지를 통해 주고 받는 대상을 의미합니다.  
+> - 오늘날 인터넷 환경을 이루는 대부분의 통신은 HTTP를 기반으로 이루어지므로 HTTP 요청 메세지의 대상을 의미하기도 합니다.
+{: .prompt-tip }
 
 ### 🌐 URL
 
@@ -69,8 +70,8 @@ Resolving 과정에서 다양한 Name Server들이 사용되는데, 중요한 �
 |          TLD Name Server(TLD Server)          | • TLD(Top-Level Domain)를 관리하는 Name Server <br/> • TLD의 하위 Domain Name을 관리하는 Name Server의 IP Address를 반환                                                                                                                                            |
 |           Authoritative Name Server           | • 특정 Domain Zone을 관리하는 Name Server로, 자신이 관리하는 Domain Zone에 대해서는 다른 Name Server에게 떠넘기지 않고 곧바로 답할 수 있는 Server <br/> • Local Name Server가 마지막으로 질의하는 Name Server                                                       |
 
-> 💡 Resolving  
-> 📢 IP Address를 모르는 상태에서 Domain Name에 대응되는 IP Address를 알아내는 과정
+> **Resolving**: IP Address를 모르는 상태에서 Domain Name에 대응되는 IP Address를 알아내는 과정
+{: .prompt-tip }
 
 #### 🌐 Resolving
 
@@ -97,20 +98,16 @@ HTTP의 발전해온 Version은 다음과 같습니다.
 |  HTTP / $2.0$  | • 송수신 효율을 높이기 위해 Header를 압축하여 전송(Text 기반의 메세지 ➜ Binary 기반의 메세지) <br/> • Server Push 기능 추가 <br/> • Multiplexing 기능 추가 |
 |  HTTP / $3.0$  | UDP를 기반으로 구현된 QUIC(Quick UDP Internet Connections) 프로토콜을 기반으로 동작                                                                        |
 
-> 💡 Pipelining  
-> 📢 특정 요청에 대한 응답이 수신되기 전에 다음 요청을 보낼 수 있는 기능
-
-> 💡 Server Push  
-> 📢 Client가 요청하지 않았더라도 미래에 필요할 것으로 예상되는 자원을 미리 전송해주는 기능
-
-> 💡 Multiplexing  
-> 📢 여러 Stream을 이용해 병렬적으로 메세지를 주고받는 기술  
-> 📢 HOL(Hot-Of-Line) Blocking 문제를 해결  
-> 📢 여러 개의 Stream별로 독립적인 송수신이 가능하며 Stream별 메세지들은 일정한 순서를 유지할 필요가 없음
-
-> 💡 HOL(Hot-Of-Line) Blocking  
-> 📢 HTTP / $1.1$까지 고질적인 문제  
-> 📢 같은 큐에 대기하며 순차적으로 처리되는 여러 데이터가 있을 때, 첫 번째 데이터의 처리 지연으로 인해 나머지 데이터들의 처리도 모두 지연되는 문제
+> - **Pipelining**: 특정 요청에 대한 응답이 수신되기 전에 다음 요청을 보낼 수 있는 기능
+> - **Server Push**: Client가 요청하지 않았더라도 미래에 필요할 것으로 예상되는 자원을 미리 전송해주는 기능
+> - **Multiplexing**  
+>   - 여러 Stream을 이용해 병렬적으로 메세지를 주고받는 기술  
+>   - HOL(Hot-Of-Line) Blocking 문제를 해결  
+>   - 여러 개의 Stream별로 독립적인 송수신이 가능하며 Stream별 메세지들은 일정한 순서를 유지할 필요가 없음
+> - HOL(Hot-Of-Line) Blocking  
+>   - HTTP / $1.1$까지 고질적인 문제  
+>   - 같은 큐에 대기하며 순차적으로 처리되는 여러 데이터가 있을 때, 첫 번째 데이터의 처리 지연으로 인해 나머지 데이터들의 처리도 모두 지연되는 문제
+{: .prompt-tip }
 
 #### 🌐 HTTP 특징
 
@@ -125,14 +122,10 @@ HTTP의 특징은 다음과 같습니다.
 | 확장성(Scalability) | HTTP의 중요 설계 목표로 언제든 쉽게 Server를 추가할 수 있음을 뜻함                                                          |
 | 견고성(Robustness)  | HTTP의 중요 설계 목표로 Server 중 하나에 문제가 생겨도 쉽게 다른 Server로 대체가 가능함을 뜻함                              |
 
-> 💡 MIME Type(Multipurpose Internet Mail Extensions Type)  
-> 📢 HTTP에서 메세지로 주고받는 자원의 종류
-
-> 💡 비지속 연결  
-> 📢 Three-Way Handshake를 통해 TCP 연결 수립 후 요청에 대한 응답을 받으면 연결을 종료하는 방식으로 동작하며 추가적인 요청-응답을 하기 위해서는 다시 TCP 연결을 해야함
-
-> 💡 지속 연결(Persistent Connection 또는 Keep-Alive)  
-> 📢 하나의 TCP 연결상에서 여러 개의 요청-응답을 주고받을 수 있는 기술
+> - **MIME Type(Multipurpose Internet Mail Extensions Type)**: HTTP에서 메세지로 주고받는 자원의 종류
+> - **비지속 연결**: Three-Way Handshake를 통해 TCP 연결 수립 후 요청에 대한 응답을 받으면 연결을 종료하는 방식으로 동작하며 추가적인 요청-응답을 하기 위해서는 다시 TCP 연결을 해야함
+> - **지속 연결(Persistent Connection 또는 Keep-Alive)**: 하나의 TCP 연결상에서 여러 개의 요청-응답을 주고받을 수 있는 기술
+{: .prompt-tip }
 
 #### 🌐 HTTP Message
 
@@ -172,14 +165,10 @@ HTTP Status Code는 다음과 같습니다.
 | `400` ~ `499` | Client 에러 상태 코드 | • `400 Bad Request`: Client 요청이 잘못되었음 <br/> • `401 Unauthorized`: 요청한 자원에 대한 유효한 인증이 없음 <br/> • `403 Forbidden`: 요청이 Server에 의해 거부됨(접근 권한이 없는 경우) <br/> • `404 Not Found`: 요청 받은 자원을 찾을 수 없음 <br/> • `405 Method Not Allowed`: 요청한 메서드를 지원하지 않음                                                                                                                                          |
 | `500` ~ `599` | Server 에러 상태 코드 | • `500 Internal Server Error`: 요청을 처리할 수 없음 <br/> • `502 Bad Gateway`: 중간 Server의 통신 오류 <br/> • `503 Service Unavailable`: 현재는 요청을 처리할 수 없으나 추후 가능할 수도 있음                                                                                                                                                                                                                                                             |
 
-> 💡 Redirection  
-> 📢 Client가 요청한 자원이 다른 곳에 있는 경우 Client의 요청을 다른 곳으로 이동시키는 것을 의미
-
-> 💡 Permanent Redirection  
-> 📢 자원이 완전히 새로운 곳으로 이동하여 경로가 영구적으로 재지정되는 것을 의미
-
-> 💡 Temporary Redirection  
-> 📢 자원의 위치가 임시로 변경되었거나 임시로 사용할 URL이 필요한 경우에 사용
+> - **Redirection**: Client가 요청한 자원이 다른 곳에 있는 경우 Client의 요청을 다른 곳으로 이동시키는 것을 의미
+> - **Permanent Redirection**: 자원이 완전히 새로운 곳으로 이동하여 경로가 영구적으로 재지정되는 것을 의미
+> - **Temporary Redirection**: 자원의 위치가 임시로 변경되었거나 임시로 사용할 URL이 필요한 경우에 사용
+{: .prompt-tip }
 
 #### 🌐 HTTP Header
 
@@ -218,7 +207,8 @@ Cache는 정보의 사본을 임시로 저장하기 때문에 원본 데이터�
 | 날짜를 기반으로 재검사 | Client는 `If-Modified-Since`Header를 통해 Server에게 특정 시점(날짜와 시각) 이후로 원본 데이터에 변경이 있었는지 확인 |
 | 버전을 기반으로 재검사 | `If-None-Match` Header를 통해 Etag(Entity Tage) 값과 일치하는 자원이 있는지 확인                                      |
 
-> 📢 자원을 변경될 때마다 자원의 버전을 식별하는 Etag(Entity Tage)값이 변경
+> 자원을 변경될 때마다 자원의 버전을 식별하는 Etag(Entity Tage)값이 변경
+{: .prompt-info }
 
 ## 🌐 Cookie
 

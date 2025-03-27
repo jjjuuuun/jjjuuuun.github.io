@@ -142,9 +142,10 @@ QoS의 종류는 다음과 같습니다.
 | • [Burstable](#️-burstable) | $2$ 순위 <br/> (OOM Score가 큰 Pod부터 제거) | • Request < Limit 인경우 <br/> • Request만 설정된 경우 <br/> • Pod에 존재하는 Container 중 한 Container에 Request와 Limit 값이 설정되어 있지 않은 경우 |
 | • [Best-Effort](#️-best-effort) | $1$ 순위 | Pod에 존재하는 모든 Container에 Memory와 CPU의 Request와 Limit의 값 모두 설정되지 않은 경우 |
 
-> 💡 OOM(Out-Of-Memory) Score  
-> 📢 Memory 실제 사용량($=$ Application의 Memory 사용량 $/$ Request Memory)  
-> 📢 OOM Score가 클수록 제거 순위가 높음
+> **OOM(Out-Of-Memory) Score**  
+> - Memory 실제 사용량($=$ Application의 Memory 사용량 $/$ Request Memory)  
+> - OOM Score가 클수록 제거 순위가 높음
+{: .prompt-tip }
 
 ### ☸️ Guaranteed
 

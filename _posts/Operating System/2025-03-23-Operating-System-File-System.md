@@ -82,14 +82,10 @@ File System이란 File과 Directory를 보조기억장치에 일목요연하게 
 
 File System에서 보조기억장치를 사용하기 위해서는 Partitioning과 Formatting이 먼저 진행되어야 합니다.
 
-> 💡 Partitioning  
-> 📢 저장 장치의 논리적인 영역을 구획하는 작업
-
-> 💡 Low-Level Formatting  
-> 📢 저장 장치를 생성할 당시 공장에서 수행되는 물리적인 Formatting
-
-> 💡 High-Level Formatting  
-> 📢 File System을 생성하는 Formatting
+> - **Partitioning**: 저장 장치의 논리적인 영역을 구획하는 작업
+> - **Low-Level Formatting**: 저장 장치를 생성할 당시 공장에서 수행되는 물리적인 Formatting
+> - **High-Level Formatting**: File System을 생성하는 Formatting
+{: .prompt-tip }
 
 File System의 종류로는 다음과 같은 것들이 있습니다.
 
@@ -100,11 +96,9 @@ File System의 종류로는 다음과 같은 것들이 있습니다.
 | NTFS(NT File System) | Window OS | ⭕ |
 | ext File System | Linux OS | ⭕ |
 
-> 💡 Journaling  
-> 📢 작업 Log를 통해 System Crash가 발생했을 때 빠르게 복구하기 위한 방법
-
-> 💡 System Crash  
-> 📢 File System을 변경하는 도중에 전원이 나가거나 치명적인 오류로 인해 컴퓨터가 강제로 종료되어 버리는 상황
+> - **Journaling**: 작업 Log를 통해 System Crash가 발생했을 때 빠르게 복구하기 위한 방법
+> - **System Crash**: File System을 변경하는 도중에 전원이 나가거나 치명적인 오류로 인해 컴퓨터가 강제로 종료되어 버리는 상황
+{: .prompt-tip }
 
 ### 💾 FAT File System
 
@@ -137,11 +131,7 @@ Unix File System에서 i-node에 저장할 수 있는 Block은 15개로 제한�
 | $13$번 | Double Indirect Block(이중 간접 블록)을 저장 |
 | $14$번 | Triple Indirect Block(삼중 간접 블록)을 저장 |
 
-> 💡 Single Indirect Block(단일 간접 블록)    
-> 📢 File이 저장된 Block이 아닌 File을 저장한 Block의 주소가 저장된 Block
-
-> 💡 Double Indirect Block(이중 간접 블록)    
-> 📢 Single Indirect Block을 저장하는 Block
-
-> 💡 Triple Indirect Block(삼중 간접 블록)    
-> 📢 Double Indirect Block을 저장하는 Block
+> - **Single Indirect Block(단일 간접 블록)**: File이 저장된 Block이 아닌 File을 저장한 Block의 주소가 저장된 Block
+> - **Double Indirect Block(이중 간접 블록)**: Single Indirect Block을 저장하는 Block
+> - **Triple Indirect Block(삼중 간접 블록)**: Double Indirect Block을 저장하는 Block
+{: .prompt-tip }

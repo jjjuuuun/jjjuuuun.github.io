@@ -32,8 +32,8 @@ Client와 Server가 공개 키 암호화 방식으로 통신할 때 Server로부
 
 이러한 인증서는 인증 기관(CA; Certification Authority)인 제 3의 기관에서 발급 받습니다. 인증서에는 CA가 인증했다는 표시의 서명값(Signature)이 있습니다. Client는 Signature를 통해 인증서를 검증할 수 있습니다.
 
-> 💡 서명값(Signature)  
-> 📢 인증서 내용에 대한 해시 값을 CA의 Private Key로 암호화 하는 방식
+> **서명값(Signature)**: 인증서 내용에 대한 해시 값을 CA의 Private Key로 암호화 하는 방식
+{: .prompt-tip }
 
 공개 키 인증서로 Public Key의 유효성을 입증하는 과정(Digital Signature)을 살펴보겠습니다.
 

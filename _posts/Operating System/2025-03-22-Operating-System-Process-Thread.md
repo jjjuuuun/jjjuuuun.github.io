@@ -18,8 +18,9 @@ Process의 종류는 다음과 같습니다.
 - **Foreground Process**: User가 볼 수 있는 공간에서 실행되는 Process
 - **Background Process**: User가 보지 못하는 공간에서 실행되는 Process
     - **Demon(Service)**: User와 상호작용하지 않고 정해진 일만 수행하는 Process
-        > 📢 Unix ➜ Demon  
-        > 📢 Window ➜ Service
+        > - Unix ➜ Demon  
+        > - Window ➜ Service
+        {: .prompt-info }
 
 ### 💾 PCB(Process Control Block)
 
@@ -45,7 +46,8 @@ Context Switching이 자주 일어나면 Process들이 동시에 실행되는 �
 
 Process는 User Space에서 다음과 같이 나뉘어 메모리에 저장됩니다.
 
-> ⚠️ 동적으로 할당되는 Heap Segment와 Stack Segment의 주소가 겹치지 않도록 Heap Segment는 메모리의 낮은 주소에서 시작하고 Stack Segment는 높은 주소에서 시작합니다.
+> 동적으로 할당되는 Heap Segment와 Stack Segment의 주소가 겹치지 않도록 Heap Segment는 메모리의 낮은 주소에서 시작하고 Stack Segment는 높은 주소에서 시작합니다.
+{: .prompt-warning }
 
 
 ![](../../assets/img/operating system/process_2.png){: .left}

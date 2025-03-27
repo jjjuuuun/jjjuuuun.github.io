@@ -31,16 +31,17 @@ Hub는 여러 대의 Host를 연결하는 장치이며 Repeater Hub, Ethernet Hu
 Hub의 특징은 다음과 같습니다.
 
 - 주소개념이 없는 Hub는 수신지를 특정하지 못하기 때문에 전달받은 신호를 모든 포트(Port)로 그대로 다시 전달
-  > 📢 Hub를 통해 신호를 전달받은 모든 Host는 Data Link Layer에서 Frame의 MAC Address를 확인하고 자신과 없으면 폐기합니다.
+  > Hub를 통해 신호를 전달받은 모든 Host는 Data Link Layer에서 Frame의 MAC Address를 확인하고 자신과 없으면 폐기합니다.
+  {: .prompt-info }
 - 반이중 모드(Half Duplex)로 통신
-  > ⚠️ Hub에 신호를 동시에 송신하면 Collision(충돌)이 발생하며 Collision Domain의 범위가 클수록 Collision이 발생할 가능성이 높아집니다.  
-  > 📢 Data Link Layer의 [CSMA/CD(Carrier Sense Multiple Access with Collision Detection) Protocol](https://jjjuuuun.github.io/posts/Network-Data-Link-Layer/#-csmacd-protocol)로 Collision을 해결합니다.
+  > Hub에 신호를 동시에 송신하면 Collision(충돌)이 발생하며 Collision Domain의 범위가 클수록 Collision이 발생할 가능성이 높아집니다.  
+  {: .prompt-danger }
+  > Data Link Layer의 [CSMA/CD(Carrier Sense Multiple Access with Collision Detection) Protocol](https://jjjuuuun.github.io/posts/Network-Data-Link-Layer/#-csmacd-protocol)로 Collision을 해결합니다.
+  {: .prompt-info }
 
-> 💡 반이중 모드(Half Duplex)  
-> 📢 송수신을 번갈아 가면서 하는 통신 방식(🆚 Full Duplex)
-
-> 💡 Collision Domain  
-> 📢 같은 Hub에 연결된 모든 Host
+> - **반이중 모드(Half Duplex)**: 송수신을 번갈아 가면서 하는 통신 방식(🆚 Full Duplex)
+> - **Collision Domain**: 같은 Hub에 연결된 모든 Host
+{: .prompt-tip }
 
 ## 🌐 통신 매체 - Cable
 

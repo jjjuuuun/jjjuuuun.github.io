@@ -29,10 +29,11 @@ IP에는 IP 버전 4([IPv4](#-ipv4))와 IP 버전 6([IPv6](#-ipv6)) 두 가지 �
 | IP Addressing(IP 주소 지정) | IP 주소를 바탕으로 송수신 대상을 지정하는 것                                           |
 | IP Fragmentation(IP 단편화) | 전송하고자 하는 Packet의 크기가 MTU보다 큰 경우 Packet을 MTU보다 작은 크기로 나누는 것 |
 
-> 💡 MTU(Maximum Transmission Unit)  
-> 📢 한 번에 전송 가능한 Packet의 최대 크기(Header 포함)  
-> 📢 일반적인 MTU는 $1500$ Byte  
-> 📢 MTU 이하로 나누어진 Packet은 수신지에 도착하면 다시 재조합
+> **MTU(Maximum Transmission Unit)**
+> - 한 번에 전송 가능한 Packet의 최대 크기(Header 포함)  
+> - 일반적인 MTU는 $1500$ Byte  
+> - MTU 이하로 나누어진 Packet은 수신지에 도착하면 다시 재조합
+{: .prompt-tip }
 
 #### 🌐 IP Address
 
@@ -57,8 +58,8 @@ IP Address에서 `Network Address`와 `Host Address`를 나누는 방법에 따�
 |    0.0.0.0 / 0    | 모든 임의의 IP Address        | 주로 Packet이 이동할 경로를 결정하는 Routing에서 Default Route를 나타내기 위해 사용 |
 |   127.0.0.0 / 8   | Loopback Address \| Localhost | 자기 자신을 가리키는 특별한 주소로 주로 테스트나 디버깅 용도로 사용                 |
 
-> 💡 Default Route  
-> 📢 Packet을 어떤 IP Address로 전달할지 결정하기 어려울 경우 기본적으로 Packet을 전달할 경로를 의미
+> **Default Route**: Packet을 어떤 IP Address로 전달할지 결정하기 어려울 경우 기본적으로 Packet을 전달할 경로를 의미
+{: .prompt-tip }
 
 #### 🌐 Classful Addressing
 
@@ -91,11 +92,9 @@ Subnet Mask에서 1은 `Network Address`를 나타내고 0은 `Host Address`를 
 | 할당 | ISP(Internet Service Provider)나 공이 IP 주소 할당 기관을 통해 할당 |                                      Router를 통해 할당                                      |
 | 특징 |                          전 세계에서 고유                           | • 다른 네트워크의 IP Address와 중복될 수 있음 <br/> • 외부 네트워크와 통신하기 위해 NAT 사용 |
 
-> 💡 NAT(Network Address Translation)  
-> 📢 NAT 테이블을 사용해 주로 Private IP Address와 Public IP Address를 변환하는데 사용
-
-> 💡 NAPT(Network Address Port Translation) 혹은 APT(Address Port Translation)  
-> 📢 포트를 활용해 하나의 Public IP Address를 여러 Private IP Address가 공유할 수 있도록 하는 NAT의 일종
+> - **NAT(Network Address Translation)**: NAT 테이블을 사용해 주로 Private IP Address와 Public IP Address를 변환하는데 사용  
+> - **NAPT(Network Address Port Translation) 혹은 APT(Address Port Translation)**: 포트를 활용해 하나의 Public IP Address를 여러 Private IP Address가 공유할 수 있도록 하는 NAT의 일종
+{: .prompt-tip }
 
 #### 🌐 Static IP Address VS Dynamic IP Address
 
@@ -147,10 +146,10 @@ Routing Protocol은 크게 AS 내부에서 수행되면 [IGP](#-igpinterior-gate
 | [RIP(Routing Information Protocol)](#-riprouting-information-protocol) | [BGP(Border Gateway Protocol)](#-bgpborder-gateway-protocol) |
 | [LSRP(Link State Routing Protocol)](#-lsrplink-state-routing-protocol) |                                                              |
 
-> 💡 AS(Autonomous System)  
-> 📢 동일한 Routing 정책으로 운용되는 Router들의 집단 네트워크
-
-> 📢 Router들은 AS 내부에서만 통신할 수도 있고, ASBF(AS Boundary Router)을 사용해 AS 외부와도 통신할 수 있습니다.
+> **AS(Autonomous System)**  
+> - 동일한 Routing 정책으로 운용되는 Router들의 집단 네트워크  
+> - Router들은 AS 내부에서만 통신할 수도 있고, ASBF(AS Boundary Router)을 사용해 AS 외부와도 통신할 수 있습니다.
+{: .prompt-info }
 
 #### 🌐 IGP(Interior Gateway Protocol)
 
@@ -160,8 +159,8 @@ RIP는 거리 벡터를 활용해 최적의 경로를 찾는 프로토콜입니�
 
 인접한 Router끼리 경로 정보를 주기적으로 교환하며 Routing Table을 갱신하고 이를 통해 Router는 특정 수신지까지의 Hop 수를 알 수 있는데 RIP는 특정 수신지까지의 경로 중 Hop 수가 가장 적은 경로를 최적의 경로로 판단합니다.
 
-> 💡 Hop  
-> 📢 Packet이 Host 또는 Router에 한 번 전달되는 것
+> **Hop**: Packet이 Host 또는 Router에 한 번 전달되는 것
+{: .prompt-tip }
 
 ##### 🌐 LSRP(Link State Routing Protocol)
 
@@ -223,8 +222,8 @@ _IPv4 Packet_
 |       Source IP Address        | 송신지 IP Address                                                                                                                                                                                                                                                                                                                       |
 |     Destination IP Address     | 수신지 IP Address                                                                                                                                                                                                                                                                                                                       |
 
-> 💡 Hop  
-> 📢 Packet이 Host 또는 Router에 한 번 전달되는 것
+> **Hop**: Packet이 Host 또는 Router에 한 번 전달되는 것
+{: .prompt-tip }
 
 ## 🌐 IPv6
 

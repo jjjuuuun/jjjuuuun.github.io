@@ -21,14 +21,10 @@ Process(Thread)의 동기화를 통해 실행 순서와 자원의 일관성을 �
 | 동시에 실행되는 Process(Thread)를 올바른 순서대로 실행하는 것 |                                    공유자원에 동시에 접근하지 못하게 하는 것                                     |
 |                                                               | Race Condition이 발생하지 않도록 두 개 이상의 Process(Thread)가 임계 구역에 동시에 접근하지 못하도록 관리하는 것 |
 
-> 💡 공유자원(Shared Resource)  
-> 📢 공동으로 이용하는 변수, 파일, 장치 등
-
-> 💡 Race Condition  
-> 📢 여러 Process(Thread)가 동시 다발적으로 임계 구역의 코드를 실행하여 생기는 문제
-
-> 💡 임계 구역(Critical Section)  
-> 📢 공유자원에 접근하는 코드 중 동시에 실행하면 문제가 발생하는 코드 영역
+> - **공유자원(Shared Resource)**: 공동으로 이용하는 변수, 파일, 장치 등
+> - **Race Condition**: 여러 Process(Thread)가 동시 다발적으로 임계 구역의 코드를 실행하여 생기는 문제
+> - **임계 구역(Critical Section)**: 공유자원에 접근하는 코드 중 동시에 실행하면 문제가 발생하는 코드 영역
+{: .prompt-tip }
 
 ## 💾 Synchronization Techniques
 

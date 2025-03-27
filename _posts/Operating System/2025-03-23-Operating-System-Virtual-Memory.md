@@ -18,14 +18,10 @@ Swapping이란 현재 실행되지 않는 Process들을 임시로 Swap Space로 
 
 이러한 Swapping을 사용하면 제한된 메모리 공간에서 많은 Process들을 적재하여 실행할 수 있습니다.
 
-> 💡 Swap Sapce  
-> 📢 보조기억장치 일부 영역
-
-> 💡 Swap-Out  
-> 📢 메모리에 있는 Process를 Swap Space로 쫓아내는 과정
-
-> 💡 Swap-In  
-> 📢 Swap Space에 있는 Process를 메모리에 적재하는 과정
+> - **Swap Sapce**: 보조기억장치 일부 영역
+> - **Swap-Out**: 메모리에 있는 Process를 Swap Space로 쫓아내는 과정
+> - **Swap-In**: Swap Space에 있는 Process를 메모리에 적재하는 과정
+{: .prompt-tip }
 
 ## 💾 연속 메모리 할당
 
@@ -69,8 +65,8 @@ Paging이란 메모리의 물리 주소 공간을 Frame 단위로 자르고 Proc
 |     물리 메모리보다 큰 Process를 실행     | Process의 크기가 커지면서 Page Table의 크기도 커지기 때문에 메모리에 Page Table을 모두 올려두는 것은 낭비 <br/> (Hierarchical Paging을 통해 해결) |
 | Process 간 Page를 공유(Ex. Copy on Write) |
 
-> 💡 내부 단편화  
-> 📢 Process의 크기가 Page의 크기로 정확히 나눠지지 않을 때 발생하는 메모리 낭비 현상
+> **내부 단편화**: Process의 크기가 Page의 크기로 정확히 나눠지지 않을 때 발생하는 메모리 낭비 현상
+{: .prompt-tip }
 
 ## 💾 Page Table
 
@@ -120,11 +116,12 @@ Page Replacement Algorithm이란 가득찬 메모리에서 Page Out을 할 Page�
 
 즉 Page Reference String을 통해 Page Replacement Algorithm의 성능을 평가합니다.
 
-> 💡 Page Reference String(페이지 참조열)  
-> 📢 CPU가 참조하는 Page들 중 연속된 Page를 생략한 Page String
+> **Page Reference String(페이지 참조열)**: CPU가 참조하는 Page들 중 연속된 Page를 생략한 Page String
+{: .prompt-tip }
 
-> ❓ 연속된 Page를 생략하는 이유는 무엇인가요?  
-> 🗣️ 연속된 Page는 Page Fault를 발생시키지 않기 때문입니다.
+> 연속된 Page를 생략하는 이유는 무엇인가요?  
+> - 연속된 Page는 Page Fault를 발생시키지 않기 때문입니다.
+{: .prompt-info }
 
 Page Replacement Algorithm의 종류는 다음과 같습니다.
 
@@ -141,8 +138,8 @@ Page Replacement Algorithm의 종류는 다음과 같습니다.
 
 만약 Frame의 수가 적어서 Page Fault가 자주 발생하여 Process가 실제 실행되는 시간보다 Paging에 더 많은 시간을 소요하여 성능이 저해되는 Thrashing이 발생할 수 있습니다.
 
-> 💡 Thrashing  
-> 📢 지나치게 빈번한 Page Replacement로 인해 CPU 이용률이 낮아지는 문제
+> **Thrashing**: 지나치게 빈번한 Page Replacement로 인해 CPU 이용률이 낮아지는 문제
+{: .prompt-tip }
 
 Frame Allocation 방식에는 다음과 같은 것들이 있습니다.
 
@@ -155,8 +152,8 @@ Frame Allocation 방식에는 다음과 같은 것들이 있습니다.
 |     Working Set Model     | 해당 Process에 Working Set만큼의 Frame을 동적으로 할당해주는 방식                                                                      |
 | PFF(Page-Fault Frequency) | 페이지 폴트율에 상한선과 하한선을 정하고 페이지 폴트율이 상한선보다 높으면 Frame을 더 할당하고 하한선보다 낮으면 Frame을 회수하는 방식 |
 
-> 💡 Working Set(작업 집합)  
-> 📢 실행 중인 Process가 일정 시간 동안 참조한 Page의 집합
+> **Working Set(작업 집합)**: 실행 중인 Process가 일정 시간 동안 참조한 Page의 집합
+{: .prompt-tip }
 
 ### 💾 Degree Of Multiprogramming과 Thrashing
 

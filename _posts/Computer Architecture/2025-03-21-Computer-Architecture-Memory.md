@@ -52,8 +52,8 @@ SDRAM은 Clock 신호와 동기화된 발전된 형태의 DRAM입니다. 이후 
 
 DDR SDRAM은 대역폭(Data Rate)이 두 배 넓은 SDRAM입니다. Main Memory로서 DDR SDRAM을 가장 많이 사용하며 위의 그림과 같이 대역폭의 수를 $2$배씩 늘려가며 더 큰 대역폭을 가지는 DDR SDRAM을 사용합니다.
 
-> 💡 대역폭(Data Rate)  
-> 📢 데이터를 주고 받는 길의 너비
+> **대역폭(Data Rate)**: 데이터를 주고 받는 길의 너비
+{: .prompt-tip }
 
 ## 🖥️ RAM의 주소 공간
 

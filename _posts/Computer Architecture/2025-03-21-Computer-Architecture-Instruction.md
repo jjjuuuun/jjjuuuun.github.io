@@ -53,11 +53,12 @@ Operand는 연산에 사용할 데이터 또는 주소(Address)를 나타내는 
 
 Operand에는 주로 유효 주소(Effective Address)를 명시하며 주소 지정 방식이란 유효 주소(Effective Address)를 찾는 방법을 말합니다. 
 
-> 💡 유효 주소(Effective Address)  
-> 📢 연산의 대상이 되는 데이터가 저장된 위치(Ex. Memory Address, Register Address)
+> **유효 주소(Effective Address)**: 연산의 대상이 되는 데이터가 저장된 위치(Ex. Memory Address, Register Address)
+{: .prompt-tip }
 
-> ❓ Operand에 데이터 대신 주소를 포함시키는 이유가 무엇인가요?  
-> 🗣️ 명령어의 고정된 길이 때문에 다양한 데이터를 표현하기 제한되기 때문입니다.
+> Operand에 데이터 대신 주소를 포함시키는 이유가 무엇인가요?  
+> - 명령어의 고정된 길이 때문에 다양한 데이터를 표현하기 제한되기 때문입니다.
+{: .prompt-info }
 
 주소 지정 방식의 종류는 다음과 같습니다.
 
@@ -118,11 +119,9 @@ Hardware Interrupt는 주로 I/O Device에 의해서 발생하는 Interrupt입�
   4. CPU는 Interrupt Vector를 참조하여 Interrupt Service Routine을 실행
   5. Interrupt Service Routine이 끝나면 백업해 둔 작업을 복구하여 실행을 재개
 
-> 💡 Interrupt Service Routine(Interrupt Handler)  
-> 📢 Interrupt를 처리하기 위한 프로그램
-
-> 💡 Interrupt Service Routine(Interrupt Handler)  
-> 📢 Interrupt Service Routine가 저장된 메모리의 시작 주소
+> - **Interrupt Service Routine(Interrupt Handler)**: Interrupt를 처리하기 위한 프로그램  
+> - **Interrupt Service Routine(Interrupt Handler)**: Interrupt Service Routine가 저장된 메모리의 시작 주소
+{: .prompt-tip }
 
 ## 🖥️ 명령어 병렬 처리 기법(ILP)
 
@@ -137,7 +136,8 @@ Hardware Interrupt는 주로 I/O Device에 의해서 발생하는 Interrupt입�
 3. 명령어 실행(Execute Instruction)
 4. 결과 저장(Write Back)
 
-> ⚠️ 위와 같이 4단계가 아닌 2단계 혹은 5단계로 나누기도 합니다.
+> 위와 같이 4단계가 아닌 2단계 혹은 5단계로 나누기도 합니다.
+{: .prompt-warning }
 
 ### 🖥️ Instruction Pipelining
 

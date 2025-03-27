@@ -43,7 +43,8 @@ Port 번호는 16 Bit로 표현 가능하며, 사용 가능한 Port는 0번 ~ 65
 |                             등록된 포트(Registered Port)                              | 1024번 ~49151번   | 잘 알려진 포트에 비해서는 덜 범용적이지만 흔히 사용되는 Application Protocol에 할당하기 위해 사용                                  |
 | 동적 포트(Dynamic Port), <br/>사설 포트(Private Port), <br/>임시 포트(Ephemeral Port) | 49152번 ~ 65535번 | 인터넷 할당 번호 관리 기관에 의해 할당된 Application Protocol이 없고 특별히 관리되지 않는 포트 번호인 만큼 자유롭게 사용할 수 있음 |
 
-> 📢 Port Forwarding이란 네트워크 내 특정 Host에 IP Address와 포트 번호를 미리 할당하고 외부 네트워크에 있는 Host로부터 전달받은 Packet(Segment, Datagram)을 특정 Host로 전달하는 기능입니다.
+> Port Forwarding이란 네트워크 내 특정 Host에 IP Address와 포트 번호를 미리 할당하고 외부 네트워크에 있는 Host로부터 전달받은 Packet(Segment, Datagram)을 특정 Host로 전달하는 기능입니다.
+{: .prompt-info }
 
 ## 🌐 Protocol
 
@@ -132,11 +133,9 @@ TCP에서는 Sliding Window 방식을 사용해 흐름 제어를 고려합니다
 |         Congestion Avoidance(혼잡 회피)         | RTT마다 혼잡 윈도우를 $1$ MSS씩 증가시키는 알고리즘                                                                                             |
 |            Fast Recovery(빠른 회복)             | 세 번의 중복 ACK Segment를 수신했을 때 느린 시작은 건너뛰고 혼잡 회피를 수행하는 알고리즘으로, 빠르게 전송률을 회복하기 위한 알고리즘           |
 
-> 💡 RTT(Round Trip Time)  
-> 📢 메세지를 전송한 뒤 그에 대한 답변을 받는 데까지 걸리는 시간
-
-> 💡 MSS(Maximum Segment Size)  
-> 📢 TCP로 전송할 수 있는 최대 Payload의 크기(TCP Header 제외)
+> - **RTT(Round Trip Time)**: 메세지를 전송한 뒤 그에 대한 답변을 받는 데까지 걸리는 시간  
+> - **MSS(Maximum Segment Size)**: TCP로 전송할 수 있는 최대 Payload의 크기(TCP Header 제외)
+{: .prompt-tip }
 
 위의 알고리즘을 통해 혼잡 윈도우의 크기가 증가하다가 다음과 같은 상황을 만났을 때 혼잡 윈도우의 크기를 조절합니다.
 
@@ -146,8 +145,8 @@ TCP에서는 Sliding Window 방식을 사용해 흐름 제어를 고려합니다
 | 혼잡 윈도우 >= 느린 시작 임계치 | 느린 시작 종료 후 혼잡 회피 수행 |
 | 세 번의 중복 ACK Segment 발생 | 빠른 재전송 후 빠른 회복 수행 |
 
-> 💡 빠른 재전송  
-> 📢 재전송 타이머가 만료되기 전이라도 세 번의 동일한 ACK Segment가 수신되었다면 해당 Segment를 곧바로 재전송하는 기능
+> **빠른 재전송**: 재전송 타이머가 만료되기 전이라도 세 번의 동일한 ACK Segment가 수신되었다면 해당 Segment를 곧바로 재전송하는 기능
+{: .prompt-tip }
 
 ##### 🌐 연결 종료
 

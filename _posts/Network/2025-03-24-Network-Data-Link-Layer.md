@@ -48,11 +48,9 @@ CSMA/CD Protocol은 Physical Layer의 네트워크 장비(Hub)가 가지고 있�
 |   MA(Multiple Access)   | 다수의 Host가 네트워크에 접속하려는 상황                                                               |
 | CD(Collision Detection) | Host가 Collision을 감지하면 전송이 중단되고, Collision을 검출한 Host는 다른 Host에게 Jam Signal을 보냄 |
 
-> 💡 반송파  
-> 📢 통신 매체상에서 흐르는 신호
-
-> 💡 Jam Signal  
-> 📢 다른 Host에게 Collision이 발생했음을 알리는 신호
+> - **반송파**: 통신 매체상에서 흐르는 신호  
+> - **Jam Signal**: 다른 Host에게 Collision이 발생했음을 알리는 신호
+{: .prompt-tip }
 
 CSMA/CD Protocol은 3단계로 Collision을 해결합니다.
 
@@ -85,8 +83,8 @@ Switch는 전이중 모드(Full Duplex)를 지원하기 때문에 Switch를 이�
 
 또한 CSMA/CD Protocol의 대기 시간이 없어졌기 때문에 성능도 향상되어 오늘날까지도 Ethernet Network 구성시 자주 사용합니다.
 
-> 💡 전이중 모드(Full Duplex)  
-> 📢 송수신을 동시에 양방향으로 할 수 있는 통신 방식(🆚 Half Duplex)
+> **전이중 모드(Full Duplex)**: 송수신을 동시에 양방향으로 할 수 있는 통신 방식(🆚 Half Duplex)
+{: .prompt-tip }
 
 Switch의 특징은 다음과 같습니다.
 
@@ -145,5 +143,5 @@ AP와 연결된 여러 장치들이 무선 네트워크를 형성하게 되는�
 
 무선 네트워크 연결을 하기 위해 Wi-Fi 목록을 확인해 보면 연결하지 않은 다양한 SSID가 있는 것을 확인할 수 있습니다. 이처럼 연결하지도 않은 Wi-Fi들을 Host가 인식하고 있는 이유는 AP가 주기적으로 전송하는 Beacon Frame을 Host가 받았기 때문입니다.
 
-> 💡 Beacon Frame  
-> 📢 불특정 다수에게 자신을 알리는 Broadcast 메세지(SSID, AP의 MAC Address 등이 포함)
+> **Beacon Frame**: 불특정 다수에게 자신을 알리는 Broadcast 메세지(SSID, AP의 MAC Address 등이 포함)
+{: .prompt-tip }

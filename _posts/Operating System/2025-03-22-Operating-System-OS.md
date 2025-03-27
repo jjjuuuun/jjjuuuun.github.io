@@ -38,7 +38,8 @@ OS는 Application Software가 Kernel을 통해 시스템 자원에 접근하여 
 
 Dual Mode란 CPU가 명령어를 실행하는 모드를 크게 User Mode와 Kernel Mode로 구분하는 방식입니다. User Mode는 Kernel 영역의 코드를 실행할 수 없으며 Kernel Mode는 Kernel 영역의 코드를 실행할 수 있습니다.
 
-> 📢 가상화를 지원하는 CPU는 User Mode와 Kernel Mode 외에 Hypervisor Mode를 따로 두어 VM(Virtual Machine)에 설치된 Application Software가 Hypervisor Mode를 통해 OS 기능들을 사용할 수 있도록 합니다.
+> 가상화를 지원하는 CPU는 User Mode와 Kernel Mode 외에 Hypervisor Mode를 따로 두어 VM(Virtual Machine)에 설치된 Application Software가 Hypervisor Mode를 통해 OS 기능들을 사용할 수 있도록 합니다.
+{: .prompt-info }
 
 OS는 Application Software가 시스템 자원에 접근하려고 할 때 OS만을 통해서만 접근할 수 있도록 하여 시스템 자원을 보호합니다. 만약 Application Software가 User Mode로 실행 중에 System Call을 통해 시스템 자원에 접근하려고 할 때 Kernel Mode로 전환하여 시스템 자원에 접근할 수 있도록 합니다.
 

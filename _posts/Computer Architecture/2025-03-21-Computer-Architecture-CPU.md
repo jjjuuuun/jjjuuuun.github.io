@@ -73,8 +73,8 @@ Cache(캐시)의 등장 이유와 기본 스펙은 다음과 같습니다.
 - 시간 지역성(Temporal Locality): CPU는 최근에 접근했던 메모리 공간에 다시 접근하려는 경향이 존재
 - 공간 지역성(Spatial Locality): CPU는 최근에 접근했던 메모리 공간 근처를 접근하려는 경향이 존재
 
-> 💡 Cache Hit Ratio  
-> 📢 `Cache Hit Ratio` $=$ `Cache Hit` $/$ $($`Cache Hit` + `Cache Miss`$)$  
+> **Cache Hit Ratio**: `Cache Hit Ratio` $=$ `Cache Hit` $/$ $($`Cache Hit` + `Cache Miss`$)$  
+{: .prompt-tip }
 
 ## 🖥️ Multi-Core
 
@@ -92,8 +92,6 @@ Multi-Thread Processor(Multi-Thread CPU)란 하나의 Core로 여러 명령어�
 
 하나의 Core로 여러 명령어를 처리하기 위해서는 하나의 명령어를 처리하는데 필요한 레지스터가 여러 개 있으면 되기 때문에 Multi-Thread Processor에서는 레지스터가 핵심 장치입니다.
 
-> 💡 [하드웨어적 Thread(Logical Processor)](https://jjjuuuun.github.io/posts/Operating-System-Process-Thread/#-thread)  
-> 📢 하나의 Core가 동시에 처리하는 명령어 단위
-
-> 💡 소프트웨어적 Thread  
-> 📢 하나의 프로그램에서 독립적으로 실행되는 단위
+> - **[하드웨어적 Thread(Logical Processor)](https://jjjuuuun.github.io/posts/Operating-System-Process-Thread/#-thread)**: 하나의 Core가 동시에 처리하는 명령어 단위
+> - **소프트웨어적 Thread**: 하나의 프로그램에서 독립적으로 실행되는 단위
+{: .prompt-tip }

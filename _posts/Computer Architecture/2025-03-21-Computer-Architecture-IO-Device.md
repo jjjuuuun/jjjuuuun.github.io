@@ -76,7 +76,8 @@ PIC의 Interrupt 처리 과정은 다음과 같습니다.
 4. PIC는 Data Bus를 통해 CPU에게 Interrupt Vector를 보냄
 5. CPU는 전달 받은 Interrupt Vector를 통해 ISR(Interrupt Service Routine)을 실행
 
-> 📢 PIC는 NMI(Non-Maskable Interrupt)까지 우선순위를 판별하지 않으며 PIC가 우선순위를 조정해주는 Interrupt는 Maskable Interrupt입니다.
+> PIC는 NMI(Non-Maskable Interrupt)까지 우선순위를 판별하지 않으며 PIC가 우선순위를 조정해주는 Interrupt는 Maskable Interrupt입니다.
+{: .prompt-info }
 
 ## 🖥️ DMA(Direct Memory Access)
 

@@ -14,7 +14,8 @@ math: true
 
 Service는 Cluster 외부에서 Pod로 전달되는 것과 Pod에서 외부로 전달하는 네트워크 트래픽의 Routing을 맡는 Component입니다.
 
-> 📢 기본적으로 K8s는 Pod 간의 네트워킹으로 TCP와 UDP를 지원합니다.
+> 기본적으로 K8s는 Pod 간의 네트워킹으로 TCP와 UDP를 지원합니다.
+{: .prompt-info }
 
 Service의 특징은 다음과 같습니다.
 
@@ -56,7 +57,6 @@ NodePort의 특징은 다음과 같습니다.
 | • NodePort에 해당하는 포트가 모든 Worker Node에서 개방되어 해당 포트를 주시 |
 | • 데모나 임시 연결용으로 사용 |
 
-
 ## ☸️ LoadBalancer
 
 ![](../../../assets/img/kubernetes/service_3.png)
@@ -75,9 +75,9 @@ LoadBalancer의 특징은 다음과 같습니다.
 
 Headless란 Pod가 서로 다른 Pod에 직접 접근하기 위한 Service를 말합니다.
 
-Pod의 IP Address는 동적이기 때문에 `pod1`에서 `pod2`로 접근할 때 `pod2`의 IP Address를 사용해서 접근하게 되면 이후 `pod2`의 IP Address가 변경되었을 때 접근을 못하게됩니다. 
+Pod의 IP Address는 동적이기 때문에 `pod1`에서 `pod2`로 접근할 때 `pod2`의 IP Address를 사용해서 접근하게 되면 이후 `pod2`의 IP Address가 변경되었을 때 접근을 못하게됩니다.
 
-이러한 문제점을 해결하기위해 Headless는 DNS Server를 사용합니다. 
+이러한 문제점을 해결하기위해 Headless는 DNS Server를 사용합니다.
 
 DNS Server를 사용하기 위해서는 <u>직접 접근하려고 하는 Pod</u>(Ex. `pod2`, `pod3`)에 다음과 같이 설정값을 넣어서 Headless와 Pod를 연결해야 합니다.
 
@@ -86,11 +86,11 @@ DNS Server를 사용하기 위해서는 <u>직접 접근하려고 하는 Pod</u>
 
 이처럼 Headless와 연결된 Pod들은 DNS Server에 다음과 같이 등록됩니다.
 
-| Type | FQDN(Full Quailfied Domain Name) | IP Address |
-| :-: | :- | :- |
-| Service | • `Service 이름` + `.` + `Namespace 이름` + `.` + `svc`(Service를 나타냄) + `.` + `DNS Server 이름` <br/> • Ex. `headlessService``.``default``.``svc``.``cluster.local` | • 해당 Service와 연결된 Pod의 IP Address <br/> • Ex. 20.109.5.11 \| 20.109.5.12 |
-| Pod | • `hostname` + `.` + `subdomain` + `.` + `Namespace 이름` + `.` + `pod`(Pod를 나타냄) + `.` + `DNS Server 이름` <br/> • Ex. `pod2``.``headlessService``.``default``.``pod``.``cluster.local` | Pod 2의 IP Address (20.109.5.11) |
-| Pod | • `hostname` + `.` + `subdomain` + `.` + `Namespace 이름` + `.` + `pod`(Pod를 나타냄) + `.` + `DNS Server 이름` <br/> • Ex. `pod3``.``headlessService``.``default``.``pod``.``cluster.local` | Pod 3의 IP Address (20.109.5.12) |
+|  Type   | FQDN(Full Quailfied Domain Name)                                                                                                                                                               | IP Address                                                                      |
+| :-----: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ |
+| Service | • `Service 이름` + `.` + `Namespace 이름` + `.` + `svc`(Service를 나타냄) + `.` + `DNS Server 이름` <br/> • Ex. ` headlessService``.``default``.``svc``.``cluster.local `                      | • 해당 Service와 연결된 Pod의 IP Address <br/> • Ex. 20.109.5.11 \| 20.109.5.12 |
+|   Pod   | • `hostname` + `.` + `subdomain` + `.` + `Namespace 이름` + `.` + `pod`(Pod를 나타냄) + `.` + `DNS Server 이름` <br/> • Ex. ` pod2``.``headlessService``.``default``.``pod``.``cluster.local ` | Pod 2의 IP Address (20.109.5.11)                                                |
+|   Pod   | • `hostname` + `.` + `subdomain` + `.` + `Namespace 이름` + `.` + `pod`(Pod를 나타냄) + `.` + `DNS Server 이름` <br/> • Ex. ` pod3``.``headlessService``.``default``.``pod``.``cluster.local ` | Pod 3의 IP Address (20.109.5.12)                                                |
 
 ## ☸️ ExternalName
 
