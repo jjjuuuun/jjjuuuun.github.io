@@ -24,22 +24,22 @@ _출처: [Kubernetes Doc](https://kubernetes.io/docs/concepts/overview/component
 Master Node는 Cluster의 전반적인 상태를 관리합니다.
 
 |      Master Node의 Components       | 설명                                                                                                                                                                                                     |
-| :---------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|          `kube-apiserver`           | K8s의 HTTP API를 노출하는 Server                                                                                                                                                                         |
-|               `etcd`                | 모든 API Server의 데이터에 대해 일관되고 가용성이 높은 `Key-Value`형태로 저장                                                                                                                            |
-|          `kube-scheduler`           | • 수시로 Worker Node의 자원들을 파악 <br/> • `Watch`: `kube-apiserver`를 통해 `etcd`에 Pod 생성 요청이 들어오고 있는지 감시                                                                              |
-|      `kube-controller-manager`      | • K8s의 API 동작을 구현하기 위한 Controller 실행 <br/> • Controller 기능들이 각각의 Thread 형태로 존재 <br/> • `Watch`: `kube-apiserver`가 Contoller 생성 관련 정보가 들어오면 각 Thread에 알려주는 기능 |
-| `cloud-controllermanager`(Optional) | Cloud API에 연결                                                                                                                                                                                         |
+| :--------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|           • `kube-apiserver`           | K8s의 HTTP API를 노출하는 Server                                                                                                                                                                         |
+|               • `etcd`                | 모든 API Server의 데이터에 대해 일관되고 가용성이 높은 `Key-Value`형태로 저장                                                                                                                            |
+|          • `kube-scheduler`           | • 수시로 Worker Node의 자원들을 파악 <br/> • `Watch`: `kube-apiserver`를 통해 `etcd`에 Pod 생성 요청이 들어오고 있는지 감시                                                                              |
+|      • `kube-controller-manager`      | • K8s의 API 동작을 구현하기 위한 Controller 실행 <br/> • Controller 기능들이 각각의 Thread 형태로 존재 <br/> • `Watch`: `kube-apiserver`가 Contoller 생성 관련 정보가 들어오면 각 Thread에 알려주는 기능 |
+| • `cloud-controllermanager`(Optional) | Cloud API에 연결                                                                                                                                                                                         |
 
 ### ☸️ Worker Node
 
 Worker Node의 Components는 모든 Node에서 생성 및 실행되며, 실행중인 Pod를 유지하고 Container Runtime을 제공합니다.
 
 | Worker Node의 Components | 설명                                                    |
-| :----------------------: | :------------------------------------------------------ |
-|         `kublet`         | 해당 Worker Node에 포함되어 있는 Pod들의 실행을 보장    |
-|   `Container Runtime`    | Container 생성 및 실행을 담당하는 S/W                   |
-|  `kube-proxy`(Optional)  | 각 Worker Node에서 실행되고 있는 Proxy를 Service에 구현 |
+| :---------------------- | :------------------------------------------------------ |
+|         • `kublet`         | 해당 Worker Node에 포함되어 있는 Pod들의 실행을 보장    |
+|   • `Container Runtime`    | Container 생성 및 실행을 담당하는 S/W                   |
+|  • `kube-proxy`(Optional)  | 각 Worker Node에서 실행되고 있는 Proxy를 Service에 구현 |
 
 ## ☸️ Kubernetes Core Components의 Pod 생성
 

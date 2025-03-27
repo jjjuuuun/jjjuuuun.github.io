@@ -37,17 +37,17 @@ Kubernetes의 대표적인 기능으로는 다음과 같은 것들이 있습니�
 
 | 기능                                | 설명                                                                              |
 | :---------------------------------- | :-------------------------------------------------------------------------------- |
-| Service Discovery                   | K8s는 DNS나 자체 IP Address를 사용해 Container 노출이 가능                        |
-| Load Balancing                      | Container에 대한 트래픽이 많으면 K8s는 트래픽을 분산                              |
-| Storage Orchestration               | 원하는 Storage System을 자동으로 Mount                                            |
-| Automated Rollout and Rollback      | 배포된 Container의 상태를 원하는 상태로 변경 가능                                 |
-| Automatic Bin Packing               | 각 Container들이 필요로 하는 자원을 가장 잘 사용할 수 있도록 관리해주는 Node 제공 |
-| Self-Healing                        | 배포에 실패한 Container를 다시 시작하거나 교체하는 기능                           |
-| Secret and configuration management | Password, OAuth Token, SSH Key와 같은 중요한 정보들을 저장하고 관리               |
-| Batch Execution                     | Service 뿐만 아니라 Batch와 CI Workload들을 관리                                  |
-| Horizontal Scaling                  | 사용량에 따라 자동으로 Application을 Scale Up / Down                              |
-| IPv4 / IPv6 Dual-Stack              | IPv4와 IPv6를 함께 할당하는 것이 가능                                             |
-| Designed for Extensibility          | 이전의 Code들을 변경하지 않고 기능을 추가하는 것이 가능                           |
+| • Service Discovery                   | K8s는 DNS나 자체 IP Address를 사용해 Container 노출이 가능                        |
+| • Load Balancing                      | Container에 대한 트래픽이 많으면 K8s는 트래픽을 분산                              |
+| • Storage Orchestration               | 원하는 Storage System을 자동으로 Mount                                            |
+| • Automated Rollout and Rollback      | 배포된 Container의 상태를 원하는 상태로 변경 가능                                 |
+| • Automatic Bin Packing               | 각 Container들이 필요로 하는 자원을 가장 잘 사용할 수 있도록 관리해주는 Node 제공 |
+| • Self-Healing                        | 배포에 실패한 Container를 다시 시작하거나 교체하는 기능                           |
+| • Secret and configuration management | Password, OAuth Token, SSH Key와 같은 중요한 정보들을 저장하고 관리               |
+| • Batch Execution                     | Service 뿐만 아니라 Batch와 CI Workload들을 관리                                  |
+| • Horizontal Scaling                  | 사용량에 따라 자동으로 Application을 Scale Up / Down                              |
+| • IPv4 / IPv6 Dual-Stack              | IPv4와 IPv6를 함께 할당하는 것이 가능                                             |
+| • Designed for Extensibility          | 이전의 Code들을 변경하지 않고 기능을 추가하는 것이 가능                           |
 
 Kubernetes에서 제공하는 기능들을 한 마디로 정리하자면 Automatically Manage Container라고 할 수 있습니다.
 
